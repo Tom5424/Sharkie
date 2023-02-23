@@ -3,6 +3,8 @@ class Character extends MovableObjects {
     y = 100;
     width = 300;
     height = 300;
+    world;
+    speed = 0.5;
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -21,8 +23,63 @@ class Character extends MovableObjects {
 
 
     animateCharacter() {
-        setInterval(() => {
+        setInterval(() => { this.characterMove() }, 1000 / 10);
+    }
+
+
+    characterMove() {
+        if (this.characterCanMoveRight()) {
+            this.moveRight();
             this.playAnimationMovableObject(this.imagesSwimingCharacter);
-        }, 250);
+        } else if (this.characterCanMoveLeft()) {
+            this.moveLeft();
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        } else if (this.characterCanMoveDown()) {
+            this.moveDown();
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        } else if (this.characterCanMoveUp()) {
+            this.moveUp();
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        }
+    }
+
+
+    characterCanMoveRight() {
+        return this.world.keyboard.right;
+    }
+
+
+    moveRight() {
+        return this.x += 10 + this.speed;
+    }
+
+
+    characterCanMoveLeft() {
+        return this.world.keyboard.left
+    }
+
+
+    moveLeft() {
+        return this.x -= 10 - this.speed;
+    }
+
+
+    characterCanMoveDown() {
+        return this.world.keyboard.down
+    }
+
+
+    moveDown() {
+        return this.y += 10 + this.speed;
+    }
+
+
+    characterCanMoveUp() {
+        return this.world.keyboard.up
+    }
+
+
+    moveUp() {
+        return this.y -= 10 - this.speed;
     }
 }

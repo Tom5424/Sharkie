@@ -30,6 +30,6 @@ class PufferFish extends MovableObjects {
     animateEnemies() {
         setInterval(() => {
             this.playAnimationMovableObject(this.imagesSwimingPufferFishGreen);
-        }, 250);
+        }, 200);
     }
 }

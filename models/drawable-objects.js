@@ -10,44 +10,11 @@ class DrawableObjects {
     }
 
 
-    loadImages(arrayImages) {
-        arrayImages.forEach(arrayImage => {
+    loadImages(pathCurrentArrays) {
+        pathCurrentArrays.forEach(pathCurrentArray => {
             let img = new Image();
-            img.src = arrayImage
-            this.imageCache[arrayImage] = img;
+            img.src = pathCurrentArray
+            this.imageCache[pathCurrentArray] = img;
         });
-    }
-
-
-    draw() {
-        this.addToMap();
-        this.repeatDrawing();
-    }
-
-
-    addToMap() {
-        this.addObjectsToMap();
-        this.addCharacterToMap();
-    }
-
-
-    addObjectsToMap() {
-        [this.level.backgrounds, this.level.enemies].forEach(objects => {
-            objects.forEach(Object => {
-                ctx.drawImage(Object.img, Object.x, Object.y, Object.width, Object.height);
-            });
-        });
-    }
-
-
-    addCharacterToMap() {
-        ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-    }
-
-
-    repeatDrawing() {
-        requestAnimationFrame(() => {
-            this.draw();
-        })
     }
 }

@@ -10,8 +10,8 @@ class MovableObjects extends DrawableObjects {
 
     playAnimationMovableObject(imagesMovableObject) {
         let index = this.currentImage % imagesMovableObject.length;
-        let path = imagesMovableObject[index];
-        this.img = this.imageCache[path];
+        let currentPath = imagesMovableObject[index];
+        this.img = this.imageCache[currentPath];
         this.currentImage++;
     }
 }
