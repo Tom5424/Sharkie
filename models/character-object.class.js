@@ -1,10 +1,10 @@
 class Character extends MovableObjects {
-    x = -40;
+    x = 60;
     y = 100;
     width = 300;
     height = 300;
     world;
-    speed = 1;
+    speed = 2;
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -30,18 +30,12 @@ class Character extends MovableObjects {
     characterMove() {
         if (this.characterCanMoveRight()) {
             this.moveRight();
-            this.otherDirection = false;
-            this.playAnimationMovableObject(this.imagesSwimingCharacter);
         } else if (this.characterCanMoveLeft()) {
             this.moveLeft();
-            this.otherDirection = true;
-            this.playAnimationMovableObject(this.imagesSwimingCharacter);
         } else if (this.characterCanMoveDown()) {
             this.moveDown();
-            this.playAnimationMovableObject(this.imagesSwimingCharacter);
         } else if (this.characterCanMoveUp()) {
             this.moveUp();
-            this.playAnimationMovableObject(this.imagesSwimingCharacter);
         }
     }
 
@@ -52,17 +46,23 @@ class Character extends MovableObjects {
 
 
     moveRight() {
-        return this.x += 12 + this.speed;
+        this.world.cameraX = -this.x;
+        this.otherDirection = false;
+        this.x += 15 + this.speed;
+        this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 
 
     characterCanMoveLeft() {
-        return this.world.keyboard.left && this.x > -40;
+        return this.world.keyboard.left && this.x > 60;
     }
 
 
     moveLeft() {
-        return this.x -= 12 - this.speed;
+        this.world.cameraX = -this.x;
+        this.x -= 15 - this.speed;
+        this.otherDirection = true;
+        this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 
 
@@ -72,7 +72,8 @@ class Character extends MovableObjects {
 
 
     moveDown() {
-        return this.y += 12 + this.speed;
+        this.y += 15 + this.speed;
+        this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 
 
@@ -82,6 +83,7 @@ class Character extends MovableObjects {
 
 
     moveUp() {
-        return this.y -= 12 - this.speed;
+        this.y -= 15 - this.speed;
+        this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 }
