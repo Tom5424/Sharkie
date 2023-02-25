@@ -1,4 +1,5 @@
 class MovableObjects extends DrawableObjects {
+    otherDirection = false;
 
 
     moveLeft() {
