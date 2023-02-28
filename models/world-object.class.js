@@ -1,6 +1,9 @@
 class World extends DrawableObjects {
     level = new Level();
     character = new Character();
+    prorgressBarLife = new ProgressBarLife();
+    prorgressBarCoin = new ProgressBarCoin();
+    prorgressBarPoison = new ProgressBarPoison();
     ctx;
     canvas;
     keyboard;

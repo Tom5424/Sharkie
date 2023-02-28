@@ -2,7 +2,7 @@ class DrawableObjects {
     img;
     imageCache = {};
     currentImage = 0;
-    cameraX = -100;
+    cameraX = 0;
 
 
     loadImage(path) {
@@ -22,12 +22,19 @@ class DrawableObjects {
 
     draw() {
         this.clearCanvas();
-        this.ctx.translate(this.cameraX, 0);
+        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
         this.addObjectsToMap(this.level.backgrounds);
-        this.addObjectsToMap(this.level.enemies)
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.poisonVessels);
+        this.ctx.translate(-this.cameraX, 0);   // Push Camera backward
+        this.addObjectToMap(this.prorgressBarLife);
+        this.addObjectToMap(this.prorgressBarCoin);
+        this.addObjectToMap(this.prorgressBarPoison);
+        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
         this.addObjectToMap(this.character);
+        this.ctx.translate(-this.cameraX, 0);  // Push Camera backward
         this.repeatDrawing();
-        this.ctx.translate(-this.cameraX, 0);
     }
 
 
@@ -43,15 +50,15 @@ class DrawableObjects {
     }
 
 
-    addObjectToMap(character) {
-        this.flipImage();
-        this.ctx.drawImage(character.img, character.x, character.y, character.width, character.height);
-        this.flipImageBack();
+    addObjectToMap(singleObject) {
+        this.flipImage(singleObject);
+        this.ctx.drawImage(singleObject.img, singleObject.x, singleObject.y, singleObject.width, singleObject.height);
+        this.flipImageBack(singleObject);
     }
 
 
-    flipImage() {
-        if (this.character.otherDirection) {
+    flipImage(singleObject) {
+        if (singleObject.otherDirection) {
             this.ctx.save();
             this.ctx.translate(this.character.width, 0);
             this.ctx.scale(-1, 1);
@@ -60,8 +67,8 @@ class DrawableObjects {
     }
 
 
-    flipImageBack() {
-        if (this.character.otherDirection) {
+    flipImageBack(singleObject) {
+        if (singleObject.otherDirection) {
             this.ctx.restore();
             this.character.x = this.character.x * -1;
         }

@@ -1,4 +1,4 @@
-class PufferFish extends MovableObjects {
+class PufferFishGreen extends MovableObjects {
     x = 750;
     y = 150;
     width = 100;
@@ -13,11 +13,12 @@ class PufferFish extends MovableObjects {
 
 
     constructor() {
-        super().loadImage('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
+        super();
+        this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         this.loadImages(this.imagesSwimingPufferFishGreen);
         this.moveLeft();
-        this.animateEnemies();
         this.pufferFishPosition();
+        this.animateEnemies();
     }
 
 

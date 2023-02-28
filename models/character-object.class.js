@@ -1,10 +1,10 @@
 class Character extends MovableObjects {
-    x = 60;
+    x = 0;
     y = 100;
     width = 300;
     height = 300;
     world;
-    speed = 2;
+    lastIdle = new Date().getTime();
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -13,11 +13,49 @@ class Character extends MovableObjects {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png',
     ];
+    imagesIdleCharacter = [
+        'img/1.Sharkie/1.IDLE/1.png',
+        'img/1.Sharkie/1.IDLE/2.png',
+        'img/1.Sharkie/1.IDLE/3.png',
+        'img/1.Sharkie/1.IDLE/4.png',
+        'img/1.Sharkie/1.IDLE/5.png',
+        'img/1.Sharkie/1.IDLE/6.png',
+        'img/1.Sharkie/1.IDLE/7.png',
+        'img/1.Sharkie/1.IDLE/8.png',
+        'img/1.Sharkie/1.IDLE/9.png',
+        'img/1.Sharkie/1.IDLE/10.png',
+        'img/1.Sharkie/1.IDLE/11.png',
+        'img/1.Sharkie/1.IDLE/12.png',
+        'img/1.Sharkie/1.IDLE/13.png',
+        'img/1.Sharkie/1.IDLE/14.png',
+        'img/1.Sharkie/1.IDLE/15.png',
+        'img/1.Sharkie/1.IDLE/16.png',
+        'img/1.Sharkie/1.IDLE/17.png',
+        'img/1.Sharkie/1.IDLE/18.png',
+    ];
+    imagesLongIdleCharacter = [
+        'img/1.Sharkie/2.Long_IDLE/i1.png',
+        'img/1.Sharkie/2.Long_IDLE/i2.png',
+        'img/1.Sharkie/2.Long_IDLE/i3.png',
+        'img/1.Sharkie/2.Long_IDLE/i4.png',
+        'img/1.Sharkie/2.Long_IDLE/i5.png',
+        'img/1.Sharkie/2.Long_IDLE/i6.png',
+        'img/1.Sharkie/2.Long_IDLE/i7.png',
+        'img/1.Sharkie/2.Long_IDLE/i8.png',
+        'img/1.Sharkie/2.Long_IDLE/i9.png',
+        'img/1.Sharkie/2.Long_IDLE/i10.png',
+        'img/1.Sharkie/2.Long_IDLE/i11.png',
+        'img/1.Sharkie/2.Long_IDLE/i12.png',
+        'img/1.Sharkie/2.Long_IDLE/i13.png',
+        'img/1.Sharkie/2.Long_IDLE/i14.png',
+    ];
 
 
     constructor() {
         super().loadImage('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.imagesSwimingCharacter);
+        this.loadImages(this.imagesIdleCharacter);
+        this.loadImages(this.imagesLongIdleCharacter);
         this.animateCharacter();
     }
 
@@ -41,12 +79,12 @@ class Character extends MovableObjects {
 
 
     characterCanMoveRight() {
-        return this.world.keyboard.right;
+        return this.world.keyboard.right && this.x < 1800;
     }
 
 
     moveRight() {
-        this.world.cameraX = -this.x;
+        this.world.cameraX = -this.x - 10;
         this.otherDirection = false;
         this.x += 15 + this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -54,12 +92,12 @@ class Character extends MovableObjects {
 
 
     characterCanMoveLeft() {
-        return this.world.keyboard.left && this.x > 60;
+        return this.world.keyboard.left && this.x > 0;
     }
 
 
     moveLeft() {
-        this.world.cameraX = -this.x;
+        this.world.cameraX = -this.x - 10;
         this.x -= 15 - this.speed;
         this.otherDirection = true;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -87,3 +125,4 @@ class Character extends MovableObjects {
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 }
+

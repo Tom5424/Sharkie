@@ -1,6 +1,6 @@
 class MovableObjects extends DrawableObjects {
     otherDirection = false;
-
+    speed = 2;
 
     moveLeft() {
         setInterval(() => {
