@@ -5,6 +5,12 @@ class Character extends MovableObjects {
     height = 300;
     world;
     lastIdle = new Date().getTime();
+    offset = {
+        left: 80,
+        right: 80,
+        bottom: 90,
+        top: 180
+    }
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -49,6 +55,45 @@ class Character extends MovableObjects {
         'img/1.Sharkie/2.Long_IDLE/i13.png',
         'img/1.Sharkie/2.Long_IDLE/i14.png',
     ];
+    imagesElectricShock = [
+        'img/1.Sharkie/5.Hurt/2.Electric shock/1.png',
+        'img/1.Sharkie/5.Hurt/2.Electric shock/2.png',
+        'img/1.Sharkie/5.Hurt/2.Electric shock/3.png',
+    ];
+    imagesPoisoned = [
+        'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/4.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
+    ];
+    imagesDeadElectroShock = [
+        'img/1.Sharkie/6.dead/2.Electro_shock/1.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/2.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/3.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/4.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/5.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/6.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/7.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/8.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/9.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/10.png',
+    ];
+    imagesDeadPoisoned = [
+        'img/1.Sharkie/6.dead/1.Poisoned/1.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/2.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/3.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/4.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/5.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/6.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/7.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/8.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/9.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/10.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/11.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/12.png',
+    ];
+
 
 
     constructor() {
@@ -56,6 +101,10 @@ class Character extends MovableObjects {
         this.loadImages(this.imagesSwimingCharacter);
         this.loadImages(this.imagesIdleCharacter);
         this.loadImages(this.imagesLongIdleCharacter);
+        this.loadImages(this.imagesElectricShock);
+        this.loadImages(this.imagesPoisoned);
+        this.loadImages(this.imagesDeadElectroShock);
+        this.loadImages(this.imagesDeadPoisoned);
         this.animateCharacter();
     }
 
@@ -98,8 +147,8 @@ class Character extends MovableObjects {
 
     moveLeft() {
         this.world.cameraX = -this.x - 10;
-        this.x -= 15 - this.speed;
         this.otherDirection = true;
+        this.x -= 15 - this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
 
@@ -124,5 +173,38 @@ class Character extends MovableObjects {
         this.y -= 15 - this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
     }
+
+
+    characterIsElecticShocked() {
+        if (this.energy > 0) {
+            this.playAnimationMovableObject(this.imagesElectricShock);
+        } else {
+            this.isDead();
+            this.characterIsDeadElectroShock();
+        }
+    }
+
+
+    characterIsDeadElectroShock() {
+        this.playAnimationMovableObject(this.imagesDeadElectroShock);
+    }
+
+
+    characterIsPoisoned() {
+        if (this.energy > 0) {
+            this.playAnimationMovableObject(this.imagesPoisoned);
+        } else {
+            this.isDead();
+            this.characterIsDeadPoisoned();
+        }
+    }
+
+
+    characterIsDeadPoisoned() {
+        this.playAnimationMovableObject(this.imagesDeadPoisoned);
+    }
+
+
 }
+
 

@@ -31,14 +31,18 @@ class Level {
     ];
 
 
-    enemies = [
+    jellyFishes = [
+        new JellyFishGreen(),
+        new JellyFishPurple(),
+        new JellyFishYellow(),
+        new JellyFishPink(),
+    ];
+
+
+    pufferFishes = [
         new PufferFishGreen(),
         new PufferFishRed(),
         new PufferFishRedGlow(),
-        new JellyFishPurple(),
-        new JellyFishYellow(),
-        new JellyFishGreen(),
-        new JellyFishPink(),
     ];
 
 

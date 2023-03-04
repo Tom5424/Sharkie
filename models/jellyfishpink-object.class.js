@@ -1,6 +1,6 @@
 class JellyFishPink extends MovableObjects {
-    x = 750;
-    y = 150;
+    x;
+    y;
     width = 100;
     height = 100;
     imagesSwimingJellyFishPink = [
@@ -11,8 +11,10 @@ class JellyFishPink extends MovableObjects {
     ];
 
 
-    constructor() {
+    constructor(x, y) {
         super();
+        this.x = x;
+        this.y = y;
         this.loadImage('img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png');
         this.loadImages(this.imagesSwimingJellyFishPink);
         this.jellyFishPosition();
@@ -22,7 +24,7 @@ class JellyFishPink extends MovableObjects {
 
     jellyFishPosition() {
         this.x = Math.random() * 1100 + 350;
-        this.y = Math.random() * 250 + 150;
+        this.y = Math.random() * 250 + 100;
     }
 
 
@@ -30,5 +32,8 @@ class JellyFishPink extends MovableObjects {
         setInterval(() => {
             this.playAnimationMovableObject(this.imagesSwimingJellyFishPink);
         }, 200);
+        setInterval(() => {
+            // this.moveJellyFish();
+        }, 800);
     }
 }

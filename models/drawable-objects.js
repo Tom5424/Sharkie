@@ -20,69 +20,63 @@ class DrawableObjects {
     }
 
 
-    draw() {
-        this.clearCanvas();
-        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
-        this.addObjectsToMap(this.level.backgrounds);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.poisonVessels);
-        this.ctx.translate(-this.cameraX, 0);   // Push Camera backward
-        this.addObjectToMap(this.prorgressBarLife);
-        this.addObjectToMap(this.prorgressBarCoin);
-        this.addObjectToMap(this.prorgressBarPoison);
-        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
-        this.addObjectToMap(this.character);
-        this.ctx.translate(-this.cameraX, 0);  // Push Camera backward
-        this.repeatDrawing();
+    drawAllObjetcs(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
 
-    clearCanvas() {
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-
-    addObjectsToMap(objects) {
-        objects.forEach(object => {
-            this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height)
-        });
-    }
-
-
-    addObjectToMap(singleObject) {
-        this.flipImage(singleObject);
-        this.ctx.drawImage(singleObject.img, singleObject.x, singleObject.y, singleObject.width, singleObject.height);
-        this.flipImageBack(singleObject);
-    }
-
-
-    flipImage(singleObject) {
-        if (singleObject.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(this.character.width, 0);
-            this.ctx.scale(-1, 1);
-            this.character.x = this.character.x * -1;
+    drawRectangleCharacter(ctx) {
+        if (this instanceof Character) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x + 55, this.y + 140, this.width - 110, this.height - 210);
+            ctx.stroke();
         }
     }
 
 
-    flipImageBack(singleObject) {
-        if (singleObject.otherDirection) {
-            this.ctx.restore();
-            this.character.x = this.character.x * -1;
+    drawRectanglePufferFish(ctx) {
+        if (this instanceof PufferFishGreen || this instanceof PufferFishRed || this instanceof PufferFishRedGlow) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x - 5, this.y + 5, this.width, this.height - 35);
+            ctx.stroke();
         }
     }
 
 
-    repeatDrawing() {
-        requestAnimationFrame(() => {
-            this.draw();
-        })
+    drawRectangleJellyFish(ctx) {
+        if (this instanceof JellyFishGreen || this instanceof JellyFishYellow || this instanceof JellyFishPurple || this instanceof JellyFishPink) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + 5, this.y + 5, this.width - 10, this.height - 15);
+            ctx.stroke();
+        }
     }
 
 
+    drawRectanglePosionVessels(ctx) {
+        if (this instanceof PoisonVessel) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x + 15, this.y + 30, this.width - 30, this.height - 30);
+            ctx.stroke();
+        }
+    }
 
 
+    drawRectangleCoins(ctx) {
+        if (this instanceof Coins) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
 
 }
