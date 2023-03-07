@@ -47,7 +47,7 @@ class World {
         if (object.otherDirection) {
             this.flipImage()
         }
-        object.drawAllObjetcs(this.ctx)
+        object.drawAllObjetcs(this.ctx);
         if (object.otherDirection) {
             this.flipImageBack();
         }
@@ -95,16 +95,15 @@ class World {
     checkCollisionsGenerally() {
         setInterval(() => {
             this.characterIsCollidingWithJellyFish();
-            this.characterIsCollidingWithPufferFish()
-        }, 1000 / 10);
+            this.characterIsCollidingWithPufferFish();
+        }, 1000 / 5);
     }
 
 
     characterIsCollidingWithJellyFish() {
         this.level.jellyFishes.forEach(jellyFish => {
             if (this.character.isColliding(jellyFish)) {
-                this.character.isHurt();
-                this.character.characterIsElecticShocked();
+                this.character.hitThroughJellyFish();
             }
         });
     }
@@ -113,8 +112,7 @@ class World {
     characterIsCollidingWithPufferFish() {
         this.level.pufferFishes.forEach(pufferFish => {
             if (this.character.isColliding(pufferFish)) {
-                this.character.isHurt();
-                this.character.characterIsPoisoned();
+                this.character.hitThroughPufferFish();
             }
         });
     }

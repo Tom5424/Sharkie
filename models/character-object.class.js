@@ -111,6 +111,9 @@ class Character extends MovableObjects {
 
     animateCharacter() {
         setInterval(() => { this.characterMove() }, 1000 / 10);
+        setInterval(() => { this.characterAnimations() }, 1000 / 10);
+        // setInterval(() => { this.characterHitAnimationsThroughJellyFish() }, 1000 / 10);
+        // setInterval(() => { this.characterHitAnimationsThroughPufferFish() }, 1000 / 10);
     }
 
 
@@ -175,36 +178,47 @@ class Character extends MovableObjects {
     }
 
 
-    characterIsElecticShocked() {
-        if (this.energy > 0) {
-            this.playAnimationMovableObject(this.imagesElectricShock);
-        } else {
-            this.isDead();
-            this.characterIsDeadElectroShock();
+    characterAnimations() {
+        if (this.isHurtThroughElectroShock()) {
+            this.characterIsElektroSchoked();
+        } else if (this.isDeadThroughElectroShock()) {
+            this.characterIsDeadElectroShocks();
+        } if (this.isHurtThroughPoisoned()) {
+            this.characterIsPoisoned();
+        } else if (this.isDeadThroughPoisoned()) {
+            this.characterIsDeadPoisoned();
         }
     }
 
 
-    characterIsDeadElectroShock() {
+    characterHitAnimationsThroughJellyFish() {
+
+    }
+
+
+    characterIsElektroSchoked() {
+        this.playAnimationMovableObject(this.imagesElectricShock);
+    }
+
+
+    characterIsDeadElectroShocks() {
         this.playAnimationMovableObject(this.imagesDeadElectroShock);
     }
 
 
+    characterHitAnimationsThroughPufferFish() {
+
+    }
+
+
     characterIsPoisoned() {
-        if (this.energy > 0) {
-            this.playAnimationMovableObject(this.imagesPoisoned);
-        } else {
-            this.isDead();
-            this.characterIsDeadPoisoned();
-        }
+        this.playAnimationMovableObject(this.imagesPoisoned);
     }
 
 
     characterIsDeadPoisoned() {
         this.playAnimationMovableObject(this.imagesDeadPoisoned);
     }
-
-
 }
 
 

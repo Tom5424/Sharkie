@@ -32,9 +32,9 @@ class Level {
 
 
     jellyFishes = [
-        new JellyFishGreen(),
         new JellyFishPurple(),
         new JellyFishYellow(),
+        new JellyFishGreen(),
         new JellyFishPink(),
     ];
 
