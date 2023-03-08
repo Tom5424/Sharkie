@@ -179,9 +179,14 @@ class Character extends MovableObjects {
     characterHitAnimationsThroughJellyFish() {
         if (this.isHurtThroughElectroShock()) {
             this.characterIsElektroSchoked();
-        } else if (this.isDeadThroughElectroShock()) {
+        } else if (this.isDeadThroughElectroSchock()) {
             this.characterIsDeadElectroShocks();
         }
+    }
+
+
+    isDeadThroughElectroSchock() {
+        return this.diedThrough == 'jellyFish';
     }
 
 
@@ -201,6 +206,11 @@ class Character extends MovableObjects {
         } else if (this.isDeadThroughPoisoned()) {
             this.characterIsDeadPoisoned();
         }
+    }
+
+
+    isDeadThroughPoisoned() {
+        return this.diedThrough == 'pufferFish';
     }
 
 
