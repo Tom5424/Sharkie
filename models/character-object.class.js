@@ -95,7 +95,6 @@ class Character extends MovableObjects {
     ];
 
 
-
     constructor() {
         super().loadImage('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.imagesSwimingCharacter);
@@ -111,9 +110,8 @@ class Character extends MovableObjects {
 
     animateCharacter() {
         setInterval(() => { this.characterMove() }, 1000 / 10);
-        setInterval(() => { this.characterAnimations() }, 1000 / 10);
-        // setInterval(() => { this.characterHitAnimationsThroughJellyFish() }, 1000 / 10);
-        // setInterval(() => { this.characterHitAnimationsThroughPufferFish() }, 1000 / 10);
+        setInterval(() => { this.characterHitAnimationsThroughJellyFish() }, 1000 / 10);
+        setInterval(() => { this.characterHitAnimationsThroughPufferFish() }, 1000 / 10);
     }
 
 
@@ -178,21 +176,12 @@ class Character extends MovableObjects {
     }
 
 
-    characterAnimations() {
+    characterHitAnimationsThroughJellyFish() {
         if (this.isHurtThroughElectroShock()) {
             this.characterIsElektroSchoked();
         } else if (this.isDeadThroughElectroShock()) {
             this.characterIsDeadElectroShocks();
-        } if (this.isHurtThroughPoisoned()) {
-            this.characterIsPoisoned();
-        } else if (this.isDeadThroughPoisoned()) {
-            this.characterIsDeadPoisoned();
         }
-    }
-
-
-    characterHitAnimationsThroughJellyFish() {
-
     }
 
 
@@ -207,7 +196,11 @@ class Character extends MovableObjects {
 
 
     characterHitAnimationsThroughPufferFish() {
-
+        if (this.isHurtThroughPoisoned()) {
+            this.characterIsPoisoned();
+        } else if (this.isDeadThroughPoisoned()) {
+            this.characterIsDeadPoisoned();
+        }
     }
 
 

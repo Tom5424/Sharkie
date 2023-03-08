@@ -1,8 +1,6 @@
 class MovableObjects extends DrawableObjects {
     otherDirection = false;
     speed = 2;
-    energyElectroSchock = 100;
-    energyPoisoned = 100;
     offset = {
         left: 0,
         right: 0,
@@ -82,8 +80,25 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    // hit() {
+    //     this.energy -= 10;
+    //     if (this.energy < 0) {
+    //         this.energy = 0;
+    //     } else {
+    //         this.lastHitThroughEletroSchock = new Date().getTime();
+    //     }
+    // }
+
+
+    // isHurt() {
+    //     let timeSpan = new Date().getTime() - this.lastHitThroughEletroSchock;
+    //     timeSpan = timeSpan / 1000;
+    //     return timeSpan < 1;
+    // }
+
+
     isHurtThroughElectroShock() {
-        let timeSpan = new Date().getTime() - this.lastHitThroughEletroSchock;;
+        let timeSpan = new Date().getTime() - this.lastHitThroughEletroSchock;
         timeSpan = timeSpan / 1000;
         return timeSpan < 1;
     }
