@@ -21,7 +21,11 @@ class DrawableObjects {
 
 
     drawAllObjetcs(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        try {
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        } catch (error) {
+            console.warn(this.img);
+        }
     }
 
 
@@ -71,6 +75,17 @@ class DrawableObjects {
 
     drawRectangleCoins(ctx) {
         if (this instanceof Coins) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
+
+    drawRectangleBubble(ctx) {
+        if (this instanceof Bubble) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'green';

@@ -18,7 +18,7 @@ class JellyFishPink extends MovableObjects {
         this.loadImage('img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png');
         this.loadImages(this.imagesSwimingJellyFishPink);
         this.jellyFishPosition();
-        this.animateEnemies();
+        this.animateJellyFish();
     }
 
 
@@ -28,12 +28,15 @@ class JellyFishPink extends MovableObjects {
     }
 
 
-    animateEnemies() {
+    animateJellyFish() {
         setInterval(() => {
-            this.playAnimationMovableObject(this.imagesSwimingJellyFishPink);
-        }, 200);
-        setInterval(() => {
-            // this.moveJellyFish();
-        }, 800);
+            this.jellyFishSwimmingAnimation()
+            this.jeyllyFishMoveUpAndDown();
+        }, 250);
+    }
+
+
+    jellyFishSwimmingAnimation() {
+        this.playAnimationMovableObject(this.imagesSwimingJellyFishPink);
     }
 }

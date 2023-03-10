@@ -18,7 +18,7 @@ class JellyFishPurple extends MovableObjects {
         this.loadImage('img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
         this.loadImages(this.imagesSwimingJellyFishPurble);
         this.jellyFishPosition();
-        this.animateEnemies();
+        this.animateJellyFish();
     }
 
 
@@ -28,12 +28,15 @@ class JellyFishPurple extends MovableObjects {
     }
 
 
-    animateEnemies() {
+    animateJellyFish() {
         setInterval(() => {
-            this.playAnimationMovableObject(this.imagesSwimingJellyFishPurble);
-        }, 200);
-        setInterval(() => {
-            // this.moveJellyFish();
-        }, 800);
+            this.jellyFishSwimmingAnimation()
+            this.jeyllyFishMoveUpAndDown();
+        }, 250);
+    }
+
+
+    jellyFishSwimmingAnimation() {
+        this.playAnimationMovableObject(this.imagesSwimingJellyFishPurble);
     }
 }

@@ -4,6 +4,7 @@ class World {
     prorgressBarLife = new ProgressBarLife();
     prorgressBarCoin = new ProgressBarCoin();
     prorgressBarPoison = new ProgressBarPoison();
+    bubbles = [];
     ctx;
     canvas;
     keyboard;
@@ -16,6 +17,7 @@ class World {
         this.draw();
         this.linkCharacterWithWorld();
         this.checkCollisionsGenerally();
+        this.checkSpeedFromShootBubble();
     }
 
 
@@ -27,6 +29,7 @@ class World {
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poisonVessels);
+        this.addObjectsToMap(this.bubbles);
         this.ctx.translate(-this.cameraX, 0);   // Push Camera backward
         this.addObjectToMap(this.prorgressBarLife);
         this.addObjectToMap(this.prorgressBarCoin);
@@ -56,6 +59,7 @@ class World {
         object.drawRectangleJellyFish(this.ctx);
         object.drawRectanglePosionVessels(this.ctx);
         object.drawRectangleCoins(this.ctx);
+        object.drawRectangleBubble(this.ctx);
     }
 
 
@@ -96,7 +100,16 @@ class World {
         setInterval(() => {
             this.characterIsCollidingWithJellyFish();
             this.characterIsCollidingWithPufferFish();
+            this.characterHaveCollectedCoins();
+            this.characterHaveCollectedPoisonVessel();
         }, 1000 / 5);
+    }
+
+
+    checkSpeedFromShootBubble() {
+        setInterval(() => {
+            this.shotBubble();
+        }, 320);
     }
 
 
@@ -104,6 +117,7 @@ class World {
         this.level.jellyFishes.forEach(jellyFish => {
             if (this.character.isColliding(jellyFish)) {
                 this.character.hitThroughJellyFish();
+                this.prorgressBarLife.updateProgressbar(this.character.energy);
             }
         });
     }
@@ -113,8 +127,71 @@ class World {
         this.level.pufferFishes.forEach(pufferFish => {
             if (this.character.isColliding(pufferFish)) {
                 this.character.hitThroughPufferFish();
+                this.prorgressBarLife.updateProgressbar(this.character.energy)
             }
         });
     }
 
+
+    characterHaveCollectedCoins() {
+        this.level.coins.forEach(coin => {
+            if (this.character.isCollected(coin)) {
+                this.findIndexFromCoins(coin);
+                this.character.raiseProgressFromProgressbarCoin();
+                this.prorgressBarCoin.updateProgressbar(this.character.porgressCoin);
+            }
+        });
+    }
+
+
+    findIndexFromCoins(indexFromCoin) {
+        let index = this.level.coins.indexOf(indexFromCoin);
+        this.coinIsCollected(index)
+    }
+
+
+    coinIsCollected(index) {
+        this.level.coins.splice(index, 1);
+    }
+
+
+    characterHaveCollectedPoisonVessel() {
+        this.level.poisonVessels.forEach(poisonVessel => {
+            if (this.character.isCollected(poisonVessel)) {
+                this.findIndexFromPoisonVessel(poisonVessel);
+                this.character.raiseProgressFromProgressbarPoisonVessel();
+                this.prorgressBarPoison.updateProgressbar(this.character.porgressPoisonVessel)
+            }
+        });
+    }
+
+
+    findIndexFromPoisonVessel(indexFromPoisonVessel) {
+        let index = this.level.poisonVessels.indexOf(indexFromPoisonVessel);
+        this.poisonVesselIsCollected(index);
+    }
+
+
+    poisonVesselIsCollected(index) {
+        this.level.poisonVessels.splice(index, 1);
+    }
+
+
+    shotBubble() {
+        let bubble = new Bubble(this.character.x + 200, this.character.y + 170);
+        if (this.keyboard.space) {
+            this.bubbles.push(bubble);
+            bubble.bubbleFlying(this.character.otherDirection);
+            this.removeBubbleAfterFewSeconds(bubble)
+        }
+    }
+
+
+    removeBubbleAfterFewSeconds(bubble) {
+        setTimeout(() => {
+            this.bubbles.splice(bubble, 1);
+        }, 1000);
+    }
+
 }
+

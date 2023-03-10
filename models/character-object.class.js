@@ -1,5 +1,5 @@
 class Character extends MovableObjects {
-    x = 0;
+    x = 50;
     y = 100;
     width = 300;
     height = 300;
@@ -110,8 +110,8 @@ class Character extends MovableObjects {
 
     animateCharacter() {
         setInterval(() => { this.characterMove() }, 1000 / 10);
-        setInterval(() => { this.characterHitAnimationsThroughJellyFish() }, 1000 / 10);
-        setInterval(() => { this.characterHitAnimationsThroughPufferFish() }, 1000 / 10);
+        setInterval(() => { this.characterHitAnimationsThroughEnemies() }, 1000 / 10);
+
     }
 
 
@@ -129,12 +129,12 @@ class Character extends MovableObjects {
 
 
     characterCanMoveRight() {
-        return this.world.keyboard.right && this.x < 1800;
+        return this.world.keyboard.right;
     }
 
 
     moveRight() {
-        this.world.cameraX = -this.x - 10;
+        this.world.cameraX = -this.x + 50;
         this.otherDirection = false;
         this.x += 15 + this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -147,7 +147,7 @@ class Character extends MovableObjects {
 
 
     moveLeft() {
-        this.world.cameraX = -this.x - 10;
+        this.world.cameraX = -this.x + 50;
         this.otherDirection = true;
         this.x -= 15 - this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -155,7 +155,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveDown() {
-        return this.world.keyboard.down && this.y < 255;
+        return this.world.keyboard.down && this.y < 350;
     }
 
 
@@ -166,7 +166,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveUp() {
-        return this.world.keyboard.up && this.y > -124;
+        return this.world.keyboard.up && this.y > 30;
     }
 
 
@@ -176,17 +176,16 @@ class Character extends MovableObjects {
     }
 
 
-    characterHitAnimationsThroughJellyFish() {
-        if (this.isHurtThroughElectroShock()) {
+    characterHitAnimationsThroughEnemies() {
+        if (this.isHurtThroughJellyFish()) {
             this.characterIsElektroSchoked();
-        } else if (this.isDeadThroughElectroSchock()) {
-            this.characterIsDeadElectroShocks();
+        } else if (this.isDeadThroughJellyFish()) {
+            this.characterIsDeadThroughElectroShocks();
+        } else if (this.isHurtThroughPufferFish()) {
+            this.characterIsPoisoned();
+        } else if (this.isDeadThroughPufferFish()) {
+            this.characterIsDeadThroughPoisoned();
         }
-    }
-
-
-    isDeadThroughElectroSchock() {
-        return this.diedThrough == 'jellyFish';
     }
 
 
@@ -195,22 +194,13 @@ class Character extends MovableObjects {
     }
 
 
-    characterIsDeadElectroShocks() {
+    isDeadThroughJellyFish() {
+        return this.diedThrough == 'jellyFish';
+    }
+
+
+    characterIsDeadThroughElectroShocks() {
         this.playAnimationMovableObject(this.imagesDeadElectroShock);
-    }
-
-
-    characterHitAnimationsThroughPufferFish() {
-        if (this.isHurtThroughPoisoned()) {
-            this.characterIsPoisoned();
-        } else if (this.isDeadThroughPoisoned()) {
-            this.characterIsDeadPoisoned();
-        }
-    }
-
-
-    isDeadThroughPoisoned() {
-        return this.diedThrough == 'pufferFish';
     }
 
 
@@ -219,7 +209,12 @@ class Character extends MovableObjects {
     }
 
 
-    characterIsDeadPoisoned() {
+    isDeadThroughPufferFish() {
+        return this.diedThrough == 'pufferFish';
+    }
+
+
+    characterIsDeadThroughPoisoned() {
         this.playAnimationMovableObject(this.imagesDeadPoisoned);
     }
 }

@@ -10,7 +10,10 @@ class MovableObjects extends DrawableObjects {
     lastHitThroughEletroSchock = 0;
     lastHitThroughPoisoned = 0;
     energy = 100;
+    porgressCoin = 0;
+    porgressPoisonVessel = 0;
     diedThrough = '';
+    swimUp = false;
 
 
     moveLeft() {
@@ -28,17 +31,18 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    // moveJellyFish() {
-    //     let i = 0;
-    //     setInterval(() => {
-    //         if (i < 5) {
-    //             this.y -= 15 - this.speed;
-    //         } else {
-    //             this.y += 15 + this.speed;
-    //         }
-    //         i++;
-    //     }, 800);
-    // }
+    jeyllyFishMoveUpAndDown() {
+        if (this.y > 10 && !this.swimUp) {
+            this.y -= 15 - this.speed;
+        } else {
+            this.swimUp = true
+            this.y += 15 + this.speed;
+        }
+        if (this.y > 500) {
+            this.swimUp = false;
+            this.y -= 15 - this.speed;
+        }
+    }
 
 
     isColliding(collidingObject) {
@@ -46,6 +50,14 @@ class MovableObjects extends DrawableObjects {
             this.x + this.offset.left < collidingObject.x + collidingObject.width - collidingObject.offset.right &&  // ==> hinten
             this.y + this.height - this.offset.bottom > collidingObject.y + collidingObject.offset.top && // ==> unten
             this.y + this.offset.top < collidingObject.y + collidingObject.height - collidingObject.offset.bottom // ==> oben
+    }
+
+
+    isCollected(collectedObject) {
+        return this.x + this.width - this.offset.right > collectedObject.x + collectedObject.offset.left && // ==> vorne 
+            this.x + this.offset.left < collectedObject.x + collectedObject.width - collectedObject.offset.right &&  // ==> hinten
+            this.y + this.height - this.offset.bottom > collectedObject.y + collectedObject.offset.top && // ==> unten
+            this.y + this.offset.top < collectedObject.y + collectedObject.height - collectedObject.offset.bottom // ==> oben
     }
 
 
@@ -62,7 +74,7 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    isHurtThroughPoisoned() {
+    isHurtThroughPufferFish() {
         let timeSpan = new Date().getTime() - this.lastHitThroughPoisoned;
         timeSpan = timeSpan / 1000;
         return timeSpan < 1;
@@ -82,10 +94,30 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    isHurtThroughElectroShock() {
+    isHurtThroughJellyFish() {
         let timeSpan = new Date().getTime() - this.lastHitThroughEletroSchock;
         timeSpan = timeSpan / 1000;
         return timeSpan < 1;
     }
 
+
+    raiseProgressFromProgressbarCoin() {
+        this.porgressCoin += 10;
+    }
+
+
+    raiseProgressFromProgressbarPoisonVessel() {
+        this.porgressPoisonVessel += 10;
+    }
+
+
+    bubbleFlying(otherDirection) {
+        setInterval(() => {
+            if (!otherDirection) {
+                this.x += 20 + this.speed;
+            } else {
+                this.x -= 20 - this.speed;
+            }
+        }, 1000 / 25);
+    }
 }

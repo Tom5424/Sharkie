@@ -22,6 +22,9 @@ class Keyboard {
                 this.left = true;
             if (event.key == 'ArrowRight')
                 this.right = true;
+            if (event.key == ' ') {
+                this.space = true;
+            }
         })
     }
 
@@ -36,6 +39,9 @@ class Keyboard {
                 this.left = false;
             if (event.key == 'ArrowRight')
                 this.right = false;
+            if (event.key == ' ') {
+                this.space = false;
+            }
         })
     }
 
