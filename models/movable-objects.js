@@ -14,6 +14,7 @@ class MovableObjects extends DrawableObjects {
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
+    bubbleOtherDirection = false;
 
 
     moveLeft() {
@@ -114,10 +115,12 @@ class MovableObjects extends DrawableObjects {
     bubbleFlying(otherDirection) {
         setInterval(() => {
             if (!otherDirection) {
-                this.x += 20 + this.speed;
+                this.x += 25 + this.speed;
+                this.y -= 5 - this.speed;
             } else {
-                this.x -= 20 - this.speed;
+                this.x -= 25 - this.speed;
+                this.y -= 5 - this.speed;
             }
-        }, 1000 / 25);
+        }, 1000 / 20);
     }
 }

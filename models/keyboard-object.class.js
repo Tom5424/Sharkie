@@ -3,6 +3,8 @@ class Keyboard {
     right = false;
     down = false;
     up = false;
+    y = false;
+    x = false;
     space = false;
 
 
@@ -14,6 +16,7 @@ class Keyboard {
 
     addKeyboardEvents() {
         window.addEventListener('keydown', (event) => {
+            // console.log(event.key);
             if (event.key == 'ArrowUp')
                 this.up = true;
             if (event.key == 'ArrowDown')
@@ -22,10 +25,11 @@ class Keyboard {
                 this.left = true;
             if (event.key == 'ArrowRight')
                 this.right = true;
-            if (event.key == ' ') {
-                this.space = true;
-            }
-        })
+            if (event.key == 'y')
+                this.y = true;
+            if (event.key == 'x')
+                this.x = true;
+        });
     }
 
 
@@ -39,10 +43,11 @@ class Keyboard {
                 this.left = false;
             if (event.key == 'ArrowRight')
                 this.right = false;
-            if (event.key == ' ') {
-                this.space = false;
-            }
-        })
+            if (event.key == 'y')
+                this.y = false;
+            if (event.key == 'x')
+                this.x = false;
+        });
     }
 
 

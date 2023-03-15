@@ -5,6 +5,7 @@ class World {
     prorgressBarCoin = new ProgressBarCoin();
     prorgressBarPoison = new ProgressBarPoison();
     bubbles = [];
+    poisonBubbles = [];
     ctx;
     canvas;
     keyboard;
@@ -17,7 +18,6 @@ class World {
         this.draw();
         this.linkCharacterWithWorld();
         this.checkCollisionsGenerally();
-        this.checkSpeedFromShootBubble();
     }
 
 
@@ -30,6 +30,7 @@ class World {
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poisonVessels);
         this.addObjectsToMap(this.bubbles);
+        this.addObjectsToMap(this.poisonBubbles);
         this.ctx.translate(-this.cameraX, 0);   // Push Camera backward
         this.addObjectToMap(this.prorgressBarLife);
         this.addObjectToMap(this.prorgressBarCoin);
@@ -60,6 +61,7 @@ class World {
         object.drawRectanglePosionVessels(this.ctx);
         object.drawRectangleCoins(this.ctx);
         object.drawRectangleBubble(this.ctx);
+        object.drawRectanglePoisonBubble(this.ctx);
     }
 
 
@@ -103,13 +105,6 @@ class World {
             this.characterHaveCollectedCoins();
             this.characterHaveCollectedPoisonVessel();
         }, 1000 / 5);
-    }
-
-
-    checkSpeedFromShootBubble() {
-        setInterval(() => {
-            this.shotBubble();
-        }, 320);
     }
 
 
@@ -175,23 +170,7 @@ class World {
     poisonVesselIsCollected(index) {
         this.level.poisonVessels.splice(index, 1);
     }
-
-
-    shotBubble() {
-        let bubble = new Bubble(this.character.x + 200, this.character.y + 170);
-        if (this.keyboard.space) {
-            this.bubbles.push(bubble);
-            bubble.bubbleFlying(this.character.otherDirection);
-            this.removeBubbleAfterFewSeconds(bubble)
-        }
-    }
-
-
-    removeBubbleAfterFewSeconds(bubble) {
-        setTimeout(() => {
-            this.bubbles.splice(bubble, 1);
-        }, 1000);
-    }
-
 }
+
+
 

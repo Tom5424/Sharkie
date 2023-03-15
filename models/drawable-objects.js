@@ -94,4 +94,15 @@ class DrawableObjects {
         }
     }
 
+
+    drawRectanglePoisonBubble(ctx) {
+        if (this instanceof PoisonBubble) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x + 5, this.y + 5, this.width - 10, this.height - 10);
+            ctx.stroke();
+        }
+    }
+
 }
