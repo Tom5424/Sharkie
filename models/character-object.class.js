@@ -4,7 +4,6 @@ class Character extends MovableObjects {
     width = 300;
     height = 300;
     world;
-    lastIdle = new Date().getTime();
     offset = {
         left: 80,
         right: 80,
@@ -15,8 +14,10 @@ class Character extends MovableObjects {
     poisonBubble;
     shootStandardBubble = false;
     shootPoisonBubble = false;
+    didFinSlap = false;
     intervalSharkieShootStandardBubble;
     intervalSharkieShootPoisonBubble;
+    intervalSharkieDoFinSlap;
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -119,6 +120,16 @@ class Character extends MovableObjects {
         'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
         'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
     ];
+    imagesCharacterFinSlap = [
+        'img/1.Sharkie/4.Attack/Fin slap/1.png',
+        'img/1.Sharkie/4.Attack/Fin slap/2.png',
+        'img/1.Sharkie/4.Attack/Fin slap/3.png',
+        'img/1.Sharkie/4.Attack/Fin slap/4.png',
+        'img/1.Sharkie/4.Attack/Fin slap/5.png',
+        'img/1.Sharkie/4.Attack/Fin slap/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/7.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png',
+    ];
 
 
     constructor() {
@@ -132,6 +143,7 @@ class Character extends MovableObjects {
         this.loadImages(this.imagesDeadPoisoned);
         this.loadImages(this.imagesCharacterShootStandardBubble);
         this.loadImages(this.imagesCharacterShootPoisonBubble);
+        this.loadImages(this.imagesCharacterFinSlap);
         this.animateCharacter();
     }
 
@@ -139,8 +151,8 @@ class Character extends MovableObjects {
     animateCharacter() {
         setInterval(() => { this.characterMove() }, 1000 / 10);
         setInterval(() => { this.characterHitAnimationsThroughEnemies() }, 1000 / 10);
-        setInterval(() => { this.characterShootStandardBubbles() }, 1000 / 10);
-        setInterval(() => { this.characterShootPoisonBubble() }, 1000 / 10);
+        setInterval(() => { this.characterShootBubbles() }, 1000 / 10);
+        setInterval(() => { this.characterDoFinSlap() }, 1000 / 10);
     }
 
 
@@ -163,10 +175,12 @@ class Character extends MovableObjects {
 
 
     moveRight() {
-        this.world.cameraX = -this.x + 50;
-        this.otherDirection = false;
-        this.x += 15 + this.speed;
-        this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.world.cameraX = -this.x + 50;
+            this.otherDirection = false;
+            this.x += 15 + this.speed;
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        }
     }
 
 
@@ -176,10 +190,12 @@ class Character extends MovableObjects {
 
 
     moveLeft() {
-        this.world.cameraX = -this.x + 50;
-        this.otherDirection = true;
-        this.x -= 15 - this.speed;
-        this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.world.cameraX = -this.x + 50;
+            this.otherDirection = true;
+            this.x -= 15 - this.speed;
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        }
     }
 
 
@@ -189,8 +205,10 @@ class Character extends MovableObjects {
 
 
     moveDown() {
-        this.y += 15 + this.speed;
-        this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.y += 15 + this.speed;
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        }
     }
 
 
@@ -200,8 +218,10 @@ class Character extends MovableObjects {
 
 
     moveUp() {
-        this.y -= 15 - this.speed;
-        this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.y -= 15 - this.speed;
+            this.playAnimationMovableObject(this.imagesSwimingCharacter);
+        }
     }
 
 
@@ -248,16 +268,6 @@ class Character extends MovableObjects {
     }
 
 
-    characterShootStandardBubbles() {
-        this.flipSharkieToShootBubbleInOtherDirection();
-        if (this.characterCanShootStandardBubble()) {
-            this.playAnimationCharacterShootStandardBubble();
-            this.characterShootBubbleStandard();
-            this.clearIntervalShootedBubbleStandard();
-        }
-    }
-
-
     flipSharkieToShootBubbleInOtherDirection() {
         if (!this.otherDirection) {
             this.bubble = new Bubble(this.world.character.x + 220, this.world.character.y + 165);
@@ -272,8 +282,24 @@ class Character extends MovableObjects {
     }
 
 
+    characterShootBubbles() {
+        this.flipSharkieToShootBubbleInOtherDirection();
+        if (this.characterCanShootStandardBubble()) {
+            this.playAnimationCharacterShootStandardBubble();
+            this.characterShootBubbleStandard();
+            this.clearIntervalShootedBubbleStandard();
+        }
+        this.flipSharkieToShootBubbleInOtherDirection();
+        if (this.characterCanShootPoisonBubble()) {
+            this.playAnimationCharacterShootPoisonBubble();
+            this.characterShootBubblePoison();
+            this.clearIntervalShootedBubblePoison();
+        }
+    }
+
+
     characterCanShootStandardBubble() {
-        return this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.up && !this.world.keyboard.down && !this.world.keyboard.right && !this.world.keyboard.left;
+        return this.world.keyboard.y && !this.shootStandardBubble;
     }
 
 
@@ -290,7 +316,7 @@ class Character extends MovableObjects {
         setTimeout(() => {
             this.world.bubbles.push(this.bubble);
             this.bubble.bubbleFlying(this.world.character.otherDirection);
-            this.removeBubbleAfterFewSeconds(this.bubble);
+            this.removeStandardBubbleAfterFewSeconds(this.bubble);
         }, 450);
     }
 
@@ -303,25 +329,15 @@ class Character extends MovableObjects {
     }
 
 
-    removeBubbleAfterFewSeconds(bubble) {
+    removeStandardBubbleAfterFewSeconds(bubble) {
         setTimeout(() => {
             this.world.bubbles.splice(bubble, 1);
         }, 800);
     }
 
 
-    characterShootPoisonBubble() {
-        this.flipSharkieToShootBubbleInOtherDirection();
-        if (this.characterCanShootPoisonBubble()) {
-            this.playAnimationCharacterShootPoisonBubble();
-            this.characterShootBubblePoison();
-            this.clearIntervalShootedBubblePoison();
-        }
-    }
-
-
     characterCanShootPoisonBubble() {
-        return this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.up && !this.world.keyboard.down && !this.world.keyboard.right && !this.world.keyboard.left;
+        return this.world.keyboard.x && !this.shootPoisonBubble;
     }
 
 
@@ -338,8 +354,15 @@ class Character extends MovableObjects {
         setTimeout(() => {
             this.world.poisonBubbles.push(this.poisonBubble);
             this.poisonBubble.bubbleFlying(this.world.character.otherDirection);
-            this.removeBubbleAfterFewSeconds(this.poisonBubble);
+            this.removePoisonBubbleAfterFewSeconds(this.poisonBubble);
         }, 450);
+    }
+
+
+    removePoisonBubbleAfterFewSeconds(poisonBubble) {
+        setTimeout(() => {
+            this.world.poisonBubbles.splice(poisonBubble, 1);
+        }, 800);
     }
 
 
@@ -348,6 +371,36 @@ class Character extends MovableObjects {
             clearInterval(this.intervalSharkieShootPoisonBubble);
             this.shootPoisonBubble = false;
         }, 550);
+    }
+
+
+    characterDoFinSlap() {
+        if (this.characterCanDoFinSlap()) {
+            this.playAnimationCharacterDoFinSlap();
+            this.clearIntervalDidFinSlap();
+        }
+    }
+
+
+    characterCanDoFinSlap() {
+        return this.world.keyboard.space && !this.didFinSlap;
+    }
+
+
+    playAnimationCharacterDoFinSlap() {
+        this.currentImage = 0;
+        this.didFinSlap = true;
+        this.intervalSharkieDoFinSlap = setInterval(() => {
+            this.playAnimationMovableObject(this.imagesCharacterFinSlap);
+        }, 80);
+    }
+
+
+    clearIntervalDidFinSlap() {
+        setTimeout(() => {
+            clearInterval(this.intervalSharkieDoFinSlap);
+            this.didFinSlap = false;
+        }, 750);
     }
 }
 

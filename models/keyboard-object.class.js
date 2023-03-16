@@ -16,7 +16,6 @@ class Keyboard {
 
     addKeyboardEvents() {
         window.addEventListener('keydown', (event) => {
-            // console.log(event.key);
             if (event.key == 'ArrowUp')
                 this.up = true;
             if (event.key == 'ArrowDown')
@@ -29,6 +28,8 @@ class Keyboard {
                 this.y = true;
             if (event.key == 'x')
                 this.x = true;
+            if (event.key == ' ')
+                this.space = true;
         });
     }
 
@@ -47,6 +48,8 @@ class Keyboard {
                 this.y = false;
             if (event.key == 'x')
                 this.x = false;
+            if (event.key == ' ')
+                this.space = false;
         });
     }
 
