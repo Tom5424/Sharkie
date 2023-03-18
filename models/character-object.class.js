@@ -18,6 +18,9 @@ class Character extends MovableObjects {
     intervalSharkieShootStandardBubble;
     intervalSharkieShootPoisonBubble;
     intervalSharkieDoFinSlap;
+    lastIdle = 0;
+    longIdle = false;
+    characterSleep = false;
     imagesSwimingCharacter = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -26,42 +29,48 @@ class Character extends MovableObjects {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png',
     ];
-    // imagesIdleCharacter = [
-    //     'img/1.Sharkie/1.IDLE/1.png',
-    //     'img/1.Sharkie/1.IDLE/2.png',
-    //     'img/1.Sharkie/1.IDLE/3.png',
-    //     'img/1.Sharkie/1.IDLE/4.png',
-    //     'img/1.Sharkie/1.IDLE/5.png',
-    //     'img/1.Sharkie/1.IDLE/6.png',
-    //     'img/1.Sharkie/1.IDLE/7.png',
-    //     'img/1.Sharkie/1.IDLE/8.png',
-    //     'img/1.Sharkie/1.IDLE/9.png',
-    //     'img/1.Sharkie/1.IDLE/10.png',
-    //     'img/1.Sharkie/1.IDLE/11.png',
-    //     'img/1.Sharkie/1.IDLE/12.png',
-    //     'img/1.Sharkie/1.IDLE/13.png',
-    //     'img/1.Sharkie/1.IDLE/14.png',
-    //     'img/1.Sharkie/1.IDLE/15.png',
-    //     'img/1.Sharkie/1.IDLE/16.png',
-    //     'img/1.Sharkie/1.IDLE/17.png',
-    //     'img/1.Sharkie/1.IDLE/18.png',
-    // ];
-    // imagesLongIdleCharacter = [
-    //     'img/1.Sharkie/2.Long_IDLE/i1.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i2.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i3.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i4.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i5.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i6.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i7.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i8.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i9.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i10.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i11.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i12.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i13.png',
-    //     'img/1.Sharkie/2.Long_IDLE/i14.png',
-    // ];
+    imagesCharacterIdle = [
+        'img/1.Sharkie/1.IDLE/1.png',
+        'img/1.Sharkie/1.IDLE/2.png',
+        'img/1.Sharkie/1.IDLE/3.png',
+        'img/1.Sharkie/1.IDLE/4.png',
+        'img/1.Sharkie/1.IDLE/5.png',
+        'img/1.Sharkie/1.IDLE/6.png',
+        'img/1.Sharkie/1.IDLE/7.png',
+        'img/1.Sharkie/1.IDLE/8.png',
+        'img/1.Sharkie/1.IDLE/9.png',
+        'img/1.Sharkie/1.IDLE/10.png',
+        'img/1.Sharkie/1.IDLE/11.png',
+        'img/1.Sharkie/1.IDLE/12.png',
+        'img/1.Sharkie/1.IDLE/13.png',
+        'img/1.Sharkie/1.IDLE/14.png',
+        'img/1.Sharkie/1.IDLE/15.png',
+        'img/1.Sharkie/1.IDLE/16.png',
+        'img/1.Sharkie/1.IDLE/17.png',
+        'img/1.Sharkie/1.IDLE/18.png',
+    ];
+    imagesCharacterLongIdle = [
+        'img/1.Sharkie/2.Long_IDLE/i1.png',
+        'img/1.Sharkie/2.Long_IDLE/i2.png',
+        'img/1.Sharkie/2.Long_IDLE/i3.png',
+        'img/1.Sharkie/2.Long_IDLE/i4.png',
+        'img/1.Sharkie/2.Long_IDLE/i5.png',
+        'img/1.Sharkie/2.Long_IDLE/i6.png',
+        'img/1.Sharkie/2.Long_IDLE/i7.png',
+        'img/1.Sharkie/2.Long_IDLE/i8.png',
+        'img/1.Sharkie/2.Long_IDLE/i9.png',
+        'img/1.Sharkie/2.Long_IDLE/i10.png',
+        'img/1.Sharkie/2.Long_IDLE/i11.png',
+        'img/1.Sharkie/2.Long_IDLE/i12.png',
+        'img/1.Sharkie/2.Long_IDLE/i13.png',
+        'img/1.Sharkie/2.Long_IDLE/i14.png',
+    ];
+    imagesCharacterSleep = [
+        'img/1.Sharkie/2.Long_IDLE/I11.png',
+        'img/1.Sharkie/2.Long_IDLE/I12.png',
+        'img/1.Sharkie/2.Long_IDLE/I13.png',
+        'img/1.Sharkie/2.Long_IDLE/I14.png',
+    ];
     imagesHitThroughJellyFish = [
         'img/1.Sharkie/5.Hurt/2.Electric shock/1.png',
         'img/1.Sharkie/5.Hurt/2.Electric shock/2.png',
@@ -135,8 +144,8 @@ class Character extends MovableObjects {
     constructor() {
         super().loadImage('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.imagesSwimingCharacter);
-        // this.loadImages(this.imagesIdleCharacter);
-        // this.loadImages(this.imagesLongIdleCharacter);
+        this.loadImages(this.imagesCharacterIdle);
+        this.loadImages(this.imagesCharacterLongIdle);
         this.loadImages(this.imagesHitThroughJellyFish);
         this.loadImages(this.imagesHitThroughPufferfish);
         this.loadImages(this.imagesDeadElectroShock);
@@ -151,8 +160,7 @@ class Character extends MovableObjects {
     animateCharacter() {
         setInterval(() => { this.characterMove() }, 1000 / 10);
         setInterval(() => { this.characterHitAnimationsThroughEnemies() }, 1000 / 10);
-        setInterval(() => { this.characterShootBubbles() }, 1000 / 10);
-        setInterval(() => { this.characterDoFinSlap() }, 1000 / 10);
+        setInterval(() => { this.characterAttack() }, 1000 / 10);
     }
 
 
@@ -165,6 +173,8 @@ class Character extends MovableObjects {
             this.moveDown();
         } else if (this.characterCanMoveUp()) {
             this.moveUp();
+        } else if (this.characterCanIdle()) {
+            this.characterIdle();
         }
     }
 
@@ -176,6 +186,9 @@ class Character extends MovableObjects {
 
     moveRight() {
         if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.characterSleep = false;
+            this.longIdle = false;
+            this.lastIdle = new Date().getTime();
             this.world.cameraX = -this.x + 50;
             this.otherDirection = false;
             this.x += 15 + this.speed;
@@ -191,6 +204,9 @@ class Character extends MovableObjects {
 
     moveLeft() {
         if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.characterSleep = false;
+            this.longIdle = false;
+            this.lastIdle = new Date().getTime();
             this.world.cameraX = -this.x + 50;
             this.otherDirection = true;
             this.x -= 15 - this.speed;
@@ -206,6 +222,9 @@ class Character extends MovableObjects {
 
     moveDown() {
         if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.characterSleep = false;
+            this.longIdle = false;
+            this.lastIdle = new Date().getTime();
             this.y += 15 + this.speed;
             this.playAnimationMovableObject(this.imagesSwimingCharacter);
         }
@@ -219,6 +238,9 @@ class Character extends MovableObjects {
 
     moveUp() {
         if (!this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.y && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap) {
+            this.characterSleep = false;
+            this.longIdle = false;
+            this.lastIdle = new Date().getTime();
             this.y -= 15 - this.speed;
             this.playAnimationMovableObject(this.imagesSwimingCharacter);
         }
@@ -282,19 +304,21 @@ class Character extends MovableObjects {
     }
 
 
-    characterShootBubbles() {
+    characterAttack() {
         this.flipSharkieToShootBubbleInOtherDirection();
         if (this.characterCanShootStandardBubble()) {
             this.playAnimationCharacterShootStandardBubble();
             this.characterShootBubbleStandard();
             this.clearIntervalShootedBubbleStandard();
-        }
-        this.flipSharkieToShootBubbleInOtherDirection();
-        if (this.characterCanShootPoisonBubble()) {
+        } else if (this.characterCanShootPoisonBubble()) {
             this.playAnimationCharacterShootPoisonBubble();
             this.characterShootBubblePoison();
             this.clearIntervalShootedBubblePoison();
+        } else if (this.characterCanDoFinSlap()) {
+            this.playAnimationCharacterDoFinSlap();
+            this.clearIntervalDidFinSlap();
         }
+        this.flipSharkieToShootBubbleInOtherDirection();
     }
 
 
@@ -374,14 +398,6 @@ class Character extends MovableObjects {
     }
 
 
-    characterDoFinSlap() {
-        if (this.characterCanDoFinSlap()) {
-            this.playAnimationCharacterDoFinSlap();
-            this.clearIntervalDidFinSlap();
-        }
-    }
-
-
     characterCanDoFinSlap() {
         return this.world.keyboard.space && !this.didFinSlap;
     }
@@ -402,5 +418,63 @@ class Character extends MovableObjects {
             this.didFinSlap = false;
         }, 750);
     }
+
+
+    characterCanIdle() {
+        let timeSpanIdle = new Date().getTime() - this.lastIdle;
+        timeSpanIdle = timeSpanIdle / 1000;
+        return timeSpanIdle > 2;
+    }
+
+
+    characterIdle() {
+        let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
+        if (this.characterStillNotIdle()) {
+            this.characterStartIdle();
+        }
+        if (this.characterStillNotLongIdle()) {
+            this.characterStartLongIdle();
+        }
+        if (this.characterStartSleeping()) {
+            this.characterSleeping(lastFourLongIdleImages);
+        }
+    }
+
+
+    characterStillNotIdle() {
+        return !this.longIdle && !this.characterSleep;
+    }
+
+
+    characterStartIdle() {
+        this.playAnimationMovableObject(this.imagesCharacterIdle);
+        setTimeout(() => {
+            this.longIdle = true;
+        }, 1000);
+    }
+
+
+    characterStillNotLongIdle() {
+        return this.longIdle;
+    }
+
+
+    characterStartLongIdle() {
+        this.playAnimationMovableObject(this.imagesCharacterLongIdle);
+        setTimeout(() => {
+            this.characterSleep = true;
+        }, 200);
+    }
+
+
+    characterStartSleeping() {
+        return this.characterSleep;
+    }
+
+
+    characterSleeping(lastFourLongIdleImages) {
+        this.playAnimationMovableObject(lastFourLongIdleImages);
+    }
 }
+
 
