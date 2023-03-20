@@ -153,18 +153,18 @@ class Character extends MovableObjects {
         this.loadImages(this.imagesCharacterShootStandardBubble);
         this.loadImages(this.imagesCharacterShootPoisonBubble);
         this.loadImages(this.imagesCharacterFinSlap);
-        this.animateCharacter();
+        this.characterAnimationsGenerally();
     }
 
 
-    animateCharacter() {
-        setInterval(() => { this.characterMove() }, 1000 / 10);
-        setInterval(() => { this.characterHitAnimationsThroughEnemies() }, 1000 / 10);
-        setInterval(() => { this.characterAttack() }, 1000 / 10);
+    characterAnimationsGenerally() {
+        setInterval(() => { this.characterMoveAnimations() }, 1000 / 10);
+        setInterval(() => { this.animateCharacter() }, 1000 / 10);
+        setInterval(() => { this.characterAttackAnimations() }, 1000 / 10);
     }
 
 
-    characterMove() {
+    characterMoveAnimations() {
         if (this.characterCanMoveRight()) {
             this.moveRight();
         } else if (this.characterCanMoveLeft()) {
@@ -247,7 +247,7 @@ class Character extends MovableObjects {
     }
 
 
-    characterHitAnimationsThroughEnemies() {
+    animateCharacter() {
         if (this.isHurtThroughJellyFish()) {
             this.characterIsElektroSchoked();
         } else if (this.isDeadThroughJellyFish()) {
@@ -256,6 +256,27 @@ class Character extends MovableObjects {
             this.characterIsPoisoned();
         } else if (this.isDeadThroughPufferFish()) {
             this.characterIsDeadThroughPoisoned();
+        }
+    }
+
+
+    characterCanIdle() {
+        let timeSpanIdle = new Date().getTime() - this.lastIdle;
+        timeSpanIdle = timeSpanIdle / 1000;
+        return timeSpanIdle > 2.5;
+    }
+
+
+    characterIdle() {
+        let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
+        if (this.characterStillNotIdle()) {
+            this.characterStartIdle();
+        }
+        if (this.characterStillNotLongIdle()) {
+            this.characterStartLongIdle();
+        }
+        if (this.characterStartSleeping()) {
+            this.characterSleeping(lastFourLongIdleImages);
         }
     }
 
@@ -304,7 +325,7 @@ class Character extends MovableObjects {
     }
 
 
-    characterAttack() {
+    characterAttackAnimations() {
         this.flipSharkieToShootBubbleInOtherDirection();
         if (this.characterCanShootStandardBubble()) {
             this.playAnimationCharacterShootStandardBubble();
@@ -318,12 +339,11 @@ class Character extends MovableObjects {
             this.playAnimationCharacterDoFinSlap();
             this.clearIntervalDidFinSlap();
         }
-        this.flipSharkieToShootBubbleInOtherDirection();
     }
 
 
     characterCanShootStandardBubble() {
-        return this.world.keyboard.y && !this.shootStandardBubble;
+        return this.world.keyboard.y && !this.shootStandardBubble && !this.characterCanIdle();
     }
 
 
@@ -339,7 +359,7 @@ class Character extends MovableObjects {
     characterShootBubbleStandard() {
         setTimeout(() => {
             this.world.bubbles.push(this.bubble);
-            this.bubble.bubbleFlying(this.world.character.otherDirection);
+            this.bubble.bubbleFlying(this.otherDirection);
             this.removeStandardBubbleAfterFewSeconds(this.bubble);
         }, 450);
     }
@@ -361,7 +381,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootPoisonBubble() {
-        return this.world.keyboard.x && !this.shootPoisonBubble;
+        return this.world.keyboard.x && !this.shootPoisonBubble && !this.characterCanIdle();
     }
 
 
@@ -399,7 +419,7 @@ class Character extends MovableObjects {
 
 
     characterCanDoFinSlap() {
-        return this.world.keyboard.space && !this.didFinSlap;
+        return this.world.keyboard.space && !this.didFinSlap && !this.characterCanIdle();
     }
 
 
@@ -420,29 +440,17 @@ class Character extends MovableObjects {
     }
 
 
-    characterCanIdle() {
-        let timeSpanIdle = new Date().getTime() - this.lastIdle;
-        timeSpanIdle = timeSpanIdle / 1000;
-        return timeSpanIdle > 2;
-    }
-
-
-    characterIdle() {
-        let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
-        if (this.characterStillNotIdle()) {
-            this.characterStartIdle();
-        }
-        if (this.characterStillNotLongIdle()) {
-            this.characterStartLongIdle();
-        }
-        if (this.characterStartSleeping()) {
-            this.characterSleeping(lastFourLongIdleImages);
-        }
+    playAnimationCharacterShootStandardBubble() {
+        this.currentImage = 0;
+        this.intervalSharkieShootStandardBubble = setInterval(() => {
+            this.playAnimationMovableObject(this.imagesCharacterShootStandardBubble);
+            this.shootStandardBubble = true;
+        }, 60);
     }
 
 
     characterStillNotIdle() {
-        return !this.longIdle && !this.characterSleep;
+        return !this.longIdle && !this.characterSleep && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 

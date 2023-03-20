@@ -104,6 +104,7 @@ class World {
             this.characterIsCollidingWithPufferFish();
             this.characterHaveCollectedCoins();
             this.characterHaveCollectedPoisonVessel();
+            this.bubbleIsCollidingWithJellyFish();
         }, 1000 / 5);
     }
 
@@ -169,6 +170,25 @@ class World {
 
     poisonVesselIsCollected(index) {
         this.level.poisonVessels.splice(index, 1);
+    }
+
+
+    bubbleIsCollidingWithJellyFish() {
+        this.level.jellyFishes.forEach(jellyFish => {
+            this.bubbles.forEach(bubble => {
+                if (bubble.isColliding(jellyFish)) {
+                    this.removeBubbleAfterHit(bubble);
+                    jellyFish.jellyFishIsDead();
+                    jellyFish.jellFishFliesUpAndDisappear(jellyFish);
+                }
+            });
+        });
+    }
+
+
+    removeBubbleAfterHit(bubble) {
+        let indexBubble = this.bubbles.indexOf(bubble);
+        this.bubbles.splice(indexBubble, 1);
     }
 }
 

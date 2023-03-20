@@ -1,6 +1,6 @@
 class Bubble extends MovableObjects {
-    width = 35;
-    height = 35;
+    width = 45;
+    height = 45;
     x;
     y;
 

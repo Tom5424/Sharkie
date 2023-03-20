@@ -14,7 +14,6 @@ class MovableObjects extends DrawableObjects {
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
-    bubbleOtherDirection = false;
 
 
     moveLeft() {
@@ -116,11 +115,22 @@ class MovableObjects extends DrawableObjects {
         setInterval(() => {
             if (!otherDirection) {
                 this.x += 25 + this.speed;
-                this.y -= 5 - this.speed;
+                this.y -= 8 - this.speed;
             } else {
                 this.x -= 25 - this.speed;
-                this.y -= 5 - this.speed;
+                this.y -= 8 - this.speed;
             }
         }, 1000 / 20);
+    }
+
+
+    jellFishFliesUpAndDisappear(jellyFish) {
+        let indexJellyFish = world.level.jellyFishes.indexOf(jellyFish);
+        setInterval(() => {
+            this.y -= 15 - this.speed;
+        }, 1000 / 20);
+        setTimeout(() => {
+            world.level.jellyFishes.splice(indexJellyFish, 1);
+        }, 4000);
     }
 }
