@@ -15,11 +15,16 @@ class MovableObjects extends DrawableObjects {
     }
     lastHitThroughEletroSchock = 0;
     lastHitThroughPoisoned = 0;
+    lastHitThroughEndboss = 0;
+    characterLastHitAgainstEndboss = 0;
     energy = 100;
+    energyEndboss = 100;
     porgressCoin = 0;
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
+
+
     pufferFishIsBlowUp = false;
     distanceBetweenPufferFishAndCharacter;
     pufferFishDead = false;
@@ -110,6 +115,45 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+
+    hitThroughEndboss() {
+        this.energy -= 15;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHitThroughEndboss = new Date().getTime();
+        }
+        if (this.energy == 0) {
+            this.diedThrough = 'endboss';
+        }
+    }
+
+
+    isHurtThroughEndboss() {
+        let timeSpan = new Date().getTime() - this.lastHitThroughEndboss;
+        timeSpan = timeSpan / 1000;
+        return timeSpan < 1;
+    }
+
+
+    characterHitEndboss() {
+        this.energyEndboss -= 50;
+        if (this.energyEndboss < 0) {
+            this.energyEndboss = 0;
+        } else {
+            this.characterLastHitAgainstEndboss = new Date().getTime();
+        }
+    }
+
+
+    endbossIsHurt() {
+        let timeSpan = new Date().getTime() - this.characterLastHitAgainstEndboss;
+        timeSpan = timeSpan / 1000;
+        return timeSpan < 1;
+    }
+
+
+
     raiseProgressFromProgressbarCoin() {
         this.porgressCoin += 10;
     }
@@ -117,6 +161,11 @@ class MovableObjects extends DrawableObjects {
 
     raiseProgressFromProgressbarPoisonVessel() {
         this.porgressPoisonVessel += 10;
+    }
+
+
+    endbossGetHit() {
+        this.energyEndboss -= 15;
     }
 
 

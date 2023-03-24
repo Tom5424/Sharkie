@@ -1,10 +1,10 @@
 class World {
     level = new Level();
     character = new Character();
-    endboss = new Endboss();
     prorgressBarLife = new ProgressBarLife();
     prorgressBarCoin = new ProgressBarCoin();
     prorgressBarPoison = new ProgressBarPoison();
+    prorgressBarLifeEndboss = new ProgressBarLifeEndboss();
     bubbles = [];
     poisonBubbles = [];
     ctx;
@@ -28,7 +28,7 @@ class World {
         this.addObjectsToMap(this.level.backgrounds);
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.jellyFishes);
-        this.addObjectToMap(this.endboss);
+        this.addObjectToMap(this.level.endboss);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poisonVessels);
         this.addObjectsToMap(this.bubbles);
@@ -37,6 +37,7 @@ class World {
         this.addObjectToMap(this.prorgressBarLife);
         this.addObjectToMap(this.prorgressBarCoin);
         this.addObjectToMap(this.prorgressBarPoison);
+        this.addObjectToMap(this.prorgressBarLifeEndboss);
         this.ctx.translate(this.cameraX, 0);  // Push Camera forward
         this.addObjectToMap(this.character);
         this.ctx.translate(-this.cameraX, 0);  // Push Camera backward
@@ -64,6 +65,7 @@ class World {
         object.drawRectangleCoins(this.ctx);
         object.drawRectangleBubble(this.ctx);
         object.drawRectanglePoisonBubble(this.ctx);
+        object.drawRectangleEndboss(this.ctx);
     }
 
 
@@ -104,9 +106,11 @@ class World {
         setInterval(() => {
             this.characterIsCollidingWithJellyFish();
             this.characterIsCollidingWithPufferFish();
+            this.characterIsCollidingWithEndboss();
             this.characterHaveCollectedCoins();
             this.characterHaveCollectedPoisonVessel();
             this.bubbleIsCollidingWithJellyFish();
+            this.poisonBubbleIsCollidingWithEndboss();
             // this.characterHitWithFinSlap();
         }, 1000 / 5);
     }
@@ -129,6 +133,14 @@ class World {
                 this.prorgressBarLife.updateProgressbar(this.character.energy)
             }
         });
+    }
+
+
+    characterIsCollidingWithEndboss() {
+        if (this.character.isColliding(this.level.endboss)) {
+            this.character.hitThroughEndboss();
+            this.prorgressBarLife.updateProgressbar(this.character.energy);
+        }
     }
 
 
@@ -192,6 +204,23 @@ class World {
     removeBubbleAfterHit(bubble) {
         let indexBubble = this.bubbles.indexOf(bubble);
         this.bubbles.splice(indexBubble, 1);
+    }
+
+
+    poisonBubbleIsCollidingWithEndboss() {
+        this.poisonBubbles.forEach(poisonBubble => {
+            if (poisonBubble.isColliding(this.level.endboss)) {
+                this.removePoisonBubbleAfterHitEndboss(poisonBubble);
+                this.level.endboss.characterHitEndboss();
+                this.prorgressBarLifeEndboss.updateProgressbar(this.level.endboss.energyEndboss);
+            }
+        });
+    }
+
+
+    removePoisonBubbleAfterHitEndboss(poisonBubble) {
+        let indexPoisonBubble = this.poisonBubbles.indexOf(poisonBubble);
+        this.poisonBubbles.splice(indexPoisonBubble, 1);
     }
 
 

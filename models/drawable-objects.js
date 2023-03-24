@@ -105,4 +105,14 @@ class DrawableObjects {
         }
     }
 
+
+    drawRectangleEndboss(ctx) {
+        if (this instanceof Endboss) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + 40, this.y + 320, this.width - 120, this.height - 440);
+            ctx.stroke();
+        }
+    }
 }

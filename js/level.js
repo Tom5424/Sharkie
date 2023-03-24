@@ -51,6 +51,9 @@ class Level {
     ];
 
 
+    endboss = new Endboss();
+
+
     coins = [
         new Coins('img/4. Marcadores/1. Coins/1.png', 900, 180),
         new Coins('img/4. Marcadores/1. Coins/1.png', 1000, 180),

@@ -180,7 +180,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveRight() {
-        return this.world.keyboard.right;
+        return this.world.keyboard.right && this.x < 2700;
     }
 
 
@@ -256,27 +256,10 @@ class Character extends MovableObjects {
             this.characterIsPoisoned();
         } else if (this.isDeadThroughPufferFish()) {
             this.characterIsDeadThroughPoisoned();
-        }
-    }
-
-
-    characterCanIdle() {
-        let timeSpanIdle = new Date().getTime() - this.lastIdle;
-        timeSpanIdle = timeSpanIdle / 1000;
-        return timeSpanIdle > 2.5;
-    }
-
-
-    characterIdle() {
-        let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
-        if (this.characterStillNotIdle()) {
-            this.characterStartIdle();
-        }
-        if (this.characterStillNotLongIdle()) {
-            this.characterStartLongIdle();
-        }
-        if (this.characterStartSleeping()) {
-            this.characterSleeping(lastFourLongIdleImages);
+        } else if (this.isHurtThroughEndboss()) {
+            this.characterIsPoisoned();
+        } else if (this.isDeadThroughEndboss()) {
+            this.characterIsDeadThroughPoisoned();
         }
     }
 
@@ -308,6 +291,11 @@ class Character extends MovableObjects {
 
     characterIsDeadThroughPoisoned() {
         this.playAnimationMovableObject(this.imagesDeadPoisoned);
+    }
+
+
+    isDeadThroughEndboss() {
+        return this.diedThrough == 'endboss';
     }
 
 
@@ -376,7 +364,7 @@ class Character extends MovableObjects {
     removeStandardBubbleAfterFewSeconds(bubble) {
         setTimeout(() => {
             this.world.bubbles.splice(bubble, 1);
-        }, 800);
+        }, 550);
     }
 
 
@@ -399,14 +387,14 @@ class Character extends MovableObjects {
             this.world.poisonBubbles.push(this.poisonBubble);
             this.poisonBubble.bubbleFlying(this.world.character.otherDirection);
             this.removePoisonBubbleAfterFewSeconds(this.poisonBubble);
-        }, 450);
+        }, 500);
     }
 
 
     removePoisonBubbleAfterFewSeconds(poisonBubble) {
         setTimeout(() => {
             this.world.poisonBubbles.splice(poisonBubble, 1);
-        }, 800);
+        }, 550);
     }
 
 
@@ -446,6 +434,28 @@ class Character extends MovableObjects {
             this.playAnimationMovableObject(this.imagesCharacterShootStandardBubble);
             this.shootStandardBubble = true;
         }, 60);
+    }
+
+
+
+    characterCanIdle() {
+        let timeSpanIdle = new Date().getTime() - this.lastIdle;
+        timeSpanIdle = timeSpanIdle / 1000;
+        return timeSpanIdle > 2.5;
+    }
+
+
+    characterIdle() {
+        let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
+        if (this.characterStillNotIdle()) {
+            this.characterStartIdle();
+        }
+        if (this.characterStillNotLongIdle()) {
+            this.characterStartLongIdle();
+        }
+        if (this.characterStartSleeping()) {
+            this.characterSleeping(lastFourLongIdleImages);
+        }
     }
 
 
