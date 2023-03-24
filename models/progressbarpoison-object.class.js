@@ -1,6 +1,6 @@
 class ProgressBarPoison extends ProgessBar {
-    x = 10;
-    y = 95;
+    x = 660;
+    y = -5;
     imagesProgressbarCoin = [
         'img/4. Marcadores/green/poisoned bubbles/0_ copia 2.png',
         'img/4. Marcadores/green/poisoned bubbles/20_ copia 3.png',

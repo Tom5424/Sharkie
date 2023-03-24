@@ -38,7 +38,7 @@ class JellyFishPurple extends MovableObjects {
     animateJellyFish() {
         this.intervalJellyFishPurpleMove = setInterval(() => {
             this.jellyFishSwimmingAnimation()
-            this.jeyllyFishMoveUpAndDown();
+            this.jeyllyFishSwimUpAndDown();
         }, 250);
     }
 

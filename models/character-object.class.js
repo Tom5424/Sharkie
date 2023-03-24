@@ -232,7 +232,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveUp() {
-        return this.world.keyboard.up && this.y > 30;
+        return this.world.keyboard.up && this.y > -45;
     }
 
 
@@ -428,7 +428,7 @@ class Character extends MovableObjects {
         this.didFinSlap = true;
         this.intervalSharkieDoFinSlap = setInterval(() => {
             this.playAnimationMovableObject(this.imagesCharacterFinSlap);
-        }, 80);
+        }, 70);
     }
 
 
@@ -436,7 +436,7 @@ class Character extends MovableObjects {
         setTimeout(() => {
             clearInterval(this.intervalSharkieDoFinSlap);
             this.didFinSlap = false;
-        }, 750);
+        }, 630);
     }
 
 

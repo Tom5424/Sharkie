@@ -1,6 +1,6 @@
 class ProgressBarLife extends ProgessBar {
     x = 10;
-    y = -15;
+    y = -5;
     imagesProgressbarLife = [
         'img/4. Marcadores/green/Life/0_  copia 3.png',
         'img/4. Marcadores/green/Life/20_ copia 4.png',

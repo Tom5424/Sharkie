@@ -1,6 +1,4 @@
 class Level {
-
-
     backgrounds = [
         new Background('img/3. Background/Layers/5. Water/D.png', -1000, 0),
         new Background('img/3. Background/Layers/1. Light/COMPLETO.png', -1000, 0),

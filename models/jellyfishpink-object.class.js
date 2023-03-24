@@ -39,7 +39,7 @@ class JellyFishPink extends MovableObjects {
     animateJellyFish() {
         this.intervalJellyFishPinkMove = setInterval(() => {
             this.jellyFishSwimmingAnimation()
-            this.jeyllyFishMoveUpAndDown();
+            this.jeyllyFishSwimUpAndDown();
         }, 250);
     }
 

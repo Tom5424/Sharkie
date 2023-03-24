@@ -7,6 +7,12 @@ class MovableObjects extends DrawableObjects {
         bottom: 0,
         top: 0
     }
+    offsetFinSlap = {
+        left: 0,
+        right: 50,
+        bottom: 0,
+        top: 0
+    }
     lastHitThroughEletroSchock = 0;
     lastHitThroughPoisoned = 0;
     energy = 100;
@@ -14,11 +20,14 @@ class MovableObjects extends DrawableObjects {
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
+    pufferFishIsBlowUp = false;
+    distanceBetweenPufferFishAndCharacter;
+    pufferFishDead = false;
 
 
     moveLeft() {
         setInterval(() => {
-            this.x = this.x - 5;
+            this.x = this.x - 1;
         }, 1000 / 15);
     }
 
@@ -31,11 +40,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    jeyllyFishMoveUpAndDown() {
-        if (this.y > 10 && !this.swimUp) {
+    jeyllyFishSwimUpAndDown() {
+        if (this.y > 80 && !this.swimUp) {
             this.y -= 15 - this.speed;
         } else {
-            this.swimUp = true
+            this.swimUp = true;
             this.y += 15 + this.speed;
         }
         if (this.y > 500) {
@@ -46,18 +55,18 @@ class MovableObjects extends DrawableObjects {
 
 
     isColliding(collidingObject) {
-        return this.x + this.width - this.offset.right > collidingObject.x + collidingObject.offset.left && // ==> vorne 
-            this.x + this.offset.left < collidingObject.x + collidingObject.width - collidingObject.offset.right &&  // ==> hinten
+        return this.x + this.offset.left < collidingObject.x + collidingObject.width - collidingObject.offset.right &&  // ==> hinten
+            this.x + this.width - this.offset.right > collidingObject.x + collidingObject.offset.left && // ==> vorne 
             this.y + this.height - this.offset.bottom > collidingObject.y + collidingObject.offset.top && // ==> unten
-            this.y + this.offset.top < collidingObject.y + collidingObject.height - collidingObject.offset.bottom // ==> oben
+            this.y + this.offset.top < collidingObject.y + collidingObject.height - collidingObject.offset.bottom; // ==> oben
     }
 
 
     isCollected(collectedObject) {
-        return this.x + this.width - this.offset.right > collectedObject.x + collectedObject.offset.left && // ==> vorne 
-            this.x + this.offset.left < collectedObject.x + collectedObject.width - collectedObject.offset.right &&  // ==> hinten
+        return this.x + this.offset.left < collectedObject.x + collectedObject.width - collectedObject.offset.right &&  // ==> hinten
+            this.x + this.width - this.offset.right > collectedObject.x + collectedObject.offset.left && // ==> vorne 
             this.y + this.height - this.offset.bottom > collectedObject.y + collectedObject.offset.top && // ==> unten
-            this.y + this.offset.top < collectedObject.y + collectedObject.height - collectedObject.offset.bottom // ==> oben
+            this.y + this.offset.top < collectedObject.y + collectedObject.height - collectedObject.offset.bottom; // ==> oben
     }
 
 
@@ -133,4 +142,13 @@ class MovableObjects extends DrawableObjects {
             world.level.jellyFishes.splice(indexJellyFish, 1);
         }, 4000);
     }
+
+
+
+    // hitThroughFinSlap(pufferFish) {
+    //     return this.x + this.offsetFinSlap.left < pufferFish.x + pufferFish.width - pufferFish.offsetFinSlap.right &&  // ==> hinten
+    //         this.x + this.width - this.offsetFinSlap.right > pufferFish.x + pufferFish.offsetFinSlap.left; // ==> vorne 
+    //     // this.y + this.height - this.offsetFinSlap.bottom > pufferFish.y + pufferFish.offsetFinSlap.top && // ==> unten
+    //     // this.y + this.offsetFinSlap.top < pufferFish.y + pufferFish.height - pufferFish.offsetFinSlap.bottom; // ==> oben
+    // }
 }

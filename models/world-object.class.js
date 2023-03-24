@@ -1,6 +1,7 @@
 class World {
     level = new Level();
     character = new Character();
+    endboss = new Endboss();
     prorgressBarLife = new ProgressBarLife();
     prorgressBarCoin = new ProgressBarCoin();
     prorgressBarPoison = new ProgressBarPoison();
@@ -25,8 +26,9 @@ class World {
         this.clearCanvas();
         this.ctx.translate(this.cameraX, 0);  // Push Camera forward
         this.addObjectsToMap(this.level.backgrounds);
-        this.addObjectsToMap(this.level.jellyFishes);
         this.addObjectsToMap(this.level.pufferFishes);
+        this.addObjectsToMap(this.level.jellyFishes);
+        this.addObjectToMap(this.endboss);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poisonVessels);
         this.addObjectsToMap(this.bubbles);
@@ -105,6 +107,7 @@ class World {
             this.characterHaveCollectedCoins();
             this.characterHaveCollectedPoisonVessel();
             this.bubbleIsCollidingWithJellyFish();
+            // this.characterHitWithFinSlap();
         }, 1000 / 5);
     }
 
@@ -121,7 +124,7 @@ class World {
 
     characterIsCollidingWithPufferFish() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.isColliding(pufferFish)) {
+            if (this.character.isColliding(pufferFish) && !this.character.isDeadThroughJellyFish()) {
                 this.character.hitThroughPufferFish();
                 this.prorgressBarLife.updateProgressbar(this.character.energy)
             }
@@ -190,6 +193,17 @@ class World {
         let indexBubble = this.bubbles.indexOf(bubble);
         this.bubbles.splice(indexBubble, 1);
     }
+
+
+    // characterHitWithFinSlap() {
+    //     this.level.pufferFishes.forEach(pufferFish => {
+    //         if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isColliding(pufferFish) && !pufferFish.pufferFishDead) {
+    //             pufferFish.pufferFishDead = true;
+    //             pufferFish.pufferFishIsDead();
+    //         }
+    //     });
+    // }
+
 }
 
 
