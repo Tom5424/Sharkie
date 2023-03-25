@@ -1,6 +1,6 @@
 class ProgessBar extends DrawableObjects {
-    width = 320;
-    height = 80;
+    width = 300;
+    height = 65;
     percentage = 100;
 
 

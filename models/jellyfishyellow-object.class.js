@@ -25,8 +25,13 @@ class JellyFishYellow extends MovableObjects {
         this.loadImage('img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png');
         this.loadImages(this.imagesSwimingJellyFishYellow);
         this.loadImages(this.imagesDeadJellyFishYellow);
+        this.animateJellyFishGenerally();
         this.jellyFishPosition();
-        this.animateJellyFish();
+    }
+
+
+    animateJellyFishGenerally() {
+        this.intervalJellyFishYellowMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 250);
     }
 
 
@@ -36,23 +41,13 @@ class JellyFishYellow extends MovableObjects {
     }
 
 
-    animateJellyFish() {
-        this.intervalJellyFishYellowMove = setInterval(() => {
-            this.jellyFishSwimmingAnimation()
-            this.jeyllyFishSwimUpAndDown();
-        }, 250);
-    }
-
-
     jellyFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesSwimingJellyFishYellow);
     }
 
 
     jellyFishIsDead() {
-        setInterval(() => {
-            this.playAnimationMovableObject(this.imagesDeadJellyFishYellow);
-        }, 1000 / 10);
+        setInterval(() => { this.playAnimationMovableObject(this.imagesDeadJellyFishYellow) }, 1000 / 10);
         clearInterval(this.intervalJellyFishYellowMove);
     }
 }

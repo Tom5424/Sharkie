@@ -46,7 +46,7 @@ class MovableObjects extends DrawableObjects {
 
 
     jeyllyFishSwimUpAndDown() {
-        if (this.y > 80 && !this.swimUp) {
+        if (this.y > 150 && !this.swimUp) {
             this.y -= 15 - this.speed;
         } else {
             this.swimUp = true;
@@ -137,7 +137,7 @@ class MovableObjects extends DrawableObjects {
 
 
     characterHitEndboss() {
-        this.energyEndboss -= 50;
+        this.energyEndboss -= 18;
         if (this.energyEndboss < 0) {
             this.energyEndboss = 0;
         } else {

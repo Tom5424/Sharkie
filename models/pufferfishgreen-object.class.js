@@ -38,9 +38,18 @@ class PufferFishGreen extends MovableObjects {
         this.loadImages(this.imagesPufferFishGreenStartBlowUp);
         this.loadImages(this.imagesPufferFishGreenSwimmingBlowUp);
         this.loadImages(this.imagesDeadPufferFishGreen);
+        this.animatePufferFishGenerally();
         this.pufferFishPosition();
         this.moveLeft();
-        this.animatePufferFish();
+    }
+
+
+    animatePufferFishGenerally() {
+        setInterval(() => {
+            let distanceBetweenPufferFishAndCharacterX = Math.ceil(this.x - world.character.x); // Math.ceil() ==> Rundet immer zur nächst höheren Zahl auf.
+            this.pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX);
+            this.pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX);
+        }, 200);
     }
 
 
@@ -49,14 +58,6 @@ class PufferFishGreen extends MovableObjects {
         this.y = Math.random() * 250 + 100;
     }
 
-
-    animatePufferFish() {
-        setInterval(() => {
-            let distanceBetweenPufferFishAndCharacterX = Math.ceil(this.x - world.character.x); // Math.ceil() ==> Rundet immer zur nächst höheren Zahl auf.
-            this.pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX);
-            this.pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX);
-        }, 200);
-    }
 
 
     pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX) {

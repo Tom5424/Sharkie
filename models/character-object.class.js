@@ -232,7 +232,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveUp() {
-        return this.world.keyboard.up && this.y > -45;
+        return this.world.keyboard.up && this.y > 37;
     }
 
 
@@ -357,14 +357,14 @@ class Character extends MovableObjects {
         setTimeout(() => {
             clearInterval(this.intervalSharkieShootStandardBubble);
             this.shootStandardBubble = false;
-        }, 550);
+        }, 500);
     }
 
 
     removeStandardBubbleAfterFewSeconds(bubble) {
         setTimeout(() => {
             this.world.bubbles.splice(bubble, 1);
-        }, 550);
+        }, 500);
     }
 
 
@@ -387,14 +387,14 @@ class Character extends MovableObjects {
             this.world.poisonBubbles.push(this.poisonBubble);
             this.poisonBubble.bubbleFlying(this.world.character.otherDirection);
             this.removePoisonBubbleAfterFewSeconds(this.poisonBubble);
-        }, 500);
+        }, 450);
     }
 
 
     removePoisonBubbleAfterFewSeconds(poisonBubble) {
         setTimeout(() => {
             this.world.poisonBubbles.splice(poisonBubble, 1);
-        }, 550);
+        }, 500);
     }
 
 
@@ -402,7 +402,7 @@ class Character extends MovableObjects {
         setTimeout(() => {
             clearInterval(this.intervalSharkieShootPoisonBubble);
             this.shootPoisonBubble = false;
-        }, 550);
+        }, 500);
     }
 
 

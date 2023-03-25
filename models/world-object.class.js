@@ -24,7 +24,7 @@ class World {
 
     draw() {
         this.clearCanvas();
-        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
+        this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
         this.addObjectsToMap(this.level.backgrounds);
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.jellyFishes);
@@ -33,14 +33,15 @@ class World {
         this.addObjectsToMap(this.level.poisonVessels);
         this.addObjectsToMap(this.bubbles);
         this.addObjectsToMap(this.poisonBubbles);
-        this.ctx.translate(-this.cameraX, 0);   // Push Camera backward
+        this.ctx.translate(-this.cameraX, 0);   // ==> Push Camera backward
         this.addObjectToMap(this.prorgressBarLife);
         this.addObjectToMap(this.prorgressBarCoin);
         this.addObjectToMap(this.prorgressBarPoison);
-        this.addObjectToMap(this.prorgressBarLifeEndboss);
-        this.ctx.translate(this.cameraX, 0);  // Push Camera forward
+        if (this.drawHpBarFromEnbossIfEnbossFightStart())  // ==> This Function only trigger when the Endboss is close enough, to draws his HP bar.
+            this.addObjectToMap(this.prorgressBarLifeEndboss);
+        this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
         this.addObjectToMap(this.character);
-        this.ctx.translate(-this.cameraX, 0);  // Push Camera backward
+        this.ctx.translate(-this.cameraX, 0);  // ==> Push Camera backward
         this.repeatDrawing();
     }
 
@@ -73,6 +74,11 @@ class World {
         objects.forEach(object => {
             this.addObjectToMap(object);
         });
+    }
+
+
+    drawHpBarFromEnbossIfEnbossFightStart() {
+        return this.character.x + 350 >= this.level.endboss.x - 300;
     }
 
 

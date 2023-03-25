@@ -62,23 +62,21 @@ class Endboss extends MovableObjects {
         this.loadImages(this.imagesEndbossAttack);
         this.loadImages(this.imagesEndbossHurt);
         this.loadImages(this.imagesEndbossDead);
-        this.animateEndboss();
+        this.animateEndbossGenerally();
     }
 
 
-    animateEndboss() {
-        this.endbossFightStart();
-        this.endbossFightIsInProgress();
-        this.endbossFightIsDone();
+    animateEndbossGenerally() {
+        this.intervalEndbossSpawn = setInterval(() => { this.endbossFightStart() }, 150);
+        this.intervalEndbossSwiming = setInterval(() => { this.endbossFightIsInProgress() }, 200);
+        setInterval(() => { this.endbossFightIsDone() }, 200);
     }
 
 
     endbossFightStart() {
-        this.intervalEndbossSpawn = setInterval(() => {
-            if (this.endbossCanSpawn()) {
-                this.endbossSpawn();
-            }
-        }, 150);
+        if (this.endbossCanSpawn()) {
+            this.endbossSpawn();
+        }
     }
 
 
@@ -97,14 +95,15 @@ class Endboss extends MovableObjects {
 
 
     endbossFightIsInProgress() {
-        this.intervalEndbossSwiming = setInterval(() => {
-            if (this.endbossIsSpawn()) {
-                this.endbossStartSwiming();
-            }
-            if (this.endbossIsHurt()) {
-                this.endbossHurt();
-            }
-        }, 200);
+        if (this.endbossIsSpawn()) {
+            this.endbossStartSwiming();
+        }
+        if (this.endbossIsHurt()) {
+            this.endbossHurtAndDashForward();
+        }
+        if (this.endbossCanStartRageMode()) {
+            this.endbossRage();
+        }
     }
 
 
@@ -114,28 +113,36 @@ class Endboss extends MovableObjects {
 
 
     endbossStartSwiming() {
-        this.playAnimationMovableObject(this.imagesEndbossSwiming);
         this.playAnimationMovableObject(this.imagesEndbossAttack);
         this.endbossMoveLeft();
     }
 
 
     endbossMoveLeft() {
-        this.x -= 20 - this.speed;
+        this.x -= 10 - this.speed;
     }
 
 
-    endbossHurt() {
+    endbossHurtAndDashForward() {
         this.playAnimationMovableObject(this.imagesEndbossHurt);
+        this.x -= 12 - this.speed;
+    }
+
+
+    endbossCanStartRageMode() {
+        return this.energyEndboss <= 50;
+    }
+
+
+    endbossRage() {
+        this.x -= 17 - this.speed;
     }
 
 
     endbossFightIsDone() {
-        setInterval(() => {
-            if (this.endbossIsDead()) {
-                this.gameIsOver(this.intervalEndbossSwiming);
-            }
-        }, 200);
+        if (this.endbossIsDead()) {
+            this.gameIsOver(this.intervalEndbossSwiming);
+        }
     }
 
 
@@ -145,9 +152,7 @@ class Endboss extends MovableObjects {
 
 
     gameIsOver() {
-        setTimeout(() => {
-            clearInterval(this.intervalEndbossSwiming);
-            this.playAnimationMovableObject(this.imagesEndbossDead);
-        }, 1000);
+        clearInterval(this.intervalEndbossSwiming);
+        this.playAnimationMovableObject(this.imagesEndbossDead);
     }
 }

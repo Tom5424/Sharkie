@@ -1,6 +1,6 @@
 class ProgressBarCoin extends ProgessBar {
-    x = 340;
-    y = -5;
+    x = 5;
+    y = 35;
     imagesProgressbarCoin = [
         'img/4. Marcadores/green/Coin/0_  copia 4.png',
         'img/4. Marcadores/green/Coin/20_  copia 2.png',
