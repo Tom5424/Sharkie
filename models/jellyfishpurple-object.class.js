@@ -25,18 +25,11 @@ class JellyFishPurple extends MovableObjects {
         this.loadImages(this.imagesSwimingJellyFishPurble);
         this.loadImages(this.imagesDeadJellyFishPurple);
         this.animateJellyFishGenerally();
-        this.jellyFishPosition();
     }
 
 
     animateJellyFishGenerally() {
-        this.intervalJellyFishPurpleMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 250);
-    }
-
-
-    jellyFishPosition() {
-        this.x = Math.random() * 1100 + 350;
-        this.y = Math.random() * 250 + 100;
+        this.intervalJellyFishPurpleMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 220);
     }
 
 

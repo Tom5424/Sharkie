@@ -7,6 +7,7 @@ class World {
     prorgressBarLifeEndboss = new ProgressBarLifeEndboss();
     bubbles = [];
     poisonBubbles = [];
+    poisonVesselCapacity = 0;
     ctx;
     canvas;
     keyboard;
@@ -26,11 +27,11 @@ class World {
         this.clearCanvas();
         this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
         this.addObjectsToMap(this.level.backgrounds);
+        this.addObjectsToMap(this.level.poisonVessels);
+        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.jellyFishes);
         this.addObjectToMap(this.level.endboss);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.poisonVessels);
         this.addObjectsToMap(this.bubbles);
         this.addObjectsToMap(this.poisonBubbles);
         this.ctx.translate(-this.cameraX, 0);   // ==> Push Camera backward
@@ -117,7 +118,7 @@ class World {
             this.characterHaveCollectedPoisonVessel();
             this.bubbleIsCollidingWithJellyFish();
             this.poisonBubbleIsCollidingWithEndboss();
-            // this.characterHitWithFinSlap();
+            this.characterHitWithFinSlap();
         }, 1000 / 5);
     }
 
@@ -175,9 +176,10 @@ class World {
     characterHaveCollectedPoisonVessel() {
         this.level.poisonVessels.forEach(poisonVessel => {
             if (this.character.isCollected(poisonVessel)) {
+                this.poisonVesselCapacity++;
                 this.findIndexFromPoisonVessel(poisonVessel);
                 this.character.raiseProgressFromProgressbarPoisonVessel();
-                this.prorgressBarPoison.updateProgressbar(this.character.porgressPoisonVessel)
+                this.prorgressBarPoison.updateProgressbar(this.character.porgressPoisonVessel);
             }
         });
     }
@@ -230,14 +232,14 @@ class World {
     }
 
 
-    // characterHitWithFinSlap() {
-    //     this.level.pufferFishes.forEach(pufferFish => {
-    //         if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isColliding(pufferFish) && !pufferFish.pufferFishDead) {
-    //             pufferFish.pufferFishDead = true;
-    //             pufferFish.pufferFishIsDead();
-    //         }
-    //     });
-    // }
+    characterHitWithFinSlap() {
+        this.level.pufferFishes.forEach(pufferFish => {
+            if (this.character.hitThroughFinSlap(pufferFish)) {
+                console.log('efjhvfeuwv');
+
+            }
+        });
+    }
 
 }
 

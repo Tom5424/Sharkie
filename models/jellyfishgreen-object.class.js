@@ -18,24 +18,19 @@ class JellyFishGreen extends MovableObjects {
     ];
 
 
-    constructor() {
+    constructor(x, y) {
         super();
+        this.x = x;
+        this.y = y;
         this.loadImage('img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png');
         this.loadImages(this.imagesSwimingJellyFishGreen);
         this.loadImages(this.imagesDeadJellyFishGreen);
         this.animateJellyFishGenerally();
-        this.jellyFishPosition();
     }
 
 
     animateJellyFishGenerally() {
-        this.intervalJellyFishGreenMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 250);
-    }
-
-
-    jellyFishPosition() {
-        this.x = Math.random() * 1100 + 350;
-        this.y = Math.random() * 250 + 100;
+        this.intervalJellyFishGreenMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 220);
     }
 
 

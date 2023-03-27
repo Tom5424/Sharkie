@@ -19,7 +19,7 @@ class ProgressBarLife extends ProgessBar {
 
     updateProgressbar(percentage) {
         this.percentage = percentage;
-        let imagePath = this.imagesProgressbarLife[this.showImageIndexProgessbar()]; // ==> Zeigt immer den aktuellen Index vom Bild an, damit immer der richtige Fortschritt von der Progressbar angezeigt wird.
+        let imagePath = this.imagesProgressbarLife[this.showImageIndexProgessbarLife()]; // ==> Zeigt immer den aktuellen Index vom Bild an, damit immer der richtige Fortschritt von der Progressbar angezeigt wird.
         this.img = this.imageCache[imagePath];
     }
 

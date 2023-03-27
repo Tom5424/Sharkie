@@ -37,17 +37,17 @@ class Level {
 
 
     jellyFishes = [
-        new JellyFishPurple(),
-        new JellyFishYellow(),
-        new JellyFishGreen(),
-        new JellyFishPink(),
+        new JellyFishPurple(1500, 100),
+        new JellyFishYellow(2000, 100),
+        new JellyFishGreen(1000, 100),
+        new JellyFishPink(500, 100),
     ];
 
 
     pufferFishes = [
-        new PufferFishGreen(),
-        new PufferFishRed(),
-        new PufferFishRedGlow(),
+        new PufferFishGreen(2700, 220),
+        new PufferFishRed(2700, 350),
+        new PufferFishRedGlow(2700, 480),
     ];
 
 

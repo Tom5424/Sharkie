@@ -1,9 +1,9 @@
 class PufferFishRedGlow extends MovableObjects {
-    x = 750;
-    y = 150;
+    x;
+    y;
     width = 100;
     height = 100;
-    imagesSwimingPufferFishRedGlow = [
+    imagesPufferFishRedGlowSwimming = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim3.png',
@@ -11,63 +11,42 @@ class PufferFishRedGlow extends MovableObjects {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim5.png',
 
     ];
-    imagesPufferFishRedGlowStartBlowUp = [
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition1.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition2.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition3.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition5.png',
-    ];
-    imagesPufferFishRedGlowSwimmingBlowUp = [
+    imagesPufferFishRedGlowBubleeSwimming = [
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim4.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim5.png',
     ];
+    imagesDeadPufferFishRedGlow = [
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.3.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.2.png',
+    ];
 
 
-
-    constructor() {
+    constructor(x, y) {
         super();
+        this.x = x;
+        this.y = y;
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png');
-        this.loadImages(this.imagesSwimingPufferFishRedGlow);
-        this.loadImages(this.imagesPufferFishRedGlowStartBlowUp);
-        this.loadImages(this.imagesPufferFishRedGlowSwimmingBlowUp);
-        this.pufferFishPosition();
-        this.moveLeft();
-        this.animatePufferFish();
+        this.loadImages(this.imagesPufferFishRedGlowSwimming);
+        this.loadImages(this.imagesPufferFishRedGlowBubleeSwimming);
+        this.loadImages(this.imagesDeadPufferFishRedGlow);
+        this.animatePufferFishGenerally();
     }
 
 
-    pufferFishPosition() {
-        this.x = Math.random() * 1100 + 350;
-        this.y = Math.random() * 250 + 100;
+    animatePufferFishGenerally() {
+        setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
     }
 
 
-    animatePufferFish() {
-        setInterval(() => {
-            let distanceBetweenPufferFishAndCharacterX = Math.ceil(this.x - world.character.x); // Math.ceil() ==> Rundet immer zur nächst höheren Zahl auf.
-            this.pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX);
-            this.pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX);
-        }, 200);
-    }
-
-
-    pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX) {
-        if (distanceBetweenPufferFishAndCharacterX - 20 < 300 && !this.pufferFishIsBlowUp) {
-            this.playAnimationMovableObject(this.imagesPufferFishRedGlowStartBlowUp);
-            this.pufferFishIsBlowUp = true;
-        } else if (this.pufferFishIsBlowUp) {
-            this.playAnimationMovableObject(this.imagesPufferFishRedGlowSwimmingBlowUp);
-        }
-    }
-
-
-    pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX) {
-        if (distanceBetweenPufferFishAndCharacterX - 100 > 180) {
-            this.playAnimationMovableObject(this.imagesSwimingPufferFishRedGlow);
+    pufferFishSwimmingAnimation() {
+        if (world.character.x >= this.x - 270) {
+            this.playAnimationMovableObject(this.imagesPufferFishRedGlowBubleeSwimming);
+        } else {
+            this.playAnimationMovableObject(this.imagesPufferFishRedGlowSwimming);
         }
     }
 }

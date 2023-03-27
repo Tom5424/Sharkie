@@ -4,7 +4,7 @@ class ProgessBar extends DrawableObjects {
     percentage = 100;
 
 
-    showImageIndexProgessbar() {
+    showImageIndexProgessbarLife() {
         if (this.percentage == 100) {
             return 5;
         } else if (this.percentage > 80) {
@@ -14,6 +14,40 @@ class ProgessBar extends DrawableObjects {
         } else if (this.percentage > 40) {
             return 2;
         } else if (this.percentage > 20) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
+    showImageIndexProgessbarCoin() {
+        if (this.percentage == 90 || this.percentage == 100) {
+            return 5;
+        } else if (this.percentage == 70 || this.percentage == 80) {
+            return 4;
+        } else if (this.percentage == 50 || this.percentage == 60) {
+            return 3;
+        } else if (this.percentage == 30 || this.percentage == 40) {
+            return 2;
+        } else if (this.percentage == 10 || this.percentage == 20) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
+    showImageIndexProgessbarPoisonVessel() {
+        if (this.percentage == 90 || this.percentage == 100) {
+            return 5;
+        } else if (this.percentage == 70 || this.percentage == 80) {
+            return 4;
+        } else if (this.percentage == 50 || this.percentage == 60) {
+            return 3;
+        } else if (this.percentage == 30 || this.percentage == 40) {
+            return 2;
+        } else if (this.percentage == 10 || this.percentage == 20) {
             return 1;
         } else {
             return 0;

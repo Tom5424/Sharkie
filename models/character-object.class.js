@@ -369,7 +369,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootPoisonBubble() {
-        return this.world.keyboard.x && !this.shootPoisonBubble && !this.characterCanIdle();
+        return this.world.keyboard.x && !this.shootPoisonBubble && !this.characterCanIdle() && this.world.poisonVesselCapacity > 0;
     }
 
 
@@ -383,6 +383,9 @@ class Character extends MovableObjects {
 
 
     characterShootBubblePoison() {
+        this.world.poisonVesselCapacity--;
+        this.reduceProgressFromProgressbarPoisonVesselIfCharacterShoot();
+        this.world.prorgressBarPoison.updateProgressbar(this.world.character.porgressPoisonVessel);
         setTimeout(() => {
             this.world.poisonBubbles.push(this.poisonBubble);
             this.poisonBubble.bubbleFlying(this.world.character.otherDirection);
@@ -441,7 +444,7 @@ class Character extends MovableObjects {
     characterCanIdle() {
         let timeSpanIdle = new Date().getTime() - this.lastIdle;
         timeSpanIdle = timeSpanIdle / 1000;
-        return timeSpanIdle > 2.5;
+        return timeSpanIdle > 3;
     }
 
 

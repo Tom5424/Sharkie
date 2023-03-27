@@ -1,6 +1,6 @@
 class PufferFishGreen extends MovableObjects {
-    x = 750;
-    y = 150;
+    x;
+    y;
     width = 100;
     height = 100;
     imagesSwimingPufferFishGreen = [
@@ -10,14 +10,7 @@ class PufferFishGreen extends MovableObjects {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
     ];
-    imagesPufferFishGreenStartBlowUp = [
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition1.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition2.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition3.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition5.png',
-    ];
-    imagesPufferFishGreenSwimmingBlowUp = [
+    imagesPufferFishGreenBubbleeSwimming = [
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/1.bubbleswim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/1.bubbleswim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/1.bubbleswim3.png',
@@ -31,59 +24,29 @@ class PufferFishGreen extends MovableObjects {
     ];
 
 
-    constructor() {
+    constructor(x, y) {
         super();
+        this.x = x;
+        this.y = y;
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
         this.loadImages(this.imagesSwimingPufferFishGreen);
-        this.loadImages(this.imagesPufferFishGreenStartBlowUp);
-        this.loadImages(this.imagesPufferFishGreenSwimmingBlowUp);
+        this.loadImages(this.imagesPufferFishGreenBubbleeSwimming);
         this.loadImages(this.imagesDeadPufferFishGreen);
         this.animatePufferFishGenerally();
-        this.pufferFishPosition();
-        this.moveLeft();
     }
 
 
     animatePufferFishGenerally() {
-        setInterval(() => {
-            let distanceBetweenPufferFishAndCharacterX = Math.ceil(this.x - world.character.x); // Math.ceil() ==> Rundet immer zur nächst höheren Zahl auf.
-            this.pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX);
-            this.pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX);
-        }, 200);
+        setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
     }
 
 
-    pufferFishPosition() {
-        this.x = Math.random() * 1100 + 350;
-        this.y = Math.random() * 250 + 100;
-    }
-
-
-
-    pufferFishMovesPuffedUp(distanceBetweenPufferFishAndCharacterX) {
-        if (distanceBetweenPufferFishAndCharacterX - 20 < 300 && !this.pufferFishIsBlowUp) {
-            this.playAnimationMovableObject(this.imagesPufferFishGreenStartBlowUp);
-            this.pufferFishIsBlowUp = true;
-        } else if (this.pufferFishIsBlowUp) {
-            this.playAnimationMovableObject(this.imagesPufferFishGreenSwimmingBlowUp);
-        }
-    }
-
-
-    pufferFishMoveLeft(distanceBetweenPufferFishAndCharacterX) {
-        if (distanceBetweenPufferFishAndCharacterX - 100 > 180) {
+    pufferFishSwimmingAnimation() {
+        if (world.character.x >= this.x - 270) {
+            this.playAnimationMovableObject(this.imagesPufferFishGreenBubbleeSwimming);
+        } else {
             this.playAnimationMovableObject(this.imagesSwimingPufferFishGreen);
         }
     }
-
-
-    // pufferFishIsDead() {
-    //     // this.pufferFishDead = true;
-    //     // if (this.pufferFishDead) {
-    //     setInterval(() => {
-    //         this.playAnimationMovableObject(this.imagesDeadPufferFishGreen);
-    //     }, 100);
-    //     // }
-    // }
 }
 

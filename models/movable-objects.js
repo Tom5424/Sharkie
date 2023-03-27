@@ -25,11 +25,6 @@ class MovableObjects extends DrawableObjects {
     swimUp = false;
 
 
-    pufferFishIsBlowUp = false;
-    distanceBetweenPufferFishAndCharacter;
-    pufferFishDead = false;
-
-
     moveLeft() {
         setInterval(() => {
             this.x = this.x - 1;
@@ -47,14 +42,14 @@ class MovableObjects extends DrawableObjects {
 
     jeyllyFishSwimUpAndDown() {
         if (this.y > 150 && !this.swimUp) {
-            this.y -= 15 - this.speed;
+            this.y -= 15 - Math.round(Math.random() * 10);
         } else {
             this.swimUp = true;
-            this.y += 15 + this.speed;
+            this.y += 15 + Math.round(Math.random() * 10);
         }
         if (this.y > 500) {
             this.swimUp = false;
-            this.y -= 15 - this.speed;
+            this.y -= 15 - Math.round(Math.random() * 10);
         }
     }
 
@@ -164,6 +159,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    reduceProgressFromProgressbarPoisonVesselIfCharacterShoot() {
+        this.porgressPoisonVessel -= 10;
+    }
+
+
     endbossGetHit() {
         this.energyEndboss -= 15;
     }
@@ -193,11 +193,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-
-    // hitThroughFinSlap(pufferFish) {
-    //     return this.x + this.offsetFinSlap.left < pufferFish.x + pufferFish.width - pufferFish.offsetFinSlap.right &&  // ==> hinten
-    //         this.x + this.width - this.offsetFinSlap.right > pufferFish.x + pufferFish.offsetFinSlap.left; // ==> vorne 
-    //     // this.y + this.height - this.offsetFinSlap.bottom > pufferFish.y + pufferFish.offsetFinSlap.top && // ==> unten
-    //     // this.y + this.offsetFinSlap.top < pufferFish.y + pufferFish.height - pufferFish.offsetFinSlap.bottom; // ==> oben
-    // }
+    //////////////////////////////////////////
+    hitThroughFinSlap(pufferFish) {
+        return this.x < pufferFish.x + pufferFish.width &&
+            this.x + this.width > pufferFish.x &&
+            this.y < pufferFish.y + pufferFish.height &&
+            this.y + this.height > pufferFish.height;
+    }
 }
