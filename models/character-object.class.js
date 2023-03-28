@@ -315,7 +315,7 @@ class Character extends MovableObjects {
 
     characterAttackAnimations() {
         this.flipSharkieToShootBubbleInOtherDirection();
-        if (this.characterCanShootStandardBubble()) {
+        if (this.characterCanShootStandardBubble() && !this.characterCanIdle()) {
             this.playAnimationCharacterShootStandardBubble();
             this.characterShootBubbleStandard();
             this.clearIntervalShootedBubbleStandard();
@@ -331,7 +331,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootStandardBubble() {
-        return this.world.keyboard.y && !this.shootStandardBubble && !this.characterCanIdle();
+        return this.world.keyboard.y && !this.shootStandardBubble;
     }
 
 
@@ -429,16 +429,6 @@ class Character extends MovableObjects {
             this.didFinSlap = false;
         }, 630);
     }
-
-
-    playAnimationCharacterShootStandardBubble() {
-        this.currentImage = 0;
-        this.intervalSharkieShootStandardBubble = setInterval(() => {
-            this.playAnimationMovableObject(this.imagesCharacterShootStandardBubble);
-            this.shootStandardBubble = true;
-        }, 60);
-    }
-
 
 
     characterCanIdle() {

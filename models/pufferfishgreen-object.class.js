@@ -3,6 +3,7 @@ class PufferFishGreen extends MovableObjects {
     y;
     width = 100;
     height = 100;
+    intervalSwimmingAnimation;
     imagesSwimingPufferFishGreen = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
@@ -37,7 +38,7 @@ class PufferFishGreen extends MovableObjects {
 
 
     animatePufferFishGenerally() {
-        setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
+        this.intervalSwimmingAnimation = setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
     }
 
 
@@ -47,6 +48,14 @@ class PufferFishGreen extends MovableObjects {
         } else {
             this.playAnimationMovableObject(this.imagesSwimingPufferFishGreen);
         }
+    }
+
+
+    pufferFishIsDead() {
+        setInterval(() => {
+            this.playAnimationMovableObject(this.imagesDeadPufferFishGreen);
+            clearInterval(this.intervalSwimmingAnimation);
+        }, 200);
     }
 }
 

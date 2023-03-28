@@ -135,7 +135,7 @@ class World {
 
     characterIsCollidingWithPufferFish() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.isColliding(pufferFish) && !this.character.isDeadThroughJellyFish()) {
+            if (this.character.isColliding(pufferFish)) {
                 this.character.hitThroughPufferFish();
                 this.prorgressBarLife.updateProgressbar(this.character.energy)
             }
@@ -234,9 +234,9 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish)) {
-                console.log('efjhvfeuwv');
-
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.characterIsCollidingWithPufferFish() && !this.character.isHurtThroughPufferFish()) {
+                console.log('alefkwljrngbkeh');
+                // pufferFish.pufferFishIsDead();
             }
         });
     }

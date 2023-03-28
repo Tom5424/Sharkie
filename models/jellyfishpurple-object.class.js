@@ -39,7 +39,7 @@ class JellyFishPurple extends MovableObjects {
 
 
     jellyFishIsDead() {
-        setInterval(() => { this.playAnimationMovableObject(this.imagesDeadJellyFishPurple); }, 1000 / 10);
         clearInterval(this.intervalJellyFishPurpleMove);
+        setInterval(() => { this.playAnimationMovableObject(this.imagesDeadJellyFishPurple) }, 1000 / 10);
     }
 }

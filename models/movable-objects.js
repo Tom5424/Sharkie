@@ -193,11 +193,21 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    //////////////////////////////////////////
+
+    // hitThroughFinSlap(pufferFish) {
+    //     return this.x + this.offset.left < pufferFish.x + pufferFish.width - pufferFish.offset.right &&  // ==> hinten
+    //         this.x + this.width - this.offset.right > pufferFish.x + pufferFish.offset.left && // ==> vorne 
+    //         this.y + this.height - this.offset.bottom > pufferFish.y + pufferFish.offset.top && // ==> unten
+    //         this.y + this.offset.top < pufferFish.y + pufferFish.height - pufferFish.offset.bottom; // ==> oben
+    // }
+
+
+
     hitThroughFinSlap(pufferFish) {
-        return this.x < pufferFish.x + pufferFish.width &&
-            this.x + this.width > pufferFish.x &&
-            this.y < pufferFish.y + pufferFish.height &&
-            this.y + this.height > pufferFish.height;
+        return this.x + this.width > pufferFish.x &&
+            this.x < pufferFish.x + pufferFish.width &&
+            this.y + this.height > pufferFish.y &&
+            this.y < pufferFish.y + pufferFish.height;
     }
+
 }
