@@ -7,8 +7,8 @@ class Character extends MovableObjects {
     offset = {
         left: 80,
         right: 80,
-        bottom: 90,
-        top: 180
+        bottom: 100,
+        top: 150,
     }
     bubble;
     poisonBubble;
@@ -336,11 +336,13 @@ class Character extends MovableObjects {
 
 
     playAnimationCharacterShootStandardBubble() {
-        this.currentImage = 0;
-        this.intervalSharkieShootStandardBubble = setInterval(() => {
-            this.playAnimationMovableObject(this.imagesCharacterShootStandardBubble);
-            this.shootStandardBubble = true;
-        }, 60);
+        if (!this.world.keyboard.space && !this.didFinSlap) {
+            this.currentImage = 0;
+            this.intervalSharkieShootStandardBubble = setInterval(() => {
+                this.playAnimationMovableObject(this.imagesCharacterShootStandardBubble);
+                this.shootStandardBubble = true;
+            }, 60);
+        }
     }
 
 
@@ -374,11 +376,13 @@ class Character extends MovableObjects {
 
 
     playAnimationCharacterShootPoisonBubble() {
-        this.currentImage = 0;
-        this.intervalSharkieShootPoisonBubble = setInterval(() => {
-            this.playAnimationMovableObject(this.imagesCharacterShootPoisonBubble);
-            this.shootPoisonBubble = true;
-        }, 60);
+        if (!this.world.keyboard.space && !this.didFinSlap) {
+            this.currentImage = 0;
+            this.intervalSharkieShootPoisonBubble = setInterval(() => {
+                this.playAnimationMovableObject(this.imagesCharacterShootPoisonBubble);
+                this.shootPoisonBubble = true;
+            }, 60);
+        }
     }
 
 
@@ -415,11 +419,13 @@ class Character extends MovableObjects {
 
 
     playAnimationCharacterDoFinSlap() {
-        this.currentImage = 0;
-        this.didFinSlap = true;
-        this.intervalSharkieDoFinSlap = setInterval(() => {
-            this.playAnimationMovableObject(this.imagesCharacterFinSlap);
-        }, 70);
+        if (!this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble) {
+            this.currentImage = 0;
+            this.didFinSlap = true;
+            this.intervalSharkieDoFinSlap = setInterval(() => {
+                this.playAnimationMovableObject(this.imagesCharacterFinSlap);
+            }, 70);
+        }
     }
 
 

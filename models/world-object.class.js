@@ -11,6 +11,7 @@ class World {
     ctx;
     canvas;
     keyboard;
+    hitFinSlap = false;
 
 
     constructor(canvas, keyboard) {
@@ -234,14 +235,15 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.characterIsCollidingWithPufferFish() && !this.character.isHurtThroughPufferFish()) {
-                console.log('alefkwljrngbkeh');
-                // pufferFish.pufferFishIsDead();
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isHurtThroughPufferFish() && !this.hitFinSlap && !this.character.characterCanShootPoisonBubble() && !this.character.characterCanShootStandardBubble()) {
+                this.hitFinSlap = true;
+                pufferFish.pufferFishIsDead();
+                pufferFish.pufferFliesUpAndDisappear(pufferFish);
+            } else {
+                this.hitFinSlap = false;
+                this.character.isColliding(pufferFish);
             }
         });
     }
 
 }
-
-
-

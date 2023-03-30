@@ -3,7 +3,7 @@ class PufferFishRed extends MovableObjects {
     y;
     width = 100;
     height = 100;
-    pufferFishSwimRight = false;
+    intervalSwimmingAnimationPufferFishRed;
     imagesPufferFishRedSwimming = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim2.png',
@@ -38,16 +38,25 @@ class PufferFishRed extends MovableObjects {
 
 
     animatePufferFishGenerally() {
-        setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
+        this.intervalSwimmingAnimationPufferFishRed = setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
     }
 
 
     pufferFishSwimmingAnimation() {
-        if (world.character.x >= this.x - 270) {
-            this.playAnimationMovableObject(this.imagesPufferFishRedBubbleeSwimming);
-        } else {
-            this.playAnimationMovableObject(this.imagesPufferFishRedSwimming);
-        }
+        this.playAnimationMovableObject(this.imagesPufferFishRedSwimming);
+        this.x -= 10 - this.speed;
+    }
+
+
+    pufferFishIsDead() {
+        clearInterval(this.intervalSwimmingAnimationPufferFishRed);
+        this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.png',);
+        let intervalPufferFishDeadAfterFinSlap = setInterval(() => {
+            this.x += 40 + this.speed;
+        }, 120);
+        setTimeout(() => {
+            clearInterval(intervalPufferFishDeadAfterFinSlap);
+        }, 800);
     }
 
 }

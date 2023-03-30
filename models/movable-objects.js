@@ -7,12 +7,6 @@ class MovableObjects extends DrawableObjects {
         bottom: 0,
         top: 0
     }
-    offsetFinSlap = {
-        left: 0,
-        right: 50,
-        bottom: 0,
-        top: 0
-    }
     lastHitThroughEletroSchock = 0;
     lastHitThroughPoisoned = 0;
     lastHitThroughEndboss = 0;
@@ -23,13 +17,6 @@ class MovableObjects extends DrawableObjects {
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
-
-
-    moveLeft() {
-        setInterval(() => {
-            this.x = this.x - 1;
-        }, 1000 / 15);
-    }
 
 
     playAnimationMovableObject(imagesMovableObject) {
@@ -193,21 +180,31 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-
-    // hitThroughFinSlap(pufferFish) {
-    //     return this.x + this.offset.left < pufferFish.x + pufferFish.width - pufferFish.offset.right &&  // ==> hinten
-    //         this.x + this.width - this.offset.right > pufferFish.x + pufferFish.offset.left && // ==> vorne 
-    //         this.y + this.height - this.offset.bottom > pufferFish.y + pufferFish.offset.top && // ==> unten
-    //         this.y + this.offset.top < pufferFish.y + pufferFish.height - pufferFish.offset.bottom; // ==> oben
+    // distanceObjects(pufferFishX, pufferFishY, characterX, characterY) {
+    //     let distanceX = pufferFishX - characterX;
+    //     let distanceY = pufferFishY - characterY;
+    //     this.distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+    //     this.distance = world.character.x;
     // }
 
 
-
     hitThroughFinSlap(pufferFish) {
-        return this.x + this.width > pufferFish.x &&
-            this.x < pufferFish.x + pufferFish.width &&
-            this.y + this.height > pufferFish.y &&
-            this.y < pufferFish.y + pufferFish.height;
+        return this.x + this.width - 70 > pufferFish.x &&
+            this.x + 30 < pufferFish.x + pufferFish.width - 90 &&
+            this.y + this.height - 90 > pufferFish.y + 30 &&
+            this.y + 20 < pufferFish.y + pufferFish.height - 90;
     }
 
+
+    pufferFliesUpAndDisappear(pufferFish) {
+        let indexPufferFish = world.level.pufferFishes.indexOf(pufferFish);
+        setTimeout(() => {
+            setInterval(() => {
+                this.y -= 15 - this.speed;
+            }, 1000 / 20);
+        }, 800);
+        setTimeout(() => {
+            world.level.pufferFishes.splice(indexPufferFish, 1);
+        }, 4000);
+    }
 }
