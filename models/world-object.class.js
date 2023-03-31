@@ -235,12 +235,12 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isHurtThroughPufferFish() && !this.hitFinSlap && !this.character.characterCanShootPoisonBubble() && !this.character.characterCanShootStandardBubble()) {
-                this.hitFinSlap = true;
-                pufferFish.pufferFishIsDead();
-                pufferFish.pufferFliesUpAndDisappear(pufferFish);
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isHurtThroughPufferFish()) {
+                if (!this.character.isDeadThroughPufferFish()) {
+                    pufferFish.pufferFishIsDead();
+                    pufferFish.pufferFliesUpAndDisappear(pufferFish);
+                }
             } else {
-                this.hitFinSlap = false;
                 this.character.isColliding(pufferFish);
             }
         });

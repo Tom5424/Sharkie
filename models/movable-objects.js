@@ -190,19 +190,18 @@ class MovableObjects extends DrawableObjects {
 
     hitThroughFinSlap(pufferFish) {
         return this.x + this.width - 70 > pufferFish.x &&
-            this.x + 30 < pufferFish.x + pufferFish.width - 90 &&
-            this.y + this.height - 90 > pufferFish.y + 30 &&
-            this.y + 20 < pufferFish.y + pufferFish.height - 90;
+            this.x + 50 < pufferFish.x + pufferFish.width - 25 &&
+            this.y + this.height - 100 > pufferFish.y &&
+            this.y < pufferFish.y + pufferFish.height - 100;
     }
 
 
     pufferFliesUpAndDisappear(pufferFish) {
         let indexPufferFish = world.level.pufferFishes.indexOf(pufferFish);
-        setTimeout(() => {
-            setInterval(() => {
-                this.y -= 15 - this.speed;
-            }, 1000 / 20);
-        }, 800);
+        setInterval(() => {
+            this.y -= 30 - this.speed;
+            this.x += 30 + this.speed;
+        }, 1000 / 20);
         setTimeout(() => {
             world.level.pufferFishes.splice(indexPufferFish, 1);
         }, 4000);
