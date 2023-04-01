@@ -113,6 +113,7 @@ class Endboss extends MovableObjects {
 
 
     endbossStartSwiming() {
+        playSoundEnsbossBites();
         this.playAnimationMovableObject(this.imagesEndbossAttack);
         this.endbossMoveLeft();
     }

@@ -184,6 +184,7 @@ class Character extends MovableObjects {
 
 
     moveRight() {
+        playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
         this.world.cameraX = -this.x + 50;
         this.otherDirection = false;
@@ -198,6 +199,7 @@ class Character extends MovableObjects {
 
 
     moveLeft() {
+        playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
         this.world.cameraX = -this.x + 50;
         this.otherDirection = true;
@@ -212,6 +214,7 @@ class Character extends MovableObjects {
 
 
     moveDown() {
+        playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
         this.y += 15 + this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -224,6 +227,7 @@ class Character extends MovableObjects {
 
 
     moveUp() {
+        playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
         this.y -= 15 - this.speed;
         this.playAnimationMovableObject(this.imagesSwimingCharacter);
@@ -331,6 +335,7 @@ class Character extends MovableObjects {
 
 
     characterShootBubbleStandard() {
+        playSoundShootBubble();
         this.saveTimeStampAfterAnimation();
         this.playAnimationCharacterShootStandardBubble();
         this.characterCarryOutShootBubbleStandard();
@@ -377,6 +382,7 @@ class Character extends MovableObjects {
 
 
     characterShootPoisonBubble() {
+        playSoundShootBubble();
         this.saveTimeStampAfterAnimation();
         this.playAnimationCharacterShootPoisonBubble();
         this.characterCarryOutShootBubblePoison();
@@ -426,6 +432,7 @@ class Character extends MovableObjects {
 
 
     characterDoFinSlap() {
+        playSoundCharacterDoFinSlap();
         this.saveTimeStampAfterAnimation();
         this.playAnimationCharacterDoFinSlap();
         this.clearIntervalDidFinSlap();
@@ -437,7 +444,7 @@ class Character extends MovableObjects {
         this.didFinSlap = true;
         this.intervalSharkieDoFinSlap = setInterval(() => {
             this.playAnimationMovableObject(this.imagesCharacterFinSlap);
-        }, 70);
+        }, 60);
     }
 
 
@@ -445,7 +452,7 @@ class Character extends MovableObjects {
         setTimeout(() => {
             clearInterval(this.intervalSharkieDoFinSlap);
             this.didFinSlap = false;
-        }, 630);
+        }, 550);
     }
 
 
@@ -503,6 +510,7 @@ class Character extends MovableObjects {
 
     characterSleeping(lastFourLongIdleImages) {
         this.playAnimationMovableObject(lastFourLongIdleImages);
+        this.y += 1;
     }
 
 

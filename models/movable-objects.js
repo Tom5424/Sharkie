@@ -180,19 +180,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-    // distanceObjects(pufferFishX, pufferFishY, characterX, characterY) {
-    //     let distanceX = pufferFishX - characterX;
-    //     let distanceY = pufferFishY - characterY;
-    //     this.distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-    //     this.distance = world.character.x;
-    // }
-
-
     hitThroughFinSlap(pufferFish) {
-        return this.x + this.width - 70 > pufferFish.x &&
-            this.x + 50 < pufferFish.x + pufferFish.width - 25 &&
-            this.y + this.height - 100 > pufferFish.y &&
-            this.y < pufferFish.y + pufferFish.height - 100;
+        return this.x + this.width - 70 > pufferFish.x + 2 &&
+            this.x + 2 < pufferFish.x + pufferFish.width - 70 &&
+            this.y + this.height - 90 > pufferFish.y + 40 &&
+            this.y + 25 < pufferFish.y + pufferFish.height - 80;
     }
 
 

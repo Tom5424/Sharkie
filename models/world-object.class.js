@@ -128,6 +128,7 @@ class World {
         this.level.jellyFishes.forEach(jellyFish => {
             if (this.character.isColliding(jellyFish)) {
                 this.character.hitThroughJellyFish();
+                playSoundHurtThroughElectroShocked();
                 this.prorgressBarLife.updateProgressbar(this.character.energy);
             }
         });
@@ -138,6 +139,7 @@ class World {
         this.level.pufferFishes.forEach(pufferFish => {
             if (this.character.isColliding(pufferFish)) {
                 this.character.hitThroughPufferFish();
+                playSoundHurtCharacter();
                 this.prorgressBarLife.updateProgressbar(this.character.energy)
             }
         });
@@ -147,6 +149,7 @@ class World {
     characterIsCollidingWithEndboss() {
         if (this.character.isColliding(this.level.endboss)) {
             this.character.hitThroughEndboss();
+            playSoundHurtCharacter();
             this.prorgressBarLife.updateProgressbar(this.character.energy);
         }
     }
@@ -155,6 +158,7 @@ class World {
     characterHaveCollectedCoins() {
         this.level.coins.forEach(coin => {
             if (this.character.isCollected(coin)) {
+                playSoundCoinCollected();
                 this.findIndexFromCoins(coin);
                 this.character.raiseProgressFromProgressbarCoin();
                 this.prorgressBarCoin.updateProgressbar(this.character.porgressCoin);
@@ -177,6 +181,7 @@ class World {
     characterHaveCollectedPoisonVessel() {
         this.level.poisonVessels.forEach(poisonVessel => {
             if (this.character.isCollected(poisonVessel)) {
+                playSoundBottleCollected();
                 this.poisonVesselCapacity++;
                 this.findIndexFromPoisonVessel(poisonVessel);
                 this.character.raiseProgressFromProgressbarPoisonVessel();
@@ -219,6 +224,7 @@ class World {
     poisonBubbleIsCollidingWithEndboss() {
         this.poisonBubbles.forEach(poisonBubble => {
             if (poisonBubble.isColliding(this.level.endboss)) {
+                playSoundHurtEndboss();
                 this.removePoisonBubbleAfterHitEndboss(poisonBubble);
                 this.level.endboss.characterHitEndboss();
                 this.prorgressBarLifeEndboss.updateProgressbar(this.level.endboss.energyEndboss);
@@ -236,7 +242,7 @@ class World {
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
             if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isHurtThroughPufferFish()) {
-                if (!this.character.isDeadThroughPufferFish()) {
+                if (!this.character.isDeadThroughPufferFish() && !this.character.characterCanShootStandardBubble()) {
                     pufferFish.pufferFishIsDead();
                     pufferFish.pufferFliesUpAndDisappear(pufferFish);
                 }

@@ -50,7 +50,7 @@ class PufferFishRed extends MovableObjects {
 
     pufferFishIsDead() {
         clearInterval(this.intervalSwimmingAnimationPufferFishRed);
-        this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.png',);
+        this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.2.png');
     }
 
 }
