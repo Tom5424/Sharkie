@@ -38,19 +38,32 @@ class PufferFishGreen extends MovableObjects {
 
 
     animatePufferFishGenerally() {
-        this.intervalSwimmingAnimationPufferFishGreen = setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
+        this.intervalSwimmingAnimationPufferFishGreen = setInterval(() => { this.pufferFishSwimmingAnimation(), this.pufferFishGreenMoveLeftAndRight() }, 120);
     }
 
 
     pufferFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesSwimingPufferFishGreen);
-        this.x -= 10 - this.speed;
     }
 
 
     pufferFishIsDead() {
         clearInterval(this.intervalSwimmingAnimationPufferFishGreen);
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png');
+    }
+
+
+    pufferFishGreenMoveLeftAndRight() {
+        if (this.x > 2500 && !this.otherDirection) {
+            this.x -= 10 - this.speed;
+        } else {
+            this.otherDirection = true;
+            this.x += 10 + this.speed;
+        }
+        if (this.x > 2800) {
+            this.otherDirection = false;
+            this.x -= 10 - this.speed;
+        }
     }
 }
 

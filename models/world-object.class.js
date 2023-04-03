@@ -29,9 +29,9 @@ class World {
         this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
         this.addObjectsToMap(this.level.backgrounds);
         this.addObjectsToMap(this.level.poisonVessels);
-        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.jellyFishes);
+        this.addObjectsToMap(this.level.coins);
         this.addObjectToMap(this.level.endboss);
         this.addObjectsToMap(this.bubbles);
         this.addObjectsToMap(this.poisonBubbles);
@@ -55,11 +55,11 @@ class World {
 
     addObjectToMap(object) {
         if (object.otherDirection) {
-            this.flipImage()
+            this.flipImage(object)
         }
         object.drawAllObjetcs(this.ctx);
         if (object.otherDirection) {
-            this.flipImageBack();
+            this.flipImageBack(object);
         }
         object.drawRectangleCharacter(this.ctx);
         object.drawRectanglePufferFish(this.ctx);
@@ -84,17 +84,17 @@ class World {
     }
 
 
-    flipImage() {
+    flipImage(object) {
         this.ctx.save();
-        this.ctx.translate(this.character.width, 0);
+        this.ctx.translate(object.width, 0);
         this.ctx.scale(-1, 1);
-        this.character.x = this.character.x * -1;
+        object.x = object.x * -1;
     }
 
 
-    flipImageBack() {
+    flipImageBack(object) {
         this.ctx.restore();
-        this.character.x = this.character.x * -1;
+        object.x = object.x * -1;
     }
 
 
@@ -224,7 +224,6 @@ class World {
     poisonBubbleIsCollidingWithEndboss() {
         this.poisonBubbles.forEach(poisonBubble => {
             if (poisonBubble.isColliding(this.level.endboss)) {
-                playSoundHurtEndboss();
                 this.removePoisonBubbleAfterHitEndboss(poisonBubble);
                 this.level.endboss.characterHitEndboss();
                 this.prorgressBarLifeEndboss.updateProgressbar(this.level.endboss.energyEndboss);
@@ -241,11 +240,9 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isHurtThroughPufferFish()) {
-                if (!this.character.isDeadThroughPufferFish() && !this.character.characterCanShootStandardBubble()) {
-                    pufferFish.pufferFishIsDead();
-                    pufferFish.pufferFliesUpAndDisappear(pufferFish);
-                }
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isColliding(pufferFish) && !this.character.isHurtThroughPufferFish()) {
+                pufferFish.pufferFishIsDead();
+                pufferFish.pufferFliesUpAndDisappear(pufferFish);
             } else {
                 this.character.isColliding(pufferFish);
             }

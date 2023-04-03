@@ -330,7 +330,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootStandardBubble() {
-        return this.world.keyboard.y && !this.shootStandardBubble && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
+        return this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
@@ -377,7 +377,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootPoisonBubble() {
-        return this.world.keyboard.x && !this.shootPoisonBubble && this.world.poisonVesselCapacity > 0 && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
+        return this.world.keyboard.x && !this.shootPoisonBubble && this.world.poisonVesselCapacity > 0 && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
@@ -427,7 +427,7 @@ class Character extends MovableObjects {
 
 
     characterCanDoFinSlap() {
-        return this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
+        return this.world.keyboard.space && !this.didFinSlap && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.y && !this.shootStandardBubble && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
@@ -509,8 +509,11 @@ class Character extends MovableObjects {
 
 
     characterSleeping(lastFourLongIdleImages) {
+        playSoundCharacterIdle();
         this.playAnimationMovableObject(lastFourLongIdleImages);
-        this.y += 1;
+        if (this.y <= 320) {
+            this.y += 2;
+        }
     }
 
 

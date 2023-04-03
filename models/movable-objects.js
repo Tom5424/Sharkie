@@ -5,7 +5,7 @@ class MovableObjects extends DrawableObjects {
         left: 0,
         right: 0,
         bottom: 0,
-        top: 0
+        top: 0,
     }
     lastHitThroughEletroSchock = 0;
     lastHitThroughPoisoned = 0;
@@ -181,19 +181,30 @@ class MovableObjects extends DrawableObjects {
 
 
     hitThroughFinSlap(pufferFish) {
-        return this.x + this.width - 70 > pufferFish.x + 2 &&
-            this.x + 2 < pufferFish.x + pufferFish.width - 70 &&
-            this.y + this.height - 90 > pufferFish.y + 40 &&
-            this.y + 25 < pufferFish.y + pufferFish.height - 80;
+        return this.x + 10 < pufferFish.x + pufferFish.width - 60 &&  // ==> hinten
+            this.x + this.width - 60 > pufferFish.x + 10 && // ==> vorne 
+            this.y + this.height - 80 > pufferFish.y + 30 && // ==> unten
+            this.y + 5 < pufferFish.y + pufferFish.height - 80; // ==> oben
     }
 
 
     pufferFliesUpAndDisappear(pufferFish) {
         let indexPufferFish = world.level.pufferFishes.indexOf(pufferFish);
         setInterval(() => {
-            this.y -= 30 - this.speed;
-            this.x += 30 + this.speed;
+            if (!pufferFish.otherDirection) {
+                this.y -= 30 - this.speed;
+                this.x += 30 + this.speed;
+
+            } else {
+                this.y -= 30 - this.speed;
+                this.x -= 30 - this.speed;
+            }
         }, 1000 / 20);
+        this.erasePufferFishFromArray(indexPufferFish);
+    }
+
+
+    erasePufferFishFromArray(indexPufferFish) {
         setTimeout(() => {
             world.level.pufferFishes.splice(indexPufferFish, 1);
         }, 4000);

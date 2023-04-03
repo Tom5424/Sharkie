@@ -45,9 +45,9 @@ class Level {
 
 
     pufferFishes = [
-        new PufferFishGreen(3500, 300),
-        new PufferFishRed(3000, 350),
-        new PufferFishRedGlow(3200, 450),
+        new PufferFishGreen(2800, 300),
+        new PufferFishRed(2500, 200),
+        new PufferFishRedGlow(2300, 450),
     ];
 
 

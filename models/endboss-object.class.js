@@ -68,7 +68,7 @@ class Endboss extends MovableObjects {
 
     animateEndbossGenerally() {
         this.intervalEndbossSpawn = setInterval(() => { this.endbossFightStart() }, 150);
-        this.intervalEndbossSwiming = setInterval(() => { this.endbossFightIsInProgress() }, 200);
+        this.intervalEndbossSwiming = setInterval(() => { this.endbossFightIsInProgress() }, 160);
         setInterval(() => { this.endbossFightIsDone() }, 200);
     }
 
@@ -81,7 +81,7 @@ class Endboss extends MovableObjects {
 
 
     endbossCanSpawn() {
-        return world.character.x > 2600 && !this.hadFirstContactWithEndboss;
+        return world.character.x > 2600 && !this.hadFirstContactWithEndboss && audioEndbossSpawn.play();
     }
 
 
@@ -96,9 +96,11 @@ class Endboss extends MovableObjects {
 
     endbossFightIsInProgress() {
         if (this.endbossIsSpawn()) {
+            playBackgroundMusicEndboss();
             this.endbossStartSwiming();
         }
         if (this.endbossIsHurt()) {
+            playSoundHurtEndboss();
             this.endbossHurtAndDashForward();
         }
         if (this.endbossCanStartRageMode()) {
@@ -113,7 +115,7 @@ class Endboss extends MovableObjects {
 
 
     endbossStartSwiming() {
-        playSoundEnsbossBites();
+        playSoundEndbossBites();
         this.playAnimationMovableObject(this.imagesEndbossAttack);
         this.endbossMoveLeft();
     }
@@ -126,7 +128,7 @@ class Endboss extends MovableObjects {
 
     endbossHurtAndDashForward() {
         this.playAnimationMovableObject(this.imagesEndbossHurt);
-        this.x -= 12 - this.speed;
+        this.x -= 11 - this.speed;
     }
 
 
@@ -136,7 +138,7 @@ class Endboss extends MovableObjects {
 
 
     endbossRage() {
-        this.x -= 16 - this.speed;
+        this.x -= 12 - this.speed;
     }
 
 

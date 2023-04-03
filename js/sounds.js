@@ -12,6 +12,8 @@ let audioHurtElectroshocked = new Audio('audio/hurt-electroshocked.mp3');
 let audioHurtCharacter = new Audio('audio/hurt-character.mp3');
 let audioHurtEndboss = new Audio('audio/hurt-endboss.mp3');
 let audioShootBubble = new Audio('audio/shoot-bubble.mp3');
+let audioEndbossSpawn = new Audio('audio/endboss-spawn.mp3');
+
 
 
 function playBackgroundMusic() {
@@ -23,6 +25,8 @@ function playBackgroundMusic() {
 
 function playBackgroundMusicEndboss() {
     audioBackgroundMusicEndboss.play();
+    audioBackgroundMusicEndboss.volume = 0.3;
+    audioBackgroundMusic.pause();
 }
 
 
@@ -38,6 +42,7 @@ function playSoundCoinCollected() {
 
 function playSoundCharacterIdle() {
     audioCharacterIdle.play();
+    audioCharacterIdle.volume = 0.10;
 }
 
 
@@ -84,8 +89,14 @@ function playSoundShootBubble() {
 }
 
 
-function playSoundEnsbossBites() {
+function playSoundEndbossBites() {
     audioEndbossBites.play();
+    audioEndbossBites.playbackRate = 2.0;
+}
+
+
+function playSoundEndbossSpawn() {
+    audioEndbossSpawn.play();
 }
 
 

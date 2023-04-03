@@ -38,13 +38,12 @@ class PufferFishRed extends MovableObjects {
 
 
     animatePufferFishGenerally() {
-        this.intervalSwimmingAnimationPufferFishRed = setInterval(() => { this.pufferFishSwimmingAnimation() }, 120);
+        this.intervalSwimmingAnimationPufferFishRed = setInterval(() => { this.pufferFishSwimmingAnimation(), this.pufferFishRedMoveLeftAndRight() }, 120);
     }
 
 
     pufferFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesPufferFishRedSwimming);
-        this.x -= 10 - this.speed;
     }
 
 
@@ -53,4 +52,17 @@ class PufferFishRed extends MovableObjects {
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.2.png');
     }
 
+
+    pufferFishRedMoveLeftAndRight() {
+        if (this.x > 2200 && !this.otherDirection) {
+            this.x -= 10 - this.speed;
+        } else {
+            this.otherDirection = true;
+            this.x += 10 + this.speed;
+        }
+        if (this.x > 2500) {
+            this.otherDirection = false;
+            this.x -= 10 - this.speed;
+        }
+    }
 }
