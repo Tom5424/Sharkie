@@ -246,6 +246,7 @@ class Character extends MovableObjects {
             this.characterIsElektroSchoked();
         } else if (this.isDeadThroughJellyFish()) {
             this.characterIsDeadThroughElectroShocks();
+            setTimeout(() => { stopAllIntervals(), this.loadImage('img/1.Sharkie/6.dead/2.Electro_shock/10.png') }, 850);
         }
     }
 
@@ -270,6 +271,7 @@ class Character extends MovableObjects {
             this.characterIsPoisoned();
         } else if (this.isDeadThroughPufferFish()) {
             this.characterIsDeadThroughPoisoned();
+            setTimeout(() => { stopAllIntervals() }, this.loadImage('img/1.Sharkie/6.dead/1.Poisoned/12.png'), 1200);
         }
     }
 
@@ -289,6 +291,7 @@ class Character extends MovableObjects {
             this.characterIsPoisoned();
         } else if (this.isDeadThroughEndboss()) {
             this.characterIsDeadThroughPoisoned();
+            setTimeout(() => { stopAllIntervals() }, this.loadImage('img/1.Sharkie/6.dead/1.Poisoned/12.png'), 1200);
         }
     }
 
@@ -521,6 +524,8 @@ class Character extends MovableObjects {
         this.longIdle = false;
         this.characterSleep = false;
         this.lastIdle = new Date().getTime();
+        audioCharacterIdle.pause();
+        audioCharacterIdle.currentTime = 0;
     }
 }
 

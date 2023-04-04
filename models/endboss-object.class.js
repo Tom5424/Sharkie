@@ -155,6 +155,7 @@ class Endboss extends MovableObjects {
 
 
     gameIsOver() {
+        setTimeout(() => { stopAllIntervals() }, 820);
         clearInterval(this.intervalEndbossSwiming);
         this.playAnimationMovableObject(this.imagesEndbossDead);
     }

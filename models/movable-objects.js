@@ -182,8 +182,8 @@ class MovableObjects extends DrawableObjects {
 
     hitThroughFinSlap(pufferFish) {
         return this.x + 10 < pufferFish.x + pufferFish.width - 60 &&  // ==> hinten
-            this.x + this.width - 60 > pufferFish.x + 10 && // ==> vorne 
-            this.y + this.height - 80 > pufferFish.y + 30 && // ==> unten
+            this.x + this.width - 65 > pufferFish.x + 10 && // ==> vorne 
+            this.y + this.height - 200 > pufferFish.y + 20 && // ==> unten
             this.y + 5 < pufferFish.y + pufferFish.height - 80; // ==> oben
     }
 
