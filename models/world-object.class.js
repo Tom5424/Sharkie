@@ -1,6 +1,6 @@
 class World {
-    level = new Level();
     character = new Character();
+    level = level1;
     prorgressBarLife = new ProgressBarLife();
     prorgressBarCoin = new ProgressBarCoin();
     prorgressBarPoison = new ProgressBarPoison();
@@ -240,13 +240,9 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isColliding(pufferFish) && !this.character.isDeadThroughPufferFish()) {
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isDeadThroughPufferFish() && this.keyboard.space) {
                 pufferFish.pufferFishIsDead();
                 pufferFish.pufferFliesUpAndDisappear(pufferFish);
-
-                if (this.character.isHurtThroughPufferFish() && this.character.isColliding(pufferFish)) {
-                    console.log('pqdefwkbj');
-                }
             }
         });
     }

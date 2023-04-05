@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 
 
 function startGame() {
+    initLevel();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     playBackgroundMusic();

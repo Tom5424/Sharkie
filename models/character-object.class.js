@@ -333,7 +333,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootStandardBubble() {
-        return this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
+        return this.world.keyboard.y && !this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
@@ -380,7 +380,7 @@ class Character extends MovableObjects {
 
 
     characterCanShootPoisonBubble() {
-        return this.world.keyboard.x && !this.shootPoisonBubble && this.world.poisonVesselCapacity > 0 && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
+        return this.world.keyboard.x && !this.world.keyboard.y && !this.shootPoisonBubble && this.world.poisonVesselCapacity > 0 && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
