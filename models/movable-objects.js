@@ -131,9 +131,8 @@ class MovableObjects extends DrawableObjects {
     endbossIsHurt() {
         let timeSpan = new Date().getTime() - this.characterLastHitAgainstEndboss;
         timeSpan = timeSpan / 1000;
-        return timeSpan < 1;
+        return timeSpan < 1 && audioHurtEndboss.play();
     }
-
 
 
     raiseProgressFromProgressbarCoin() {
@@ -172,7 +171,7 @@ class MovableObjects extends DrawableObjects {
     jellFishFliesUpAndDisappear(jellyFish) {
         let indexJellyFish = world.level.jellyFishes.indexOf(jellyFish);
         setInterval(() => {
-            this.y -= 15 - this.speed;
+            this.y -= 20 - this.speed;
         }, 1000 / 20);
         setTimeout(() => {
             world.level.jellyFishes.splice(indexJellyFish, 1);

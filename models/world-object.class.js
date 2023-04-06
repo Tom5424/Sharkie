@@ -240,7 +240,7 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isDeadThroughPufferFish() && this.keyboard.space) {
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isDeadThroughPufferFish() && this.keyboard.space && !this.character.isColliding(pufferFish)) {
                 pufferFish.pufferFishIsDead();
                 pufferFish.pufferFliesUpAndDisappear(pufferFish);
             }

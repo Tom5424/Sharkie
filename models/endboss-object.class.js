@@ -100,7 +100,6 @@ class Endboss extends MovableObjects {
             this.endbossStartSwiming();
         }
         if (this.endbossIsHurt()) {
-            playSoundHurtEndboss();
             this.endbossHurtAndDashForward();
         }
         if (this.endbossCanStartRageMode()) {
@@ -115,13 +114,15 @@ class Endboss extends MovableObjects {
 
 
     endbossStartSwiming() {
-        playSoundEndbossBites();
         this.playAnimationMovableObject(this.imagesEndbossAttack);
         this.endbossMoveLeft();
     }
 
 
     endbossMoveLeft() {
+        if (!this.endbossIsHurt()) {
+            playSoundEndbossBites();
+        }
         this.x -= 10 - this.speed;
     }
 
@@ -155,8 +156,9 @@ class Endboss extends MovableObjects {
 
 
     gameIsOver() {
-        setTimeout(() => { stopAllIntervals() }, 820);
+        setTimeout(() => { stopAllIntervals() }, 500);
         clearInterval(this.intervalEndbossSwiming);
         this.playAnimationMovableObject(this.imagesEndbossDead);
+        playSoundGameIsWin();
     }
 }
