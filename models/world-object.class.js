@@ -11,7 +11,6 @@ class World {
     ctx;
     canvas;
     keyboard;
-    hitFinSlap = false;
 
 
     constructor(canvas, keyboard) {
@@ -169,7 +168,7 @@ class World {
 
     findIndexFromCoins(indexFromCoin) {
         let index = this.level.coins.indexOf(indexFromCoin);
-        this.coinIsCollected(index)
+        this.coinIsCollected(index);
     }
 
 
@@ -240,7 +239,7 @@ class World {
 
     characterHitWithFinSlap() {
         this.level.pufferFishes.forEach(pufferFish => {
-            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isDeadThroughPufferFish() && this.keyboard.space && !this.character.isColliding(pufferFish)) {
+            if (this.character.hitThroughFinSlap(pufferFish) && !this.character.isDeadThroughPufferFish() && !this.character.isColliding(pufferFish) && this.keyboard.space) {
                 pufferFish.pufferFishIsDead();
                 pufferFish.pufferFliesUpAndDisappear(pufferFish);
             }

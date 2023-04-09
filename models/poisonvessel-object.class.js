@@ -22,15 +22,8 @@ class PoisonVessel extends MovableObjects {
         this.y = y;
         this.loadImage(img);
         this.loadImages(this.imagesPoisonVessel);
-        // this.poisionVesselsPosition();
         this.animatePoisonVessel();
     }
-
-
-    // poisionVesselsPosition() {
-    //     this.x = Math.random() * 1100 + 350;
-    //     this.y = Math.random() * 250 + 100;
-    // }
 
 
     animatePoisonVessel() {

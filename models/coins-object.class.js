@@ -3,11 +3,13 @@ class Coins extends MovableObjects {
     y;
     width = 50;
     height = 50;
-    imagesCoins = [
-        'img/4. Marcadores/1. Coins/1.png',
-        'img/4. Marcadores/1. Coins/2.png',
-        'img/4. Marcadores/1. Coins/3.png',
-        'img/4. Marcadores/1. Coins/4.png',
+    imagesAnimatedCoins = [
+        'img/4. Marcadores/1. Coins/coin1Twist.png',
+        'img/4. Marcadores/1. Coins/coin2Twist.png',
+        'img/4. Marcadores/1. Coins/coin3Twist.png',
+        'img/4. Marcadores/1. Coins/coin4Twist.png',
+        'img/4. Marcadores/1. Coins/coin5Twist.png',
+        'img/4. Marcadores/1. Coins/coin6Twist.png',
     ];
 
 
@@ -17,21 +19,14 @@ class Coins extends MovableObjects {
         this.x = x;
         this.y = y;
         this.loadImage(img);
-        this.loadImages(this.imagesCoins);
-        // this.coinsPosition();
+        this.loadImages(this.imagesAnimatedCoins);
         this.animateCoins();
     }
 
 
-    // coinsPosition() {
-    //     this.x = Math.random() * 1100 + 350;
-    //     this.y = Math.random() * 250 + 100;
-    // }
-
-
     animateCoins() {
         setInterval(() => {
-            this.playAnimationMovableObject(this.imagesCoins);
-        }, 250);
+            this.playAnimationMovableObject(this.imagesAnimatedCoins);
+        }, 1000 / 10);
     }
 }

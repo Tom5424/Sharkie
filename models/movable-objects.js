@@ -97,7 +97,6 @@ class MovableObjects extends DrawableObjects {
     }
 
 
-
     hitThroughEndboss() {
         this.energy -= 15;
         if (this.energy < 0) {
@@ -119,7 +118,7 @@ class MovableObjects extends DrawableObjects {
 
 
     characterHitEndboss() {
-        this.energyEndboss -= 18;
+        this.energyEndboss -= 50;
         if (this.energyEndboss < 0) {
             this.energyEndboss = 0;
         } else {
