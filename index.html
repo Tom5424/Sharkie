@@ -54,11 +54,23 @@
 
     <!-------------------------------- Win Screen  -------------------------------->
     <div id="winScreen" class="containerWinScreen d-none">
-        <img class="imgWinScreen" src="img/6.Botones/Try again/Mesa de trabajo 1.png">
-        <img class="btnTryAgain" src="img/6.Botones/Try again/Recurso 16.png">
-        <img class="btnStart" src="img/6.Botones/Start/1.png">
+        <img class="winScreenBG" src="img/6.Botones/Try again/Mesa de trabajo 1.png">
+        <img onclick="tryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
     </div>
     <!-------------------------------- Win Screen  -------------------------------->
+
+
+    <!-------------------------------- Game Over Screen -------------------------------->
+    <div id="gameOverScreen" class="containerGameOverScreen d-none">
+        <img class="gameOverScreenBG" src="img/3. Background/Layers/5. Water/D.png">
+        <img class="gameOverScreenText" src="img/6.Botones/Tittles/Game Over/Recurso 13.png">
+        <img id="gameOverScreenImgDeadByElectroShock" class="gameOverScreenImgDeadByElectroShock d-none"
+            src="img/1.Sharkie/6.dead/2.Electro_shock/10.png">
+        <img id="gameOverScreenImgDeadByPoison" class="gameOverScreenImgDeadByPoison d-none"
+            src="img/1.Sharkie/6.dead/1.Poisoned/12.png">
+        <img onclick="tryAgain()" class="btnTryAgainGameOverScreen" src="img/6.Botones/Try again/Recurso 16.png">
+    </div>
+    <!-------------------------------- Game Over Screen -------------------------------->
 
 </body>
 

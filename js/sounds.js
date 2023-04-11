@@ -100,3 +100,11 @@ function playSoundEndbossSpawn() {
 }
 
 
+function resetSounds() {
+    audioBackgroundMusicEndboss.pause();
+    audioBackgroundMusic.pause();
+    audioBackgroundMusicEndboss.currentTime = 0;
+    audioBackgroundMusic.currentTime = 0;
+}
+
+

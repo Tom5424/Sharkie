@@ -23,7 +23,43 @@ function stopAllIntervals() {
 }
 
 
+function tryAgain() {
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('winScreen').classList.add('d-none');
+    document.getElementById('gameOverScreen').classList.add('d-none');
+    resetSounds();
+    startGame();
+}
+
+
 function showWinScreen() {
-    document.getElementById('canvas').classList.add('d-none');
-    document.getElementById('winScreen').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('winScreen').classList.remove('d-none');
+        document.getElementById('winScreen').classList.add('scaleUpCenter');
+    }, 550);
+}
+
+
+function showGameOverScreen() {
+    setTimeout(() => {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('gameOverScreen').classList.remove('d-none');
+        document.getElementById('gameOverScreen').classList.add('scaleUpCenter');
+    }, 550);
+    showInImageHowDieTheCharacter();
+}
+
+
+function showInImageHowDieTheCharacter() {
+    if (world.character.isDeadThroughPufferFish() || world.character.isDeadThroughEndboss()) {
+        document.getElementById('gameOverScreenImgDeadByPoison').classList.remove('d-none');
+        document.getElementById('gameOverScreenImgDeadByElectroShock').classList.add('d-none');
+        document.getElementById('gameOverScreenImgDeadByPoison').classList.add('gameOverScreenImgDeadByPoison');
+    }
+    if (world.character.isDeadThroughJellyFish()) {
+        document.getElementById('gameOverScreenImgDeadByElectroShock').classList.remove('d-none');
+        document.getElementById('gameOverScreenImgDeadByPoison').classList.add('d-none');
+        document.getElementById('gameOverScreenImgDeadByElectroShock').classList.add('gameOverScreenImgDeadByElectroShock');
+    }
 }

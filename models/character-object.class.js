@@ -246,8 +246,10 @@ class Character extends MovableObjects {
             this.characterIsElektroSchoked();
         } else if (this.isDeadThroughJellyFish()) {
             this.characterIsDeadThroughElectroShocks();
-            setTimeout(() => { stopAllIntervals() }, 300);
+            setTimeout(() => { stopAllIntervals() }, 600);
+            showGameOverScreen();
             playSoundGameIsLost();
+            resetSounds();
         }
     }
 
@@ -273,7 +275,10 @@ class Character extends MovableObjects {
         } else if (this.isDeadThroughPufferFish()) {
             this.characterIsDeadThroughPoisoned();
             setTimeout(() => { stopAllIntervals() }, 600);
+            showInImageHowDieTheCharacter();
+            showGameOverScreen();
             playSoundGameIsLost();
+            resetSounds();
         }
     }
 
@@ -294,7 +299,9 @@ class Character extends MovableObjects {
         } else if (this.isDeadThroughEndboss()) {
             this.characterIsDeadThroughPoisoned();
             setTimeout(() => { stopAllIntervals() }, 600);
+            showGameOverScreen();
             playSoundGameIsLost();
+            resetSounds();
         }
     }
 
