@@ -103,8 +103,49 @@ function playSoundEndbossSpawn() {
 function resetSounds() {
     audioBackgroundMusicEndboss.pause();
     audioBackgroundMusic.pause();
+    audioHurtEndboss.pause();
     audioBackgroundMusicEndboss.currentTime = 0;
     audioBackgroundMusic.currentTime = 0;
 }
 
 
+function unmuteSounds() {
+    document.getElementById('iconSoundOn').classList.add('d-none');
+    document.getElementById('iconSoundOff').classList.remove('d-none');
+    audioBackgroundMusic.muted = false;
+    audioBackgroundMusicEndboss.muted = false;
+    audioEndbossBites.muted = false;
+    audioBottleCollected.muted = false;
+    audioCoinCollected.muted = false;
+    audioCharacterIdle.muted = false;
+    audioCharacterMove.muted = false;
+    audioFinSlap.muted = false;
+    audioGameIsLost.muted = false;
+    audioGameIsWin.muted = false;
+    audioHurtElectroshocked.muted = false;
+    audioHurtCharacter.muted = false;
+    audioHurtEndboss.muted = false;
+    audioShootBubble.muted = false;
+    audioEndbossSpawn.muted = false;
+}
+
+
+function muteSounds() {
+    document.getElementById('iconSoundOn').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.add('d-none');
+    audioBackgroundMusic.muted = true;
+    audioBackgroundMusicEndboss.muted = true;
+    audioEndbossBites.muted = true;
+    audioBottleCollected.muted = true;
+    audioCoinCollected.muted = true;
+    audioCharacterIdle.muted = true;
+    audioCharacterMove.muted = true;
+    audioFinSlap.muted = true;
+    audioGameIsLost.muted = true;
+    audioGameIsWin.muted = true;
+    audioHurtElectroshocked.muted = true;
+    audioHurtCharacter.muted = true;
+    audioHurtEndboss.muted = true;
+    audioShootBubble.muted = true;
+    audioEndbossSpawn.muted = true;
+}

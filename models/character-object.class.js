@@ -275,7 +275,6 @@ class Character extends MovableObjects {
         } else if (this.isDeadThroughPufferFish()) {
             this.characterIsDeadThroughPoisoned();
             setTimeout(() => { stopAllIntervals() }, 600);
-            showInImageHowDieTheCharacter();
             showGameOverScreen();
             playSoundGameIsLost();
             resetSounds();

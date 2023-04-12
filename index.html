@@ -44,34 +44,48 @@
 
 
 <body onload="startGame()">
-    <h1>Sharkie</h1>
+    <h1>Sharkie - The Game</h1>
+
+    <main id="main">
+        <!-------------------------------- Icons in the upper right Corner -------------------------------->
+        <img id="enterFullScreenIcon" onclick="enterFullScreen()" class="iconFullScreen"
+            src="icons/fullscreen-enter.png">
+        <img id="exitFullSCreenIcon" onclick="closeFullScreen()" class="iconFullScreen d-none"
+            src="icons/fullscreen-exit.png">
 
 
-    <canvas id="canvas" width="1000px" height="600px">
-
-    </canvas>
-
-
-    <!-------------------------------- Win Screen  -------------------------------->
-    <div id="winScreen" class="containerWinScreen d-none">
-        <img class="winScreenBG" src="img/6.Botones/Try again/Mesa de trabajo 1.png">
-        <img onclick="tryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
-    </div>
-    <!-------------------------------- Win Screen  -------------------------------->
+        <img id="iconSoundOn" src="icons/unmuted.png" class="iconMute d-none" onclick="unmuteSounds()">
+        <img id="iconSoundOff" src="icons/mute.png" class="iconMute" onclick="muteSounds()">
+        <!-------------------------------- Icons in the upper right Corner -------------------------------->
 
 
-    <!-------------------------------- Game Over Screen -------------------------------->
-    <div id="gameOverScreen" class="containerGameOverScreen d-none">
-        <img class="gameOverScreenBG" src="img/3. Background/Layers/5. Water/D.png">
-        <img class="gameOverScreenText" src="img/6.Botones/Tittles/Game Over/Recurso 13.png">
-        <img id="gameOverScreenImgDeadByElectroShock" class="gameOverScreenImgDeadByElectroShock d-none"
-            src="img/1.Sharkie/6.dead/2.Electro_shock/10.png">
-        <img id="gameOverScreenImgDeadByPoison" class="gameOverScreenImgDeadByPoison d-none"
-            src="img/1.Sharkie/6.dead/1.Poisoned/12.png">
-        <img onclick="tryAgain()" class="btnTryAgainGameOverScreen" src="img/6.Botones/Try again/Recurso 16.png">
-    </div>
-    <!-------------------------------- Game Over Screen -------------------------------->
+        <!-------------------------------- Canvas -------------------------------->
+        <canvas id="canvas" width="1000px" height="600px">
 
+        </canvas>
+        <!-------------------------------- Canvas -------------------------------->
+
+
+        <!-------------------------------- Win Screen  -------------------------------->
+        <div id="winScreen" class="containerWinScreen d-none">
+            <img id="winScreenBG" class="winScreenBG" src="img/6.Botones/Try again/Mesa de trabajo 1.png">
+            <img onclick="btnTryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
+        </div>
+        <!-------------------------------- Win Screen  -------------------------------->
+
+
+        <!-------------------------------- Game Over Screen -------------------------------->
+        <div id="gameOverScreen" class="containerGameOverScreen d-none">
+            <img id="gameOverScreenBG" class="gameOverScreenBG" src="img/3. Background/Layers/5. Water/D.png">
+            <img class="gameOverScreenText" src="img/6.Botones/Tittles/Game Over/Recurso 13.png">
+            <img id="gameOverScreenImgDeadByElectroShock" class="gameOverScreenImgDeadByElectroShock d-none"
+                src="img/1.Sharkie/6.dead/2.Electro_shock/10.png">
+            <img id="gameOverScreenImgDeadByPoison" class="gameOverScreenImgDeadByPoison d-none"
+                src="img/1.Sharkie/6.dead/1.Poisoned/12.png">
+            <img onclick="btnTryAgain()" class="btnTryAgainGameOverScreen" src="img/6.Botones/Try again/Recurso 16.png">
+        </div>
+        <!-------------------------------- Game Over Screen -------------------------------->
+    </main>
 </body>
 
 

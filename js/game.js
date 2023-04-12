@@ -23,7 +23,7 @@ function stopAllIntervals() {
 }
 
 
-function tryAgain() {
+function btnTryAgain() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('gameOverScreen').classList.add('d-none');
@@ -61,5 +61,30 @@ function showInImageHowDieTheCharacter() {
         document.getElementById('gameOverScreenImgDeadByElectroShock').classList.remove('d-none');
         document.getElementById('gameOverScreenImgDeadByPoison').classList.add('d-none');
         document.getElementById('gameOverScreenImgDeadByElectroShock').classList.add('gameOverScreenImgDeadByElectroShock');
+    }
+}
+
+
+function enterFullScreen() {
+    let main = document.getElementById('main');
+    if (!document.fullscreenElement) {
+        main.requestFullscreen();
+        document.getElementById('enterFullScreenIcon').classList.add('d-none');
+        document.getElementById('exitFullSCreenIcon').classList.remove('d-none');
+        document.getElementById('canvas').classList.add('fullscreen');
+        document.getElementById('winScreenBG').classList.add('fullscreen');
+        document.getElementById('gameOverScreenBG').classList.add('fullscreen');
+    }
+}
+
+
+function closeFullScreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+        document.getElementById('enterFullScreenIcon').classList.remove('d-none');
+        document.getElementById('exitFullSCreenIcon').classList.add('d-none');
+        document.getElementById('canvas').classList.remove('fullscreen');
+        document.getElementById('winScreenBG').classList.remove('fullscreen');
+        document.getElementById('gameOverScreenBG').classList.remove('fullscreen');
     }
 }
