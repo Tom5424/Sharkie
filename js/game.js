@@ -9,6 +9,8 @@ let keyboard = new Keyboard();
 
 
 function startGame() {
+    document.getElementById('enterFullScreenIcon').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.remove('d-none');
     initLevel();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
@@ -37,7 +39,7 @@ function showWinScreen() {
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('winScreen').classList.remove('d-none');
         document.getElementById('winScreen').classList.add('scaleUpCenter');
-    }, 550);
+    }, 600);
 }
 
 
@@ -72,8 +74,8 @@ function enterFullScreen() {
         document.getElementById('enterFullScreenIcon').classList.add('d-none');
         document.getElementById('exitFullSCreenIcon').classList.remove('d-none');
         document.getElementById('canvas').classList.add('fullscreen');
-        document.getElementById('winScreenBG').classList.add('fullscreen');
-        document.getElementById('gameOverScreenBG').classList.add('fullscreen');
+        document.getElementById('winScreen').classList.add('fullscreen');
+        document.getElementById('gameOverScreen').classList.add('fullscreen');
     }
 }
 
@@ -84,7 +86,7 @@ function closeFullScreen() {
         document.getElementById('enterFullScreenIcon').classList.remove('d-none');
         document.getElementById('exitFullSCreenIcon').classList.add('d-none');
         document.getElementById('canvas').classList.remove('fullscreen');
-        document.getElementById('winScreenBG').classList.remove('fullscreen');
-        document.getElementById('gameOverScreenBG').classList.remove('fullscreen');
+        document.getElementById('winScreen').classList.remove('fullscreen');
+        document.getElementById('gameOverScreen').classList.remove('fullscreen');
     }
 }

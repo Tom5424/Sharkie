@@ -7,7 +7,6 @@ class Keyboard {
     x = false;
     space = false;
 
-
     constructor() {
         this.addKeyboardEvents();
         this.removeKeyboardEvents();

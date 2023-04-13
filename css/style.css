@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: 'luckiestGuy', Arial, Helvetica, sans-serif;
-    background-image: url('/img/background.jpg');
+    background-image: url('/img/3. Background/Layers/5. Water/L.png');
     background-repeat: no-repeat;
     background-size: 100% 100vh;
 }
@@ -18,46 +18,64 @@ main {
 
 
 h1 {
-    color: #1313b0f0;
+    color: #320bce;
     font-size: 60px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
 
-.containerWinScreen {
-    position: relative;
-}
-
-
-.winScreenBG {
+.containerStartScreen {
     width: 1000px;
     height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
-/* 
-.btnStart {
+.containerImageSharkie {
+    display: flex;
+    justify-content: center;
+}
+
+
+.containerImageSharkie img {
+    width: 400px;
+    padding-bottom: 80px;
+}
+
+
+.btnStartScreen {
+    height: 95px;
     width: 300px;
-    position: absolute;
-    top: 100px;
-    right: 50px;
+    padding-bottom: 50px;
 }
 
 
-.btnStart:hover {
+.btnStartScreen:hover {
     transition: all 225ms ease-in-out;
     cursor: pointer;
     transform: scale(1.1);
-} */
+}
+
+
+.containerWinScreen {
+    width: 1000px;
+    height: 600px;
+    background-image: url('/img/6.Botones/Try again/Mesa de trabajo 1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
 
 
 .btnTryAgainWinScreen {
     height: 95px;
     width: 300px;
-    position: absolute;
-    top: 100px;
-    left: 350px;
+    padding-top: 100px;
 }
 
 
@@ -69,46 +87,41 @@ h1 {
 
 
 .containerGameOverScreen {
-    position: relative;
-}
-
-
-.gameOverScreenBG {
+    background-image: url('/img/3. Background/Layers/5. Water/D.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 1000px;
     height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .gameOverScreenText {
     width: 750px;
-    position: absolute;
-    top: 100px;
-    left: 110px;
 }
 
 
 .gameOverScreenImgDeadByElectroShock {
-    width: 400px;
-    position: absolute;
-    top: -90px;
-    left: 300px;
+    width: 320px;
+    height: 320px;
+    margin-top: -100px;
+    padding-bottom: 80px;
 }
 
 
 .gameOverScreenImgDeadByPoison {
-    width: 380px;
-    position: absolute;
-    top: 120px;
-    left: 330px;
+    width: 320px;
+    height: 320px;
+    margin-top: -10px;
 }
 
 
 .btnTryAgainGameOverScreen {
     height: 95px;
     width: 300px;
-    position: absolute;
-    bottom: 60px;
-    left: 350px;
 }
 
 
@@ -137,6 +150,7 @@ h1 {
 .fullscreen {
     width: 100%;
     height: 100vh;
+    background-size: 100vw 100vh;
 }
 
 

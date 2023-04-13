@@ -1,8 +1,8 @@
 class Endboss extends MovableObjects {
     x = 3200;
     y = -50;
-    width = 550;
-    height = 600;
+    width = 650;
+    height = 650;
     hadFirstContactWithEndboss = false;
     intervalEndbossSpawn;
     intervalEndbossSwiming;
@@ -129,7 +129,7 @@ class Endboss extends MovableObjects {
 
     endbossHurtAndDashForward() {
         this.playAnimationMovableObject(this.imagesEndbossHurt);
-        this.x -= 11 - this.speed;
+        this.x -= 12 - this.speed;
     }
 
 
@@ -139,7 +139,7 @@ class Endboss extends MovableObjects {
 
 
     endbossRage() {
-        this.x -= 12 - this.speed;
+        this.x -= 14 - this.speed;
     }
 
 
@@ -158,7 +158,7 @@ class Endboss extends MovableObjects {
     gameIsOver() {
         clearInterval(this.intervalEndbossSwiming);
         this.playAnimationMovableObject(this.imagesEndbossDead);
-        setTimeout(() => { stopAllIntervals() }, 610);
+        setTimeout(() => { stopAllIntervals() }, 620);
         showWinScreen();
         playSoundGameIsWin();
         resetSounds();

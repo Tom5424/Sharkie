@@ -48,27 +48,37 @@
 
     <main id="main">
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
-        <img id="enterFullScreenIcon" onclick="enterFullScreen()" class="iconFullScreen"
+        <img id="enterFullScreenIcon" onclick="enterFullScreen()" class="iconFullScreen d-none"
             src="icons/fullscreen-enter.png">
         <img id="exitFullSCreenIcon" onclick="closeFullScreen()" class="iconFullScreen d-none"
             src="icons/fullscreen-exit.png">
 
 
         <img id="iconSoundOn" src="icons/unmuted.png" class="iconMute d-none" onclick="unmuteSounds()">
-        <img id="iconSoundOff" src="icons/mute.png" class="iconMute" onclick="muteSounds()">
+        <img id="iconSoundOff" src="icons/mute.png" class="iconMute d-none" onclick="muteSounds()">
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
 
 
         <!-------------------------------- Canvas -------------------------------->
-        <canvas id="canvas" width="1000px" height="600px">
+        <canvas id="canvas" width="1000px" height="600px" class="d-none">
 
         </canvas>
         <!-------------------------------- Canvas -------------------------------->
 
 
+        <!-------------------------------- Start Screen -------------------------------->
+        <div class="containerStartScreen">
+            <div class="containerImageSharkie">
+                <img src="img/1.Sharkie/1.IDLE/Prewiew.gif">
+            </div>
+            <img class="btnStartScreen" src="img/6.Botones/Start/1.png">
+            <img class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
+        </div>
+        <!-------------------------------- Start Screen -------------------------------->
+
+
         <!-------------------------------- Win Screen  -------------------------------->
         <div id="winScreen" class="containerWinScreen d-none">
-            <img id="winScreenBG" class="winScreenBG" src="img/6.Botones/Try again/Mesa de trabajo 1.png">
             <img onclick="btnTryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
         </div>
         <!-------------------------------- Win Screen  -------------------------------->
@@ -76,7 +86,6 @@
 
         <!-------------------------------- Game Over Screen -------------------------------->
         <div id="gameOverScreen" class="containerGameOverScreen d-none">
-            <img id="gameOverScreenBG" class="gameOverScreenBG" src="img/3. Background/Layers/5. Water/D.png">
             <img class="gameOverScreenText" src="img/6.Botones/Tittles/Game Over/Recurso 13.png">
             <img id="gameOverScreenImgDeadByElectroShock" class="gameOverScreenImgDeadByElectroShock d-none"
                 src="img/1.Sharkie/6.dead/2.Electro_shock/10.png">

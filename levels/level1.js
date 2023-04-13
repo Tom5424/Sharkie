@@ -50,7 +50,7 @@ function initLevel() {
 
         [
             new PufferFishGreen(2800, 450),
-            new PufferFishRed(2500, 350),
+            new PufferFishRed(2500, 480),
             new PufferFishRedGlow(2300, 450),
         ],
 

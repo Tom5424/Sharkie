@@ -17,6 +17,7 @@ class MovableObjects extends DrawableObjects {
     porgressPoisonVessel = 0;
     diedThrough = '';
     swimUp = false;
+    extraDamageAgainstEndboss = 6;
 
 
     playAnimationMovableObject(imagesMovableObject) {
@@ -118,12 +119,31 @@ class MovableObjects extends DrawableObjects {
 
 
     characterHitEndboss() {
-        this.energyEndboss -= 50;
+        if (this.characterCanDoExtraDamge()) {
+            this.characterDoExtraDamage();
+        } else {
+            this.characterDoNormalDamage();
+        }
         if (this.energyEndboss < 0) {
             this.energyEndboss = 0;
         } else {
             this.characterLastHitAgainstEndboss = new Date().getTime();
         }
+    }
+
+
+    characterCanDoExtraDamge() {
+        return world.character.porgressCoin == 100;
+    }
+
+
+    characterDoExtraDamage() {
+        this.energyEndboss -= 12 + this.extraDamageAgainstEndboss;
+    }
+
+
+    characterDoNormalDamage() {
+        this.energyEndboss -= 12;
     }
 
 
@@ -180,7 +200,7 @@ class MovableObjects extends DrawableObjects {
 
     hitThroughFinSlap(pufferFish) {
         return this.x + this.offset.left - 20 < pufferFish.x + pufferFish.width - pufferFish.offset.right &&  // ==> hinten
-            this.x + this.width - this.offset.right + 26 > pufferFish.x + pufferFish.offset.left && // ==> vorne 
+            this.x + this.width - this.offset.right + 35 > pufferFish.x + pufferFish.offset.left && // ==> vorne 
             this.y + this.height - this.offset.bottom > pufferFish.y + pufferFish.offset.top && // ==> unten
             this.y + this.offset.top < pufferFish.y + pufferFish.height - pufferFish.offset.bottom; // ==> oben
     }
