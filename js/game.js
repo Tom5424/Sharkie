@@ -90,3 +90,57 @@ function closeFullScreen() {
         document.getElementById('gameOverScreen').classList.remove('fullscreen');
     }
 }
+
+
+function openMenuHowToPlay() {
+    document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('menuHowToPlay').classList.remove('d-none');
+}
+
+
+function closeMenuHowToPlay() {
+    document.getElementById('menuHowToPlay').classList.add('d-none');
+    document.getElementById('startScreen').classList.remove('d-none');
+}
+
+
+function openMovementAndAttackDescription() {
+    document.getElementById('headlineMovementAndAttack').classList.remove('d-none');
+    document.getElementById('MovementAndAttackDescription').classList.remove('d-none');
+    document.getElementById('menuHowToPlay').classList.add('d-none');
+}
+
+
+function closeMovementAndAttackDescription() {
+    document.getElementById('MovementAndAttackDescription').classList.add('d-none');
+    document.getElementById('headlineMovementAndAttack').classList.add('d-none');
+    document.getElementById('menuHowToPlay').classList.remove('d-none');
+}
+
+
+function openCollectablesDescription() {
+    document.getElementById('headlineCollectablesDescription').classList.remove('d-none');
+    document.getElementById('collectablesDescription').classList.remove('d-none');
+    document.getElementById('menuHowToPlay').classList.add('d-none');
+}
+
+
+function closeCollectablesDescription() {
+    document.getElementById('headlineCollectablesDescription').classList.add('d-none');
+    document.getElementById('collectablesDescription').classList.add('d-none');
+    document.getElementById('menuHowToPlay').classList.remove('d-none');
+}
+
+
+function openGameDescription() {
+    document.getElementById('headlineGameDescription').classList.remove('d-none');
+    document.getElementById('gameDescription').classList.remove('d-none');
+    document.getElementById('menuHowToPlay').classList.add('d-none');
+}
+
+
+function closeGameDescription() {
+    document.getElementById('headlineGameDescription').classList.add('d-none');
+    document.getElementById('gameDescription').classList.add('d-none');
+    document.getElementById('menuHowToPlay').classList.remove('d-none');
+}

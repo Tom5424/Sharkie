@@ -60,19 +60,17 @@
 
 
         <!-------------------------------- Canvas -------------------------------->
-        <canvas id="canvas" width="1000px" height="600px" class="d-none">
+        <canvas id="canvas" width="1000px" height="600px">
 
         </canvas>
         <!-------------------------------- Canvas -------------------------------->
 
 
         <!-------------------------------- Start Screen -------------------------------->
-        <div class="containerStartScreen">
-            <div class="containerImageSharkie">
-                <img src="img/1.Sharkie/1.IDLE/Prewiew.gif">
-            </div>
+        <div id="startScreen" class="containerStartScreen d-none">
+            <img class="imageSharkie" src="img/1.Sharkie/1.IDLE/Prewiew.gif">
             <img class="btnStartScreen" src="img/6.Botones/Start/1.png">
-            <img class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
+            <img onclick="openMenuHowToPlay()" class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
         </div>
         <!-------------------------------- Start Screen -------------------------------->
 
@@ -94,6 +92,105 @@
             <img onclick="btnTryAgain()" class="btnTryAgainGameOverScreen" src="img/6.Botones/Try again/Recurso 16.png">
         </div>
         <!-------------------------------- Game Over Screen -------------------------------->
+
+
+        <!-------------------------------- Movement and Attack Description -------------------------------->
+        <h2 id="headlineMovementAndAttack" class="d-none">Movement and Attack</h2>
+        <div id="MovementAndAttackDescription" class="containerMovementAndAttackDescription d-none">
+            <img onclick="closeMovementAndAttackDescription()" class="closeIcon" src="icons/close.png">
+            <div class="containerHowSharkieMove">
+                <p>Use the "Arrow Keys" to move Sharkie.</p>
+                <img src="img/1.Sharkie/3.Swim/5.png">
+            </div>
+            <div class="containerHowSharkieShootNormalBubbles">
+                <p>Press "Y" to Shoot Standard Bubbles.</p>
+                <img src="img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png">
+            </div>
+            <div class="containerHowSharkieShootPoisonBubbles">
+                <p>Press "X" to Shoot Poison Bubbles.</p>
+                <img src="img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png">
+            </div>
+            <div class="containerHowSharkieDoFinslap">
+                <p>Press "Space" to do Fin Slap Attack.</p>
+                <img src="img/1.Sharkie/4.Attack/Fin slap/5.png">
+            </div>
+        </div>
+        <!-------------------------------- Movement and Attack Description -------------------------------->
+
+
+        <!-------------------------------- Collectables Description -------------------------------->
+        <h2 id="headlineCollectablesDescription" class="d-none">Collectables</h2>
+        <div id="collectablesDescription" class="containerCollectablesDescription  d-none">
+            <img onclick="closeCollectablesDescription()" class="closeIcon" src="icons/close.png">
+            <div class="containerColectableCoins">
+                <p>Collect Coins to Fill the Progressbar,
+                    <br>
+                    if the Progressbar is completely filled up,
+                    <br>
+                    you deal 50% more Damage against the Endboss.
+                </p>
+                <img class="imageCoin" src="img/4. Marcadores/1. Coins/1.png">
+                <img class="imageProgressbar" src="img/4. Marcadores/orange/40_  copia 2.png">
+            </div>
+            <div class="containerColectablePoisonVessel">
+                <p>
+                    Collect the Poison Vessels to Fill the Progressbar
+                    <br>
+                    you only have a limited number of Poison Vessels.
+                </p>
+                <img class="imagePoisonVessel" src="img/4. Marcadores/Posión/Animada/1.png">
+                <img class="imageProgressbar" src="img/4. Marcadores/Purple/40_.png">
+            </div>
+        </div>
+        <!-------------------------------- Collectables Description -------------------------------->
+
+
+        <!-------------------------------- Game Description -------------------------------->
+        <h2 id="headlineGameDescription" class="d-none">Game Description</h2>
+        <div id="gameDescription" class="containerGameDescription d-none">
+            <img onclick="closeGameDescription()" class="closeIcon" src="icons/close.png">
+            <div class="containerHowDefeatJellyFish">
+                <p>
+                    Shoot Standard Bubble against the Jelly Fish to defeat them,
+                    you can only defeat the Jelly Fishes with this Bubble.
+                </p>
+                <div class="containerImages">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png">
+                    <img src="img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png">
+                </div>
+            </div>
+            <div class="containerHowDefeatPufferFish">
+                <p>
+                    Use the Fin Slap Attack to defeat the Puffer Fish,
+                    you can only defeat the Puffer Fishes with the Fin Slap Attack.
+                </p>
+                <div class="containerImages">
+                    <img class="imageSharkieFinSlap" src="img/1.Sharkie/4.Attack/Fin slap/5.png">
+                    <img src="img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png">
+                </div>
+            </div>
+            <div class="containerHowDefeatEndboss">
+                <p>
+                    Shoot Posion Bubble against the Endboss to defeat him,
+                    you can only defeat the Endboss with Poison Bubbles.
+                </p>
+                <div class="containerImages">
+                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png">
+                    <img class="imageEndboss" src="img/2.Enemy/3 Final Enemy/2.floating/1.png">
+                </div>
+            </div>
+        </div>
+        <!-------------------------------- Game Description -------------------------------->
+
+
+        <!-------------------------------- How to Play Menu -------------------------------->
+        <div id="menuHowToPlay" class="containerHowToPlayMenu d-none">
+            <img onclick="closeMenuHowToPlay()" class="closeIcon" src="icons/close.png">
+            <button onclick="openMovementAndAttackDescription()">Movement and Attack</button>
+            <button onclick="openCollectablesDescription()">Collectables</button>
+            <button onclick="openGameDescription()">Game</button>
+        </div>
+        <!-------------------------------- How to Play Menu -------------------------------->
     </main>
 </body>
 
