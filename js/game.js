@@ -3,18 +3,19 @@ let world;
 let keyboard = new Keyboard();
 
 
-// function getId(id) {
-//     document.getElementById(id);
-// }
-
-
 function startGame() {
-    document.getElementById('enterFullScreenIcon').classList.remove('d-none');
-    document.getElementById('iconSoundOff').classList.remove('d-none');
+    document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('loadingScreen').classList.remove('d-none');
+    // setTimeout(() => {
     initLevel();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     playBackgroundMusic();
+    document.getElementById('enterFullScreenIcon').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.remove('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('loadingScreen').classList.add('d-none');
+    // }, 8000);
 }
 
 

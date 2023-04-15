@@ -1,0 +1,35 @@
+.containerMediaQuery {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerMediaQuery p {
+    color: white;
+    font-size: 40px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .containerStartScreen {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .containerStartScreen {
+        display: none;
+    }
+
+    .containerMediaQuery {
+        display: flex !important;
+    }
+
+    h1 {
+        display: none;
+    }
+}

@@ -8,6 +8,7 @@
     <title>Sharkie</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/fonts.css">
 
     <link rel="shortcut icon" type="image/png" href="img/1.Sharkie/3.Swim/1.png">
@@ -43,7 +44,7 @@
 </head>
 
 
-<body onload="startGame()">
+<body>
     <h1>Sharkie - The Game</h1>
 
     <main id="main">
@@ -60,19 +61,31 @@
 
 
         <!-------------------------------- Canvas -------------------------------->
-        <canvas id="canvas" width="1000px" height="600px">
+        <canvas id="canvas" width="1000px" height="600px" class="d-none">
 
         </canvas>
         <!-------------------------------- Canvas -------------------------------->
 
 
         <!-------------------------------- Start Screen -------------------------------->
-        <div id="startScreen" class="containerStartScreen d-none">
+        <div id="startScreen" class="containerStartScreen">
             <img class="imageSharkie" src="img/1.Sharkie/1.IDLE/Prewiew.gif">
-            <img class="btnStartScreen" src="img/6.Botones/Start/1.png">
+            <img class="btnStartScreen" src="img/6.Botones/Start/1.png" onclick="startGame()">
             <img onclick="openMenuHowToPlay()" class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
         </div>
         <!-------------------------------- Start Screen -------------------------------->
+
+
+        <div class="containerMediaQuery d-none">
+            <p>Please turn your Device</p>
+        </div>
+
+
+        <!-------------------------------- Loading Screen -------------------------------->
+        <div id="loadingScreen" class="containerLoadingScreen d-none">
+            <h2>Game is Loading</h2>
+        </div>
+        <!-------------------------------- Loading Screen -------------------------------->
 
 
         <!-------------------------------- Win Screen  -------------------------------->
