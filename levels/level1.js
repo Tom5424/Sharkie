@@ -50,7 +50,7 @@ function initLevel() {
 
         [
             new PufferFishGreen(2800, 450),
-            new PufferFishRed(2500, 480),
+            new PufferFishRed(2500, 420),
             new PufferFishRedGlow(2300, 450),
         ],
 
@@ -88,9 +88,9 @@ function initLevel() {
             new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 1800, 350),
 
 
-            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2050, 500),
-            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2100, 450),
-            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2150, 500),
+            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2000, 400),
+            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2050, 450),
+            new PoisonVessel('img/4. Marcadores/Posión/Animada/1.png', 2100, 400),
         ]
     )
 }

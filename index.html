@@ -44,10 +44,9 @@
 </head>
 
 
-<body>
-    <h1>Sharkie - The Game</h1>
-
+<body onload="startGame()">
     <main id="main">
+        <h1 id="headline">Sharkie - The Game</h1>
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
         <img id="enterFullScreenIcon" onclick="enterFullScreen()" class="iconFullScreen d-none"
             src="icons/fullscreen-enter.png">
@@ -60,25 +59,42 @@
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
 
 
+        <!-------------------------------- Mobile Buttons -------------------------------->
+        <img id="btnMobileRight" class="btnMobileRight" src="img/6.Botones/Key/arrow-right.png">
+        <img id="btnMobileLeft" class="btnMobileLeft" src="img/6.Botones/Key/arrow-left.png">
+        <img id="btnMobileDown" class="btnMobileDown" src="img/6.Botones/Key/arrow-down.png">
+        <img id="btnMobileUp" class="btnMobileUp" src="img/6.Botones/Key/arrow-up.png">
+
+
+        <p class="btnMobileFinSlapAttack">Fin Slap Attack</p>
+        <p class="btnMobileShootStandardBubble">Standard Bubble</p>
+        <p class="btnMobileShootPoisonBubble">Poison Bubble</p>
+        <!-------------------------------- Mobile Buttons -------------------------------->
+
+
         <!-------------------------------- Canvas -------------------------------->
-        <canvas id="canvas" width="1000px" height="600px" class="d-none">
+        <canvas id="canvas" width="1000px" height="600px">
 
         </canvas>
         <!-------------------------------- Canvas -------------------------------->
 
 
         <!-------------------------------- Start Screen -------------------------------->
-        <div id="startScreen" class="containerStartScreen">
+        <div id="startScreen" class="containerStartScreen d-none">
             <img class="imageSharkie" src="img/1.Sharkie/1.IDLE/Prewiew.gif">
-            <img class="btnStartScreen" src="img/6.Botones/Start/1.png" onclick="startGame()">
-            <img onclick="openMenuHowToPlay()" class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
+            <div class=containerBtn>
+                <img class="btnStartScreen" src="img/6.Botones/Start/1.png" onclick="startGame()">
+                <img onclick="openMenuHowToPlay()" class="btnStartScreen" src="img/6.Botones/Start/how-to-play-btn.png">
+            </div>
         </div>
         <!-------------------------------- Start Screen -------------------------------->
 
 
-        <div class="containerMediaQuery d-none">
-            <p>Please turn your Device</p>
+        <!-------------------------------- Only for Mobile -------------------------------->
+        <div class="tiltYourDeviceInfo d-none">
+            <p>Please tilt your device</p>
         </div>
+        <!-------------------------------- Only for Mobile -------------------------------->
 
 
         <!-------------------------------- Loading Screen -------------------------------->

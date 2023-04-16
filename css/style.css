@@ -3,10 +3,10 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     font-family: 'luckiestGuy', Arial, Helvetica, sans-serif;
-    background-image: url('/img/3. Background/Layers/5. Water/L.png');
+    background-image: url('../img/3. Background/Layers/5. Water/L.png');
     background-repeat: no-repeat;
     background-size: 100% 100vh;
 }
@@ -18,6 +18,7 @@ main {
 
 
 h1 {
+    text-align: center;
     color: #320bce;
     font-size: 60px;
     margin-bottom: 10px;
@@ -35,10 +36,16 @@ h1 {
 }
 
 
+.containerBtn {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .containerLoadingScreen {
     width: 1000px;
     height: 600px;
-    background-image: url('/img/1.Sharkie/3.Swim/PreviewOP2.gif');
+    background-image: url('../img/1.Sharkie/3.Swim/PreviewOP2.gif');
     background-size: cover;
 }
 
@@ -74,7 +81,7 @@ h1 {
 .containerWinScreen {
     width: 1000px;
     height: 600px;
-    background-image: url('/img/6.Botones/Try again/Mesa de trabajo 1.png');
+    background-image: url('../img/6.Botones/Try again/Mesa de trabajo 1.png');
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
@@ -97,7 +104,7 @@ h1 {
 
 
 .containerGameOverScreen {
-    background-image: url('/img/3. Background/Layers/5. Water/D.png');
+    background-image: url('../img/3. Background/Layers/5. Water/D.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 1000px;
@@ -413,6 +420,100 @@ button:hover {
 }
 
 
+.btnMobileRight {
+    width: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 90px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
+.btnMobileLeft {
+    width: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
+.btnMobileDown {
+    width: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
+.btnMobileUp {
+    width: 30px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    border-radius: 10px;
+    border: 3px solid white
+}
+
+
+.btnMobileFinSlapAttack {
+    height: 75px;
+    width: 75px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+    border-radius: 50%;
+    font-size: 15px;
+    border: 3px solid white;
+    margin: unset;
+}
+
+
+.btnMobileShootStandardBubble {
+    height: 75px;
+    width: 75px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 190px;
+    bottom: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+    border-radius: 50%;
+    font-size: 15px;
+    border: 3px solid white;
+    margin: unset;
+}
+
+
+.btnMobileShootPoisonBubble {
+    height: 75px;
+    width: 75px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+    bottom: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+    border-radius: 50%;
+    font-size: 15px;
+    border: 3px solid white;
+    margin: unset;
+}
+
+
 .d-none {
     display: none !important;
 }
@@ -438,7 +539,7 @@ button:hover {
     }
 }
 
-/* 
+
 canvas {
-    background-color: black;
-} */
+    border-radius: 10px;
+}

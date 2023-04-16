@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 
 
 function startGame() {
+    document.getElementById('headline').classList.add('d-none');
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('loadingScreen').classList.remove('d-none');
     // setTimeout(() => {

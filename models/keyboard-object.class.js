@@ -10,6 +10,8 @@ class Keyboard {
     constructor() {
         this.addKeyboardEvents();
         this.removeKeyboardEvents();
+        this.addTouchEvents();
+        this.removeTouchEvents();
     }
 
 
@@ -53,4 +55,64 @@ class Keyboard {
     }
 
 
+    addTouchEvents() {
+        setTimeout(() => {
+            document.getElementById('btnMobileRight').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.right = true;
+            })
+
+            document.getElementById('btnMobileLeft').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.left = true;
+            })
+
+            document.getElementById('btnMobileDown').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.down = true;
+            })
+
+            document.getElementById('btnMobileUp').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.up = true;
+            })
+
+            // document.getElementById('btnMobileFinSlapAttack').addEventListener('touchstart', (event) => {
+            //     event.preventDefault();
+            //     this.space = true;
+            // })
+        }, 1000);
+
+    }
+
+
+    removeTouchEvents() {
+        setTimeout(() => {
+            document.getElementById('btnMobileRight').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.right = false;
+            })
+
+            document.getElementById('btnMobileLeft').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.left = false;
+            })
+
+            document.getElementById('btnMobileDown').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.down = false;
+            })
+
+            document.getElementById('btnMobileUp').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.up = false;
+            })
+
+            // document.getElementById('btnMobileFinSlapAttack').addEventListener('touchend', (event) => {
+            //     event.preventDefault();
+            //     this.space = false;
+            // })
+        }, 1000);
+
+    }
 }

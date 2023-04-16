@@ -1,4 +1,4 @@
-.containerMediaQuery {
+.tiltYourDeviceInfo {
     width: 100vw;
     height: 100vh;
     background-color: black;
@@ -7,12 +7,13 @@
     align-items: center;
 }
 
-.containerMediaQuery p {
+.tiltYourDeviceInfo p {
     color: white;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 
+/****************************** Start Screen ******************************/
 @media screen and (max-width: 1000px) {
     .containerStartScreen {
         width: 100%;
@@ -21,15 +22,100 @@
 
 
 @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 45px;
+    }
+}
+
+
+@media screen and (max-width: 440px) {
     .containerStartScreen {
         display: none;
     }
 
-    .containerMediaQuery {
-        display: flex !important;
-    }
-
     h1 {
         display: none;
+    }
+
+    .tiltYourDeviceInfo {
+        display: flex !important;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .tiltYourDeviceInfo p {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-height: 700px) {
+    .containerStartScreen {
+        height: 70vh;
+    }
+
+    .imageSharkie {
+        padding-bottom: 0;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    .imageSharkie {
+        width: 380px;
+        padding-bottom: 0px;
+    }
+
+    .containerBtn {
+        gap: 30px;
+        flex-direction: unset;
+    }
+
+    .btnStartScreen {
+        height: 85px;
+        width: 250px;
+        padding-bottom: 0px;
+    }
+}
+
+
+@media screen and (max-height: 400px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    .containerStartScreen {
+        height: 60vh;
+    }
+
+    .imageSharkie {
+        width: 320px;
+        padding-bottom: 0px;
+    }
+
+    .btnStartScreen {
+        height: 75px;
+        width: 200px;
+    }
+}
+
+/****************************** Start Screen ******************************/
+
+
+@media screen and (max-width: 1000px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    h1 {
+        display: none;
+    }
+
+    canvas {
+        height: 100vh;
     }
 }

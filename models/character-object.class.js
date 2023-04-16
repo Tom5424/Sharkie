@@ -209,7 +209,7 @@ class Character extends MovableObjects {
 
 
     characterCanMoveDown() {
-        return this.world.keyboard.down && this.y < 350 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
+        return this.world.keyboard.down && this.y < 300 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 
@@ -523,7 +523,7 @@ class Character extends MovableObjects {
     characterSleeping(lastFourLongIdleImages) {
         playSoundCharacterIdle();
         this.playAnimationMovableObject(lastFourLongIdleImages);
-        if (this.y <= 320) {
+        if (this.y <= 260) {
             this.y += 2;
         }
     }
