@@ -33,12 +33,20 @@
         display: none;
     }
 
+    canvas {
+        display: none;
+    }
+
     h1 {
         display: none;
     }
 
     .tiltYourDeviceInfo {
         display: flex !important;
+    }
+
+    .containerLoadingScreen {
+        display: none;
     }
 }
 
@@ -100,9 +108,42 @@
     }
 }
 
+
+@media screen and (max-width: 440px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    .imageSharkie {
+        width: 300px;
+    }
+
+    .btnStartScreen {
+        height: 85px;
+        width: 250px;
+    }
+}
+
+
+@media screen and (max-width: 330px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .imageSharkie {
+        width: 250px;
+    }
+
+    .btnStartScreen {
+        height: 75px;
+        width: 200px;
+    }
+}
+
 /****************************** Start Screen ******************************/
 
 
+/****************************** Canvas ******************************/
 @media screen and (max-width: 1000px) {
     canvas {
         width: 100%;
@@ -110,12 +151,257 @@
 }
 
 
-@media screen and (max-height: 600px) {
-    h1 {
-        display: none;
+/* @media screen and (max-width: 800px) {
+    .btnMobileLeft {
+        display: flex !important;
     }
 
+    .btnMobileRight {
+        display: flex !important;
+    }
+
+    .btnMobileDown {
+        display: flex !important;
+    }
+
+    .btnMobileUp {
+        display: flex !important;
+    }
+
+    .btnMobileFinSlapAttack {
+        display: flex !important;
+    }
+
+    .btnMobileShootNormalBubble {
+        display: flex !important;
+    }
+
+    .btnMobileShootPoisonBubble {
+        display: flex !important;
+    }
+} */
+
+
+@media screen and (max-width: 680px) {
+    .btnMobileShootNormalBubble {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        right: 150px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        right: 80px;
+    }
+
+    .btnMobileFinSlapAttack {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        right: 10px;
+    }
+}
+
+
+@media screen and (max-width: 540px) {
+    .iconMute {
+        width: 25px;
+        right: 50px;
+    }
+
+    .iconFullScreen {
+        width: 25px;
+    }
+
+    .btnMobileLeft {
+        width: 23px;
+    }
+
+    .btnMobileRight {
+        width: 23px;
+        left: 45px;
+    }
+
+    .btnMobileUp {
+        width: 23px;
+        left: 95px;
+    }
+
+    .btnMobileDown {
+        width: 23px;
+        left: 130px;
+    }
+
+    .btnMobileShootNormalBubble {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        right: 120px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        right: 65px;
+    }
+
+    .btnMobileFinSlapAttack {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 440px) {
+    .btnMobileLeft {
+        width: 20px;
+    }
+
+    .btnMobileRight {
+        width: 20px;
+    }
+
+    .btnMobileUp {
+        width: 20px;
+    }
+
+    .btnMobileDown {
+        width: 20px;
+    }
+
+    .btnMobileShootNormalBubble {
+        width: 32px;
+        height: 32px;
+        font-size: 8px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        width: 32px;
+        height: 32px;
+        font-size: 8px;
+    }
+
+    .btnMobileFinSlapAttack {
+        width: 32px;
+        height: 32px;
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .iconMute {
+        width: 20px;
+        right: 45px;
+    }
+
+    .iconFullScreen {
+        width: 20px;
+    }
+
+    .btnMobileLeft {
+        width: 18px;
+    }
+
+    .btnMobileRight {
+        width: 18px;
+        left: 35px;
+    }
+
+    .btnMobileUp {
+        width: 18px;
+        left: 75px;
+    }
+
+    .btnMobileDown {
+        width: 18px;
+        left: 105px;
+    }
+
+    .btnMobileShootNormalBubble {
+        width: 30px;
+        height: 30px;
+        font-size: 7px;
+        right: 100px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        width: 30px;
+        height: 30px;
+        font-size: 7px;
+        right: 55px
+    }
+
+    .btnMobileFinSlapAttack {
+        width: 30px;
+        height: 30px;
+        font-size: 7px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
     canvas {
         height: 100vh;
     }
 }
+
+/****************************** Canvas ******************************/
+
+
+/****************************** Loading Screen ******************************/
+@media screen and (max-width: 1000px) {
+    .containerLoadingScreen {
+        width: 900px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .containerLoadingScreen {
+        width: 750px;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .containerLoadingScreen {
+        width: 600px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .containerLoadingScreen {
+        width: 400px;
+    }
+
+    .containerLoadingScreen h2 {
+        font-size: 40px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .containerLoadingScreen {
+        width: 280px;
+    }
+
+    .containerLoadingScreen h2 {
+        font-size: 28px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    .containerLoadingScreen {
+        height: 100vh;
+    }
+}
+
+/****************************** Loading Screen ******************************/

@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'luckiestGuy', Arial, Helvetica, sans-serif;
-    background-image: url('../img/3. Background/Layers/5. Water/L.png');
+    background-image: url('../img/3. Background/Light/full.png');
     background-repeat: no-repeat;
     background-size: 100% 100vh;
 }
@@ -187,6 +187,7 @@ h1 {
 
 
 .containerMovementAndAttackDescription {
+    background-color: #2e2d80;
     position: relative;
     width: 1000px;
     border: 1px solid black;
@@ -210,7 +211,8 @@ h1 {
 
 
 h2 {
-    font-size: 35px;
+    font-size: 45px;
+    margin-bottom: 55px;
     text-align: center;
 }
 
@@ -250,6 +252,7 @@ h2 {
 
 
 .containerCollectablesDescription {
+    background-color: #2e2d80;
     position: relative;
     width: 1000px;
     height: 500px;
@@ -301,6 +304,7 @@ h2 {
 
 
 .containerGameDescription {
+    background-color: #2e2d80;
     position: relative;
     width: 1000px;
     border: 1px solid black;
@@ -369,13 +373,14 @@ h2 {
 
 
 .containerHowToPlayMenu {
+    background-color: #2e2d80;
     width: 1000px;
-    height: 600px;
+    height: 500px;
     border: 1px solid black;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
 }
@@ -396,7 +401,7 @@ h2 {
 .closeIcon:hover {
     transition: all 225ms ease-in-out;
     cursor: pointer;
-    transform: scale(1.1);
+    opacity: 0.7;
 }
 
 
@@ -423,8 +428,8 @@ button:hover {
 .btnMobileRight {
     width: 30px;
     position: absolute;
-    bottom: 10px;
-    left: 90px;
+    bottom: 5px;
+    left: 45px;
     border-radius: 10px;
     border: 3px solid white;
 }
@@ -433,8 +438,8 @@ button:hover {
 .btnMobileLeft {
     width: 30px;
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 5px;
+    left: 5px;
     border-radius: 10px;
     border: 3px solid white;
 }
@@ -443,8 +448,8 @@ button:hover {
 .btnMobileDown {
     width: 30px;
     position: absolute;
-    bottom: 10px;
-    left: 50px;
+    bottom: 5px;
+    left: 140px;
     border-radius: 10px;
     border: 3px solid white;
 }
@@ -453,62 +458,62 @@ button:hover {
 .btnMobileUp {
     width: 30px;
     position: absolute;
-    bottom: 50px;
-    left: 50px;
+    bottom: 5px;
+    left: 100px;
     border-radius: 10px;
     border: 3px solid white
 }
 
 
 .btnMobileFinSlapAttack {
-    height: 75px;
-    width: 75px;
+    width: 60px;
+    height: 60px;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 5px;
+    bottom: 5px;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 14px;
     border: 3px solid white;
     margin: unset;
 }
 
 
-.btnMobileShootStandardBubble {
-    height: 75px;
-    width: 75px;
+.btnMobileShootNormalBubble {
+    width: 60px;
+    height: 60px;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 190px;
-    bottom: 10px;
+    right: 155px;
+    bottom: 5px;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 14px;
     border: 3px solid white;
     margin: unset;
 }
 
 
 .btnMobileShootPoisonBubble {
-    height: 75px;
-    width: 75px;
+    width: 60px;
+    height: 60px;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 100px;
-    bottom: 10px;
+    right: 80px;
+    bottom: 5px;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 14px;
     border: 3px solid white;
     margin: unset;
 }

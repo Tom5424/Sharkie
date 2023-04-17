@@ -44,7 +44,7 @@
 </head>
 
 
-<body onload="startGame()">
+<body>
     <main id="main">
         <h1 id="headline">Sharkie - The Game</h1>
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
@@ -59,28 +59,26 @@
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
 
 
-        <!-------------------------------- Mobile Buttons -------------------------------->
-        <img id="btnMobileRight" class="btnMobileRight" src="img/6.Botones/Key/arrow-right.png">
-        <img id="btnMobileLeft" class="btnMobileLeft" src="img/6.Botones/Key/arrow-left.png">
-        <img id="btnMobileDown" class="btnMobileDown" src="img/6.Botones/Key/arrow-down.png">
-        <img id="btnMobileUp" class="btnMobileUp" src="img/6.Botones/Key/arrow-up.png">
-
-
-        <p class="btnMobileFinSlapAttack">Fin Slap Attack</p>
-        <p class="btnMobileShootStandardBubble">Standard Bubble</p>
-        <p class="btnMobileShootPoisonBubble">Poison Bubble</p>
-        <!-------------------------------- Mobile Buttons -------------------------------->
-
-
         <!-------------------------------- Canvas -------------------------------->
-        <canvas id="canvas" width="1000px" height="600px">
+        <canvas id="canvas" width="1000px" height="600px" class="d-none">
 
         </canvas>
         <!-------------------------------- Canvas -------------------------------->
 
 
+        <!-------------------------------- Mobile Buttons -------------------------------->
+        <img id="btnMobileLeft" class="btnMobileLeft d-none" src="img/6.Botones/Key/arrow-left.png">
+        <img id="btnMobileRight" class="btnMobileRight d-none" src="img/6.Botones/Key/arrow-right.png">
+        <img id="btnMobileDown" class="btnMobileDown d-none" src="img/6.Botones/Key/arrow-down.png">
+        <img id="btnMobileUp" class="btnMobileUp d-none" src="img/6.Botones/Key/arrow-up.png">
+        <p id="btnMobileFinSlapAttack" class="btnMobileFinSlapAttack d-none">Fin Slap Attack</p>
+        <p id="btnMobileShootStandardBubble" class="btnMobileShootNormalBubble d-none">Normal Bubble</p>
+        <p id="btnMobileShootPoisonBubble" class="btnMobileShootPoisonBubble d-none">Poison Bubble</p>
+        <!-------------------------------- Mobile Buttons -------------------------------->
+
+
         <!-------------------------------- Start Screen -------------------------------->
-        <div id="startScreen" class="containerStartScreen d-none">
+        <div id="startScreen" class="containerStartScreen">
             <img class="imageSharkie" src="img/1.Sharkie/1.IDLE/Prewiew.gif">
             <div class=containerBtn>
                 <img class="btnStartScreen" src="img/6.Botones/Start/1.png" onclick="startGame()">
@@ -132,7 +130,7 @@
                 <img src="img/1.Sharkie/3.Swim/5.png">
             </div>
             <div class="containerHowSharkieShootNormalBubbles">
-                <p>Press "Y" to Shoot Standard Bubbles.</p>
+                <p>Press "Y" to Shoot Normal Bubbles.</p>
                 <img src="img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png">
             </div>
             <div class="containerHowSharkieShootPoisonBubbles">
@@ -213,6 +211,7 @@
 
 
         <!-------------------------------- How to Play Menu -------------------------------->
+        <h2 id="headlineHowToPlayMenu" class="d-none">How to Play Menu</h2>
         <div id="menuHowToPlay" class="containerHowToPlayMenu d-none">
             <img onclick="closeMenuHowToPlay()" class="closeIcon" src="icons/close.png">
             <button onclick="openMovementAndAttackDescription()">Movement and Attack</button>

@@ -77,11 +77,21 @@ class Keyboard {
                 this.up = true;
             })
 
-            // document.getElementById('btnMobileFinSlapAttack').addEventListener('touchstart', (event) => {
-            //     event.preventDefault();
-            //     this.space = true;
-            // })
-        }, 1000);
+            document.getElementById('btnMobileFinSlapAttack').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.space = true;
+            })
+
+            document.getElementById('btnMobileShootStandardBubble').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.y = true;
+            })
+
+            document.getElementById('btnMobileShootPoisonBubble').addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.x = true;
+            })
+        }, 800);
 
     }
 
@@ -108,11 +118,21 @@ class Keyboard {
                 this.up = false;
             })
 
-            // document.getElementById('btnMobileFinSlapAttack').addEventListener('touchend', (event) => {
-            //     event.preventDefault();
-            //     this.space = false;
-            // })
-        }, 1000);
+            document.getElementById('btnMobileFinSlapAttack').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.space = false;
+            })
+
+            document.getElementById('btnMobileShootStandardBubble').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.y = false;
+            })
+
+            document.getElementById('btnMobileShootPoisonBubble').addEventListener('touchend', (event) => {
+                event.preventDefault();
+                this.x = false;
+            })
+        }, 800);
 
     }
 }
