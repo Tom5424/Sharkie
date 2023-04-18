@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/media-start-screen.css">
+    <link rel="stylesheet" href="css/media-loading-screen.css">
+    <link rel="stylesheet" href="css/media-game-over-screen.css">
+    <link rel="stylesheet" href="css/media-win-screen.css">
+    <link rel="stylesheet" href="css/media-how-to-play-menu.css">
+    <link rel="stylesheet" href="css/media-game-description.css">
     <link rel="stylesheet" href="css/fonts.css">
 
     <link rel="shortcut icon" type="image/png" href="img/1.Sharkie/3.Swim/1.png">
@@ -104,7 +110,10 @@
 
         <!-------------------------------- Win Screen  -------------------------------->
         <div id="winScreen" class="containerWinScreen d-none">
-            <img onclick="btnTryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
+            <div class="btnsWinScreen">
+                <img onclick="tryAgain()" class="btnTryAgainWinScreen" src="img/6.Botones/Try again/Recurso 16.png">
+                <button onclick="goToMainMenuFromWinScreen()" class="btnMainMenuWinScreen">Main Menu</button>
+            </div>
         </div>
         <!-------------------------------- Win Screen  -------------------------------->
 
@@ -116,7 +125,11 @@
                 src="img/1.Sharkie/6.dead/2.Electro_shock/10.png">
             <img id="gameOverScreenImgDeadByPoison" class="gameOverScreenImgDeadByPoison d-none"
                 src="img/1.Sharkie/6.dead/1.Poisoned/12.png">
-            <img onclick="btnTryAgain()" class="btnTryAgainGameOverScreen" src="img/6.Botones/Try again/Recurso 16.png">
+            <div class="btnsGameOverScreen">
+                <img onclick="tryAgain()" class="btnTryAgainGameOverScreen"
+                    src="img/6.Botones/Try again/Recurso 16.png">
+                <button onclick="goToMainMenuFromGameOverScreen()" class="marginTop-0">Main Menu</button>
+            </div>
         </div>
         <!-------------------------------- Game Over Screen -------------------------------->
 
@@ -214,9 +227,9 @@
         <h2 id="headlineHowToPlayMenu" class="d-none">How to Play Menu</h2>
         <div id="menuHowToPlay" class="containerHowToPlayMenu d-none">
             <img onclick="closeMenuHowToPlay()" class="closeIcon" src="icons/close.png">
-            <button onclick="openMovementAndAttackDescription()">Movement and Attack</button>
-            <button onclick="openCollectablesDescription()">Collectables</button>
-            <button onclick="openGameDescription()">Game</button>
+            <button class="btnHowToPlayMenu" onclick="openMovementAndAttackDescription()">Movement and Attack</button>
+            <button class="btnHowToPlayMenu" onclick="openCollectablesDescription()">Collectables</button>
+            <button class="btnHowToPlayMenu" onclick="openGameDescription()">Game</button>
         </div>
         <!-------------------------------- How to Play Menu -------------------------------->
     </main>

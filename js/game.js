@@ -28,12 +28,32 @@ function stopAllIntervals() {
 }
 
 
-function btnTryAgain() {
+function tryAgain() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('gameOverScreen').classList.add('d-none');
     resetSounds();
     startGame();
+}
+
+
+function goToMainMenuFromWinScreen() {
+    gameIsStarted = false;
+    document.getElementById('winScreen').classList.add('d-none');
+    document.getElementById('startScreen').classList.remove('d-none');
+    document.getElementById('headline').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.add('d-none');
+    document.getElementById('enterFullScreenIcon').classList.add('d-none');
+}
+
+
+function goToMainMenuFromGameOverScreen() {
+    gameIsStarted = false;
+    document.getElementById('gameOverScreen').classList.add('d-none');
+    document.getElementById('startScreen').classList.remove('d-none');
+    document.getElementById('headline').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.add('d-none');
+    document.getElementById('enterFullScreenIcon').classList.add('d-none');
 }
 
 
@@ -163,8 +183,7 @@ function closeGameDescription() {
 
 
 function checkMobileBtns() {
-    gameIsStarted = true;
-    if (gameIsStarted && window.innerWidth <= 800) {
+    if (!gameIsStarted && window.innerWidth <= 800) {
         showMediaBtns();
     } else {
         hideMediaBtns();

@@ -1,0 +1,157 @@
+@media screen and (max-width: 1000px) {
+    .containerGameOverScreen {
+        width: 100vw;
+    }
+}
+
+
+@media screen and (max-width: 780px) {
+    .gameOverScreenText {
+        width: 600px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .gameOverScreenText {
+        width: 500px;
+    }
+
+    .btnTryAgainGameOverScreen {
+        height: 85px;
+        width: 220px;
+    }
+
+    button {
+        width: 230px;
+        height: 85px;
+        font-size: 35px;
+    }
+}
+
+
+@media screen and (max-width: 530px) {
+    .gameOverScreenText {
+        width: 400px;
+    }
+
+    .btnTryAgainGameOverScreen {
+        height: 85px;
+        width: 200px;
+    }
+
+    button {
+        width: 200px;
+        height: 85px;
+        font-size: 30px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .gameOverScreenText {
+        width: 320px;
+    }
+
+    .gameOverScreenImgDeadByPoison {
+        width: 300px;
+        height: 300px;
+    }
+
+    .gameOverScreenImgDeadByElectroShock {
+        width: 300px;
+        height: 300px;
+    }
+
+    .btnsGameOverScreen {
+        justify-content: unset;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btnTryAgainGameOverScreen {
+        width: 80%;
+    }
+
+    button {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 340px) {
+    .gameOverScreenText {
+        width: 250px;
+    }
+
+    .gameOverScreenImgDeadByPoison {
+        width: 280px;
+        height: 280px;
+    }
+
+    .gameOverScreenImgDeadByElectroShock {
+        width: 280px;
+        height: 280px;
+    }
+
+    .btnTryAgainGameOverScreen {
+        height: 75px;
+    }
+
+    button {
+        height: 75px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    .containerGameOverScreen {
+        height: 100vh;
+    }
+
+    .gameOverScreenText {
+        width: 500px;
+    }
+}
+
+
+@media screen and (max-height: 480px) {
+    .gameOverScreenText {
+        width: 400px;
+    }
+
+    .gameOverScreenImgDeadByElectroShock {
+        padding-bottom: 30px;
+    }
+
+    .gameOverScreenImgDeadByPoison {
+        margin-bottom: -70px;
+    }
+}
+
+
+@media screen and (max-height: 420px) {
+    .gameOverScreenText {
+        width: 350px;
+    }
+
+    .gameOverScreenImgDeadByElectroShock {
+        margin-top: -180px;
+    }
+
+    .gameOverScreenImgDeadByPoison {
+        margin-top: -50px;
+        margin-bottom: -80px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .btnTryAgainGameOverScreen {
+        height: 80px;
+    }
+
+    button {
+        height: 80px;
+    }
+}

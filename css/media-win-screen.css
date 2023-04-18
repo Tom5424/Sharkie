@@ -1,0 +1,65 @@
+@media screen and (max-width: 1000px) {
+    .containerWinScreen {
+        width: 100vw;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .btnTryAgainWinScreen {
+        height: 85px;
+        width: 250px;
+    }
+
+    .btnMainMenuWinScreen {
+        height: 85px;
+        width: 250px;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    .btnTryAgainWinScreen {
+        height: 70px;
+        width: 200px;
+    }
+
+    .btnMainMenuWinScreen {
+        height: 70px;
+        width: 200px;
+        font-size: 30px;
+    }
+}
+
+
+@media screen and (max-width: 440px) {
+    .btnsWinScreen {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    .containerWinScreen {
+        background-size: 100% 100vh;
+        height: 100vh;
+    }
+}
+
+
+@media screen and (max-height: 450px) {
+    .btnTryAgainWinScreen {
+        height: 80px;
+        width: 300px;
+        margin-top: -50px;
+    }
+
+    .btnMainMenuWinScreen {
+        height: 80px;
+        width: 300px;
+        margin-top: -50px;
+    }
+}

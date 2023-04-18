@@ -1,0 +1,164 @@
+@media screen and (max-width: 1000px) {
+    .containerGameDescription {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .containerGameDescription {
+        width: 800px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .containerGameDescription {
+        width: 650px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .containerGameDescription {
+        width: 500px;
+    }
+
+    .containerGameDescription p {
+        font-size: 18px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .containerHowDefeatPufferFish img {
+        width: 75px;
+    }
+}
+
+
+@media screen and (max-width: 510px) {
+    h2 {
+        font-size: 35px;
+    }
+
+    .containerGameDescription {
+        width: 400px;
+    }
+
+    .containerImages {
+        gap: 0;
+    }
+
+    .containerGameDescription p {
+        font-size: 16px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .containerHowDefeatJellyFish img {
+        width: 50px;
+    }
+
+    .containerHowDefeatPufferFish img {
+        width: 65px;
+    }
+
+    .imageSharkieFinSlap {
+        width: 130px !important;
+    }
+
+    .imageEndboss {
+        width: 130px !important;
+    }
+}
+
+
+@media screen and (max-width: 410px) {
+    h2 {
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+
+    .containerGameDescription {
+        width: 270px;
+    }
+
+    .containerGameDescription p {
+        font-size: 14px;
+    }
+
+    .containerHowDefeatJellyFish {
+        width: 100%;
+    }
+
+    .containerHowDefeatPufferFish {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-height: 710px) {
+    h2 {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+
+    .containerGameDescription {
+        height: 80vh;
+    }
+}
+
+
+@media screen and (max-height: 610px) {
+    .containerImages {
+        margin-top: -20px;
+    }
+
+    .containerGameDescription p {
+        font-size: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+@media screen and (max-height: 550px) {
+    h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .containerGameDescription {
+        flex-wrap: unset;
+    }
+
+    .containerHowDefeatJellyFish {
+        width: unset;
+    }
+
+    .containerHowDefeatPufferFish {
+        width: unset;
+    }
+
+    .containerHowDefeatEndboss {
+        width: unset;
+    }
+
+    .containerGameDescription p {
+        margin-bottom: 100px;
+    }
+}
+
+
+@media screen and (max-height: 460px) {
+    .containerGameDescription p {
+        font-size: 16px;
+    }
+
+    .containerHowDefeatJellyFish img {
+        width: 60px;
+    }
+
+    .containerGameDescription p {
+        margin-bottom: 45px;
+    }
+}

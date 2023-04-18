@@ -1,0 +1,33 @@
+@media screen and (max-width: 1000px) {
+    .containerLoadingScreen {
+        width: 100vw;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .containerLoadingScreen h2 {
+        font-size: 50px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .containerLoadingScreen h2 {
+        font-size: 40px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .containerLoadingScreen h2 {
+        font-size: 32px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    .containerLoadingScreen {
+        height: 100vh;
+    }
+}

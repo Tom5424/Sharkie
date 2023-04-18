@@ -1,0 +1,111 @@
+@media screen and (max-width: 1000px) {
+    .containerHowToPlayMenu {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .containerHowToPlayMenu {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .containerHowToPlayMenu {
+        width: 650px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .containerHowToPlayMenu {
+        width: 500px;
+    }
+}
+
+
+@media screen and (max-width: 510px) {
+    h2 {
+        font-size: 35px;
+    }
+
+    .containerHowToPlayMenu {
+        width: 350px;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    h2 {
+        font-size: 30px;
+    }
+
+    .containerHowToPlayMenu {
+        width: 270px;
+    }
+
+    .btnHowToPlayMenu {
+        width: 230px;
+        height: 80px;
+        font-size: 25px;
+        margin-top: 70px;
+    }
+}
+
+
+@media screen and (max-height: 650px) {
+    .containerHowToPlayMenu {
+        height: 450px;
+    }
+
+    .btnHowToPlayMenu {
+        margin-top: 35px;
+    }
+}
+
+
+@media screen and (max-height: 600px) {
+    h2 {
+        margin-bottom: 45px;
+    }
+
+    .containerHowToPlayMenu {
+        height: 350px;
+    }
+
+    .btnHowToPlayMenu {
+        margin-top: 25px;
+        height: 80px;
+        font-size: 25px;
+    }
+}
+
+
+@media screen and (max-height: 490px) {
+    h2 {
+        font-size: 25px;
+    }
+
+    .containerHowToPlayMenu {
+        height: 280px;
+    }
+
+    .btnHowToPlayMenu {
+        height: 60px;
+        font-size: 23px;
+    }
+}
+
+
+@media screen and (max-height: 380px) {
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .containerHowToPlayMenu {
+        height: 250px;
+    }
+
+    .btnHowToPlayMenu {
+        height: 50px;
+    }
+}
