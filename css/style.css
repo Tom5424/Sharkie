@@ -26,150 +26,8 @@ h1 {
 }
 
 
-.containerStartScreen {
-    width: 1000px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.containerBtn {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.containerLoadingScreen {
-    width: 1000px;
-    height: 600px;
-    background-image: url('../img/1.Sharkie/3.Swim/PreviewOP2.gif');
-    background-size: cover;
-}
-
-
-.containerLoadingScreen h2 {
-    margin: unset;
-    padding-top: 70px;
-    font-size: 60px;
-    text-align: center;
-}
-
-
-.imageSharkie {
-    width: 400px;
-    padding-bottom: 80px;
-}
-
-
-.btnStartScreen {
-    height: 95px;
-    width: 300px;
-    padding-bottom: 50px;
-}
-
-
-.btnStartScreen:hover {
-    transition: all 225ms ease-in-out;
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-
-.containerWinScreen {
-    width: 1000px;
-    height: 600px;
-    background-image: url('../img/6.Botones/Try again/Mesa de trabajo 1.png');
-    background-size: 100% 80vh;
-    background-repeat: no-repeat;
-}
-
-
-.btnsWinScreen {
-    height: 250px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-.btnTryAgainWinScreen {
-    height: 95px;
-    width: 300px;
-}
-
-
-.btnTryAgainWinScreen:hover {
-    transition: all 225ms ease-in-out;
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-
-.btnMainMenuWinScreen {
-    width: 300px;
-    font-size: 40px;
-    border-radius: 20px;
-    margin-top: 0;
-    border: 5px solid white;
-    background-color: #531A82;
-    color: white;
-    font-family: inherit;
-}
-
-
-.containerGameOverScreen {
-    background-image: url('../img/3. Background/Layers/5. Water/D.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 1000px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.gameOverScreenText {
-    width: 750px;
-}
-
-
-.gameOverScreenImgDeadByElectroShock {
-    width: 320px;
-    height: 320px;
-    margin-top: -100px;
-    padding-bottom: 80px;
-}
-
-
-.gameOverScreenImgDeadByPoison {
-    width: 320px;
-    height: 320px;
-    margin-top: -10px;
-}
-
-
-.btnsGameOverScreen {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-
-.btnTryAgainGameOverScreen {
-    height: 95px;
-    width: 300px;
-}
-
-
-.btnTryAgainGameOverScreen:hover {
-    transition: all 225ms ease-in-out;
-    cursor: pointer;
-    transform: scale(1.1);
+canvas {
+    border-radius: 10px;
 }
 
 
@@ -188,13 +46,6 @@ h1 {
 }
 
 
-.fullscreen {
-    width: 100%;
-    height: 100vh;
-    background-size: 100vw 100vh;
-}
-
-
 .iconMute {
     width: 30px;
     position: absolute;
@@ -207,206 +58,6 @@ h1 {
     transition: all 225ms ease-in-out;
     cursor: pointer;
     transform: scale(1.2);
-}
-
-
-.containerMovementAndAttackDescription {
-    background-color: #2e2d80;
-    position: relative;
-    width: 1000px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.containerMovementAndAttackDescription p {
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: bolder;
-}
-
-
-.containerMovementAndAttackDescription img {
-    width: 250px;
-    margin-top: -120px;
-}
-
-
-h2 {
-    font-size: 45px;
-    margin-bottom: 55px;
-    text-align: center;
-}
-
-
-.containerHowSharkieMove {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.containerHowSharkieShootNormalBubbles {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.containerHowSharkieShootPoisonBubbles {
-    margin-top: -30px;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.containerHowSharkieDoFinslap {
-    margin-top: -30px;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.containerCollectablesDescription {
-    background-color: #2e2d80;
-    position: relative;
-    width: 1000px;
-    height: 500px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-
-.containerCollectablesDescription p {
-    font-size: 22px;
-    margin-top: 30px;
-    font-weight: bolder;
-    text-align: center;
-}
-
-
-.containerColectableCoins {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.imageCoin {
-    width: 70px;
-}
-
-
-.imageProgressbar {
-    width: 300px;
-}
-
-
-.containerColectablePoisonVessel {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.imagePoisonVessel {
-    width: 70px;
-    margin-top: -25px;
-}
-
-
-.containerGameDescription {
-    background-color: #2e2d80;
-    position: relative;
-    width: 1000px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.containerGameDescription p {
-    margin-top: 40px;
-    font-size: 22px;
-    font-weight: bolder;
-    text-align: center;
-}
-
-
-.containerHowDefeatJellyFish {
-    width: 50%;
-}
-
-
-.containerHowDefeatJellyFish img {
-    width: 70px;
-}
-
-
-.containerImages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-
-.containerHowDefeatPufferFish {
-    width: 50%;
-}
-
-
-.containerHowDefeatPufferFish img {
-    width: 100px;
-}
-
-
-.imageSharkieFinSlap {
-    width: 150px !important;
-    margin-top: -60px;
-}
-
-
-.containerHowDefeatEndboss {
-    width: 100%;
-}
-
-
-.containerHowDefeatEndboss img {
-    width: 70px;
-}
-
-
-.imageEndboss {
-    width: 150px !important;
-    margin-top: -60px;
-}
-
-
-.containerHowToPlayMenu {
-    background-color: #2e2d80;
-    width: 1000px;
-    height: 500px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
 }
 
 
@@ -429,75 +80,55 @@ h2 {
 }
 
 
-.btnHowToPlayMenu {
-    width: 300px;
-    height: 100px;
-    font-size: 35px;
-    border-radius: 20px;
-    margin-top: 50px;
-    border: 5px solid white;
-    background-color: #531A82;
-    color: white;
-    font-family: inherit;
-}
-
-
-button:hover {
-    transition: all 225ms ease-in-out;
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-
 .btnMobileRight {
-    width: 30px;
+    width: 4%;
     position: absolute;
-    bottom: 5px;
-    left: 45px;
+    bottom: 2%;
+    left: 11%;
     border-radius: 10px;
     border: 3px solid white;
 }
 
 
 .btnMobileLeft {
-    width: 30px;
+    width: 4%;
     position: absolute;
-    bottom: 5px;
-    left: 5px;
+    bottom: 2%;
+    left: 1%;
     border-radius: 10px;
     border: 3px solid white;
 }
 
 
 .btnMobileDown {
-    width: 30px;
+    width: 4%;
     position: absolute;
-    bottom: 5px;
-    left: 140px;
+    bottom: 2%;
+    left: 6%;
     border-radius: 10px;
     border: 3px solid white;
 }
 
 
 .btnMobileUp {
-    width: 30px;
+    width: 4%;
     position: absolute;
-    bottom: 5px;
-    left: 100px;
+    bottom: 10%;
+    left: 6%;
     border-radius: 10px;
     border: 3px solid white
 }
 
 
 .btnMobileFinSlapAttack {
-    width: 60px;
-    height: 60px;
+    width: 7%;
+    height: 10%;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 5px;
-    bottom: 5px;
+    right: 1%;
+    bottom: 2%;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
@@ -508,14 +139,14 @@ button:hover {
 
 
 .btnMobileShootNormalBubble {
-    width: 60px;
-    height: 60px;
+    width: 7%;
+    height: 10%;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 155px;
-    bottom: 5px;
+    right: 9%;
+    bottom: 2%;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
@@ -526,14 +157,14 @@ button:hover {
 
 
 .btnMobileShootPoisonBubble {
-    width: 60px;
-    height: 60px;
+    width: 7%;
+    height: 10%;
     text-align: center;
     display: flex;
     align-items: center;
     position: absolute;
-    right: 80px;
-    bottom: 5px;
+    right: 17%;
+    bottom: 2%;
     background-color: #7FFFE0;
     color: #531A82;
     border-radius: 50%;
@@ -548,8 +179,31 @@ button:hover {
 }
 
 
+.fullscreen {
+    width: 100%;
+    height: 100vh;
+    background-size: 100vw 100vh;
+}
+
+
 .d-none {
     display: none !important;
+}
+
+
+.tiltYourDeviceInfo {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tiltYourDeviceInfo p {
+    color: white;
+    font-size: 30px;
 }
 
 
@@ -571,9 +225,4 @@ button:hover {
     100% {
         transform: scale(1);
     }
-}
-
-
-canvas {
-    border-radius: 10px;
 }

@@ -1,0 +1,63 @@
+.containerMovementAndAttackDescription {
+    background-color: #2e2d80;
+    position: relative;
+    width: 1000px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.containerMovementAndAttackDescription p {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+
+.containerMovementAndAttackDescription img {
+    width: 250px;
+    margin-top: -120px;
+}
+
+
+h2 {
+    font-size: 45px;
+    margin-bottom: 55px;
+    text-align: center;
+}
+
+
+.containerHowSharkieMove {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerHowSharkieShootNormalBubbles {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerHowSharkieShootPoisonBubbles {
+    margin-top: -30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerHowSharkieDoFinslap {
+    margin-top: -30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

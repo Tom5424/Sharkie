@@ -1,3 +1,4 @@
+/********************************************* width *********************************************/
 @media screen and (max-width: 1000px) {
     .containerStartScreen {
         width: 100%;
@@ -43,6 +44,10 @@
     }
 }
 
+/********************************************* width *********************************************/
+
+
+/********************************************* height *********************************************/
 
 @media screen and (max-height: 700px) {
     .containerStartScreen {
@@ -94,58 +99,4 @@
     }
 }
 
-
-
-
-
-
-
-
-@media screen and (max-width: 450px) {
-    .containerStartScreen {
-        display: none !important;
-    }
-
-    canvas {
-        display: none;
-    }
-
-    h1 {
-        display: none;
-    }
-
-    .tiltYourDeviceInfo {
-        display: flex !important;
-    }
-
-    .containerLoadingScreen {
-        display: none !important;
-    }
-
-    .containerGameOverScreen {
-        display: none !important;
-    }
-
-    .containerWinScreen {
-        display: none !important;
-    }
-
-    .containerHowToPlayMenu {
-        display: none !important;
-    }
-
-    .containerGameDescription {
-        display: none !important;
-    }
-
-    h2 {
-        display: none;
-    }
-}
-
-
-@media screen and (max-width: 400px) {
-    .tiltYourDeviceInfo p {
-        font-size: 20px;
-    }
-}
+/********************************************* height *********************************************/

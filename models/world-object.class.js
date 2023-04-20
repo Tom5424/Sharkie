@@ -27,24 +27,59 @@ class World {
         checkMobileBtns();
         this.clearCanvas();
         this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
+        this.drawBackgrounds();
+        this.drawCollectables();
+        this.drawEnemiesAndEndboss();
+        this.drawBubblesToShoot();
+        this.ctx.translate(-this.cameraX, 0);   // ==> Push Camera backward
+        this.drawProgressBars();
+        this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
+        this.drawCharacter();
+        this.ctx.translate(-this.cameraX, 0);  // ==> Push Camera backward
+        this.repeatDrawing();
+    }
+
+
+    drawBackgrounds() {
         this.addObjectsToMap(this.level.backgrounds);
+    }
+
+
+    drawCollectables() {
+        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poisonVessels);
+    }
+
+
+    drawEnemiesAndEndboss() {
         this.addObjectsToMap(this.level.pufferFishes);
         this.addObjectsToMap(this.level.jellyFishes);
-        this.addObjectsToMap(this.level.coins);
         this.addObjectToMap(this.level.endboss);
+    }
+
+
+    drawBubblesToShoot() {
         this.addObjectsToMap(this.bubbles);
         this.addObjectsToMap(this.poisonBubbles);
-        this.ctx.translate(-this.cameraX, 0);   // ==> Push Camera backward
+    }
+
+
+    drawProgressBars() {
         this.addObjectToMap(this.prorgressBarLife);
         this.addObjectToMap(this.prorgressBarCoin);
         this.addObjectToMap(this.prorgressBarPoison);
         if (this.drawHpBarFromEnbossIfEnbossFightStart())  // ==> This Function only trigger when the Endboss is close enough, to draws his HP bar.
             this.addObjectToMap(this.prorgressBarLifeEndboss);
-        this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
+    }
+
+
+    drawCharacter() {
         this.addObjectToMap(this.character);
-        this.ctx.translate(-this.cameraX, 0);  // ==> Push Camera backward
-        this.repeatDrawing();
+    }
+
+
+    drawHpBarFromEnbossIfEnbossFightStart() {
+        return this.character.x + 350 >= this.level.endboss.x - 300;
     }
 
 
@@ -61,14 +96,14 @@ class World {
         if (object.otherDirection) {
             this.flipImageBack(object);
         }
-        object.drawRectangleCharacter(this.ctx);
-        object.drawRectanglePufferFish(this.ctx);
-        object.drawRectangleJellyFish(this.ctx);
-        object.drawRectanglePosionVessels(this.ctx);
-        object.drawRectangleCoins(this.ctx);
-        object.drawRectangleBubble(this.ctx);
-        object.drawRectanglePoisonBubble(this.ctx);
-        object.drawRectangleEndboss(this.ctx);
+        // object.drawRectangleCharacter(this.ctx);
+        // object.drawRectanglePufferFish(this.ctx);
+        // object.drawRectangleJellyFish(this.ctx);
+        // object.drawRectanglePosionVessels(this.ctx);
+        // object.drawRectangleCoins(this.ctx);
+        // object.drawRectangleBubble(this.ctx);
+        // object.drawRectanglePoisonBubble(this.ctx);
+        // object.drawRectangleEndboss(this.ctx);
     }
 
 
@@ -76,11 +111,6 @@ class World {
         objects.forEach(object => {
             this.addObjectToMap(object);
         });
-    }
-
-
-    drawHpBarFromEnbossIfEnbossFightStart() {
-        return this.character.x + 350 >= this.level.endboss.x - 300;
     }
 
 

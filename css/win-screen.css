@@ -1,0 +1,48 @@
+.containerWinScreen {
+    width: 1000px;
+    height: 600px;
+    background-image: url('../img/6.Botones/Try again/Mesa de trabajo 1.png');
+    background-size: 100% 80vh;
+    background-repeat: no-repeat;
+}
+
+
+.btnsWinScreen {
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.btnTryAgainWinScreen {
+    height: 95px;
+    width: 300px;
+}
+
+
+.btnTryAgainWinScreen:hover {
+    transition: all 225ms ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+.btnMainMenuWinScreen {
+    width: 300px;
+    height: 95px;
+    font-size: 40px;
+    border-radius: 20px;
+    margin-top: 0;
+    border: 5px solid white;
+    background-color: #531A82;
+    color: white;
+    font-family: inherit;
+}
+
+
+.btnMainMenuWinScreen:hover {
+    transition: all 225ms ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
+}

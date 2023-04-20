@@ -143,7 +143,7 @@ class MovableObjects extends DrawableObjects {
 
 
     characterDoNormalDamage() {
-        this.energyEndboss -= 50;
+        this.energyEndboss -= 12;
     }
 
 
@@ -166,11 +166,6 @@ class MovableObjects extends DrawableObjects {
 
     reduceProgressFromProgressbarPoisonVesselIfCharacterShoot() {
         this.porgressPoisonVessel -= 10;
-    }
-
-
-    endbossGetHit() {
-        this.energyEndboss -= 15;
     }
 
 
@@ -212,7 +207,6 @@ class MovableObjects extends DrawableObjects {
             if (!pufferFish.otherDirection) {
                 this.y -= 30 - this.speed;
                 this.x += 30 + this.speed;
-
             } else {
                 this.y -= 30 - this.speed;
                 this.x -= 30 - this.speed;

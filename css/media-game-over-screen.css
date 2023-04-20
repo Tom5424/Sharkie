@@ -1,3 +1,4 @@
+/********************************************* width *********************************************/
 @media screen and (max-width: 1000px) {
     .containerGameOverScreen {
         width: 100vw;
@@ -18,6 +19,11 @@
     }
 
     .btnTryAgainGameOverScreen {
+        height: 85px;
+        width: 220px;
+    }
+
+    .btnMainMenuGameOverScreen {
         height: 85px;
         width: 220px;
     }
@@ -74,7 +80,7 @@
         width: 80%;
     }
 
-    button {
+    .btnMainMenuGameOverScreen {
         width: 80%;
     }
 }
@@ -104,7 +110,10 @@
     }
 }
 
+/********************************************* width *********************************************/
 
+
+/********************************************* height *********************************************/
 @media screen and (max-height: 600px) {
     .containerGameOverScreen {
         height: 100vh;
@@ -151,7 +160,9 @@
         height: 80px;
     }
 
-    button {
+    .btnMainMenuGameOverScreen {
         height: 80px;
     }
 }
+
+/********************************************* height *********************************************/

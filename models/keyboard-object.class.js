@@ -61,32 +61,26 @@ class Keyboard {
                 event.preventDefault();
                 this.right = true;
             })
-
             document.getElementById('btnMobileLeft').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.left = true;
             })
-
             document.getElementById('btnMobileDown').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.down = true;
             })
-
             document.getElementById('btnMobileUp').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.up = true;
             })
-
             document.getElementById('btnMobileFinSlapAttack').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.space = true;
             })
-
             document.getElementById('btnMobileShootStandardBubble').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.y = true;
             })
-
             document.getElementById('btnMobileShootPoisonBubble').addEventListener('touchstart', (event) => {
                 event.preventDefault();
                 this.x = true;
@@ -102,32 +96,26 @@ class Keyboard {
                 event.preventDefault();
                 this.right = false;
             })
-
             document.getElementById('btnMobileLeft').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.left = false;
             })
-
             document.getElementById('btnMobileDown').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.down = false;
             })
-
             document.getElementById('btnMobileUp').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.up = false;
             })
-
             document.getElementById('btnMobileFinSlapAttack').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.space = false;
             })
-
             document.getElementById('btnMobileShootStandardBubble').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.y = false;
             })
-
             document.getElementById('btnMobileShootPoisonBubble').addEventListener('touchend', (event) => {
                 event.preventDefault();
                 this.x = false;

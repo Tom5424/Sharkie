@@ -1,0 +1,53 @@
+.containerCollectablesDescription {
+    background-color: #2e2d80;
+    position: relative;
+    width: 1000px;
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.containerCollectablesDescription p {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+.containerColectableCoins {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.imageCoin {
+    width: 70px;
+    margin-top: 10px;
+}
+
+
+.imageProgressbar {
+    width: 300px;
+}
+
+
+.containerColectablePoisonVessel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.imagePoisonVessel {
+    width: 70px;
+    margin-top: 10px;
+}

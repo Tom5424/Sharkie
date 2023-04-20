@@ -183,7 +183,7 @@ function closeGameDescription() {
 
 
 function checkMobileBtns() {
-    if (!gameIsStarted && window.innerWidth <= 800) {
+    if (!gameIsStarted && window.innerWidth <= 1000) {
         showMediaBtns();
     } else {
         hideMediaBtns();

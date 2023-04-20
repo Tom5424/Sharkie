@@ -8,18 +8,29 @@
     <title>Sharkie</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/start-screen.css">
+    <link rel="stylesheet" href="css/loading-screen.css">
+    <link rel="stylesheet" href="css/win-screen.css">
+    <link rel="stylesheet" href="css/game-over-screen.css">
+    <link rel="stylesheet" href="css/movement-and-attack-menu-description.css">
+    <link rel="stylesheet" href="css/collectables-menu-description.css">
+    <link rel="stylesheet" href="css/game-menu-description.css">
+    <link rel="stylesheet" href="css/how-to-play-menu.css">
+
+    <link rel="stylesheet" href="css/media-canvas.css">
     <link rel="stylesheet" href="css/media-start-screen.css">
     <link rel="stylesheet" href="css/media-loading-screen.css">
     <link rel="stylesheet" href="css/media-game-over-screen.css">
     <link rel="stylesheet" href="css/media-win-screen.css">
     <link rel="stylesheet" href="css/media-how-to-play-menu.css">
     <link rel="stylesheet" href="css/media-game-description.css">
+    <link rel="stylesheet" href="css/media-collectables-description.css">
+    <link rel="stylesheet" href="css/media-movement-and-attack-description.css">
+    <link rel="stylesheet" href="css/media-tilt-your-screen-info.css">
     <link rel="stylesheet" href="css/fonts.css">
 
     <link rel="shortcut icon" type="image/png" href="img/1.Sharkie/3.Swim/1.png">
 
-    <script src="js/templates.js"></script>
     <script src="models/keyboard-object.class.js"></script>
     <script src="models/world-object.class.js"></script>
     <script src="js/game.js"></script>
@@ -84,7 +95,7 @@
 
 
         <!-------------------------------- Start Screen -------------------------------->
-        <div id="startScreen" class="containerStartScreen">
+        <div id="startScreen" class="containerStartScreen ">
             <img class="imageSharkie" src="img/1.Sharkie/1.IDLE/Prewiew.gif">
             <div class=containerBtn>
                 <img class="btnStartScreen" src="img/6.Botones/Start/1.png" onclick="startGame()">
@@ -128,7 +139,8 @@
             <div class="btnsGameOverScreen">
                 <img onclick="tryAgain()" class="btnTryAgainGameOverScreen"
                     src="img/6.Botones/Try again/Recurso 16.png">
-                <button onclick="goToMainMenuFromGameOverScreen()" class="marginTop-0">Main Menu</button>
+                <button onclick="goToMainMenuFromGameOverScreen()" class="btnMainMenuGameOverScreen marginTop-0">Main
+                    Menu</button>
             </div>
         </div>
         <!-------------------------------- Game Over Screen -------------------------------->
@@ -163,10 +175,9 @@
         <div id="collectablesDescription" class="containerCollectablesDescription  d-none">
             <img onclick="closeCollectablesDescription()" class="closeIcon" src="icons/close.png">
             <div class="containerColectableCoins">
-                <p>Collect Coins to Fill the Progressbar,
-                    <br>
+                <p>
+                    Collect Coins to Fill the Progressbar,
                     if the Progressbar is completely filled up,
-                    <br>
                     you deal 50% more Damage against the Endboss.
                 </p>
                 <img class="imageCoin" src="img/4. Marcadores/1. Coins/1.png">
@@ -175,7 +186,6 @@
             <div class="containerColectablePoisonVessel">
                 <p>
                     Collect the Poison Vessels to Fill the Progressbar
-                    <br>
                     you only have a limited number of Poison Vessels.
                 </p>
                 <img class="imagePoisonVessel" src="img/4. Marcadores/Posión/Animada/1.png">

@@ -1,0 +1,69 @@
+.containerGameDescription {
+    background-color: #2e2d80;
+    position: relative;
+    width: 1000px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.containerGameDescription p {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+.containerHowDefeatJellyFish {
+    width: 50%;
+}
+
+
+.containerHowDefeatJellyFish img {
+    width: 70px;
+}
+
+
+.containerImages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.containerHowDefeatPufferFish {
+    width: 50%;
+}
+
+
+.containerHowDefeatPufferFish img {
+    width: 100px;
+}
+
+
+.imageSharkieFinSlap {
+    width: 150px !important;
+    margin-top: -60px;
+}
+
+
+.containerHowDefeatEndboss {
+    width: 100%;
+}
+
+
+.containerHowDefeatEndboss img {
+    width: 70px;
+}
+
+
+.imageEndboss {
+    width: 150px !important;
+    margin-top: -60px;
+}

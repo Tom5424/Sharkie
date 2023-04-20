@@ -1,0 +1,34 @@
+.containerStartScreen {
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.imageSharkie {
+    width: 400px;
+    padding-bottom: 80px;
+}
+
+
+.containerBtn {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.btnStartScreen {
+    height: 95px;
+    width: 300px;
+    padding-bottom: 50px;
+}
+
+
+.btnStartScreen:hover {
+    transition: all 225ms ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
+}

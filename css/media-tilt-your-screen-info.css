@@ -1,0 +1,84 @@
+@media screen and (max-width: 450px) {
+    .containerStartScreen {
+        display: none !important;
+    }
+
+    canvas {
+        display: none;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .tiltYourDeviceInfo {
+        display: flex !important;
+    }
+
+    .containerLoadingScreen {
+        display: none !important;
+    }
+
+    .containerGameOverScreen {
+        display: none !important;
+    }
+
+    .containerWinScreen {
+        display: none !important;
+    }
+
+    .containerHowToPlayMenu {
+        display: none !important;
+    }
+
+    .containerGameDescription {
+        display: none !important;
+    }
+
+    .containerCollectablesDescription {
+        display: none !important;
+    }
+
+    .containerMovementAndAttackDescription {
+        display: none !important;
+    }
+
+    h2 {
+        display: none;
+    }
+
+    .btnMobileRight {
+        display: none;
+    }
+
+    .btnMobileLeft {
+        display: none;
+    }
+
+    .btnMobileDown {
+        display: none;
+    }
+
+    .btnMobileUp {
+        display: none;
+    }
+
+    .btnMobileFinSlapAttack {
+        display: none;
+    }
+
+    .btnMobileShootNormalBubble {
+        display: none;
+    }
+
+    .btnMobileShootPoisonBubble {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .tiltYourDeviceInfo p {
+        font-size: 20px;
+    }
+}

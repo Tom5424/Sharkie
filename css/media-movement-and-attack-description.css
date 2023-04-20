@@ -1,0 +1,147 @@
+/********************************************* width *********************************************/
+@media screen and (max-width: 1000px) {
+    .containerMovementAndAttackDescription {
+        width: 900px;
+    }
+
+    .containerMovementAndAttackDescription p {
+        margin-top: 40px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .containerMovementAndAttackDescription {
+        width: 800px;
+    }
+
+    .containerMovementAndAttackDescription p {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .containerMovementAndAttackDescription {
+        width: 650px;
+    }
+
+    .containerMovementAndAttackDescription p {
+        font-size: 16px;
+        margin-top: 50px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .containerMovementAndAttackDescription {
+        width: 500px;
+    }
+
+    .containerMovementAndAttackDescription p {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 510px) {
+    .containerMovementAndAttackDescription {
+        width: 440px;
+    }
+
+    .containerMovementAndAttackDescription img {
+        width: 220px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .containerMovementAndAttackDescription {
+        width: 400px;
+    }
+
+    .containerMovementAndAttackDescription img {
+        width: 180px;
+        margin-top: -80px;
+    }
+}
+
+
+@media screen and (max-width: 410px) {
+    .containerMovementAndAttackDescription {
+        width: 320px;
+    }
+
+    .containerMovementAndAttackDescription img {
+        width: 150px;
+        margin-top: -50px;
+    }
+}
+
+
+@media screen and (max-width: 325px) {
+    h2 {
+        font-size: 23px;
+    }
+
+    .containerMovementAndAttackDescription {
+        width: 250px;
+    }
+
+
+    .containerMovementAndAttackDescription p {
+        font-size: 14px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/********************************************* width *********************************************/
+
+
+/********************************************* height *********************************************/
+@media screen and (max-height: 610px) {
+    .containerMovementAndAttackDescription {
+        height: 350px;
+    }
+
+    .containerMovementAndAttackDescription img {
+        width: 200px;
+    }
+}
+
+
+@media screen and (max-height: 500px) {
+    .containerMovementAndAttackDescription img {
+        width: 180px;
+        margin-top: -100px;
+    }
+
+    .containerHowSharkieShootPoisonBubbles {
+        margin-top: -50px;
+    }
+
+    .containerHowSharkieDoFinslap {
+        margin-top: -50px;
+    }
+}
+
+
+@media screen and (max-height: 445px) {
+    .containerMovementAndAttackDescription {
+        height: 300px;
+    }
+
+    .containerMovementAndAttackDescription p {
+        font-size: 18px;
+    }
+
+    .containerMovementAndAttackDescription img {
+        width: 120px;
+        margin-top: -50px;
+    }
+}
+
+/********************************************* height *********************************************/

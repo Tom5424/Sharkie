@@ -1,0 +1,156 @@
+/****************************** width ******************************/
+@media screen and (max-width: 1000px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 850px) {
+    .btnMobileFinSlapAttack {
+        font-size: 12px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 12px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 12px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .btnMobileFinSlapAttack {
+        font-size: 10px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 10px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    .btnMobileFinSlapAttack {
+        font-size: 8px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 8px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .btnMobileFinSlapAttack {
+        font-size: 6px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 6px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 6px;
+    }
+
+    .iconFullScreen {
+        width: 25px;
+    }
+
+    .iconMute {
+        width: 25px;
+        right: 50px;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .btnMobileFinSlapAttack {
+        font-size: 5px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 5px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 5px;
+    }
+
+    .iconFullScreen {
+        width: 20px;
+    }
+
+    .iconMute {
+        width: 20px;
+        right: 45px;
+    }
+}
+
+/****************************** width ******************************/
+
+
+/****************************** height ******************************/
+@media screen and (max-height: 600px) {
+    canvas {
+        height: 100vh;
+    }
+}
+
+
+@media screen and (max-height: 470px) {
+    .btnMobileFinSlapAttack {
+        font-size: 12px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 12px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 12px;
+    }
+}
+
+
+@media screen and (max-height: 400px) {
+    .btnMobileFinSlapAttack {
+        font-size: 10px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 10px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-height: 350px) {
+    .btnMobileFinSlapAttack {
+        font-size: 8px;
+    }
+
+    .btnMobileShootNormalBubble {
+        font-size: 8px;
+    }
+
+    .btnMobileShootPoisonBubble {
+        font-size: 8px;
+    }
+}
+
+/****************************** height ******************************/

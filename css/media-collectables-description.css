@@ -1,0 +1,166 @@
+/********************************************* width *********************************************/
+@media screen and (max-width: 1000px) {
+    .containerCollectablesDescription {
+        width: 900px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .containerCollectablesDescription {
+        width: 800px;
+    }
+
+    .imagePoisonVessel {
+        margin-top: 40px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .containerCollectablesDescription {
+        width: 650px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .containerCollectablesDescription {
+        width: 500px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 20px;
+    }
+
+    .imagePoisonVessel {
+        margin-top: 5px;
+    }
+
+    .imageProgressbar {
+        width: 220px;
+    }
+}
+
+
+@media screen and (max-width: 510px) {
+    .containerCollectablesDescription {
+        width: 440px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 18px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .containerCollectablesDescription {
+        width: 400px;
+        flex-direction: column;
+        height: unset;
+    }
+
+    .containerCollectablesDescription p {
+        margin-top: 40px;
+    }
+
+    .containerColectableCoins {
+        width: 80%;
+    }
+
+    .containerColectablePoisonVessel {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 410px) {
+    .containerCollectablesDescription {
+        width: 320px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 17px;
+    }
+}
+
+
+@media screen and (max-width: 325px) {
+    .containerCollectablesDescription {
+        width: 250px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 16px;
+    }
+
+    .imageCoin {
+        width: 60px;
+    }
+
+    .imagePoisonVessel {
+        width: 60px;
+    }
+}
+
+/********************************************* width *********************************************/
+
+
+/********************************************* height *********************************************/
+@media screen and (max-height: 610px) {
+    .containerCollectablesDescription {
+        height: 350px;
+    }
+}
+
+
+@media screen and (max-height: 450px) {
+    .containerCollectablesDescription {
+        height: 300px;
+    }
+
+    .imagePoisonVessel {
+        width: 60px;
+        margin-top: 10px;
+    }
+
+    .imageCoin {
+        width: 60px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-height: 385px) {
+    .containerCollectablesDescription {
+        height: 250px;
+    }
+
+    .containerCollectablesDescription p {
+        font-size: 17px;
+        margin-top: 55px;
+    }
+
+    .imagePoisonVessel {
+        width: 50px;
+        margin-top: -10px;
+    }
+
+    .imageCoin {
+        width: 50px;
+    }
+
+    .imageProgressbar {
+        width: 230px;
+    }
+}
+
+/********************************************* height *********************************************/
