@@ -1,23 +1,41 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let gameIsStarted = false;
 
 
 function startGame() {
-    document.getElementById('headline').classList.add('d-none');
+    showLoadingScreen();
+    setTimeout(() => {
+        initLevel();
+        canvas = document.getElementById('canvas');
+        world = new World(canvas, keyboard);
+        unmuteSounds();
+        showMobileBtns();
+        playBackgroundMusic();
+        document.getElementById('canvas').classList.remove('d-none');
+        document.getElementById('enterFullScreenIcon').classList.remove('d-none');
+        document.getElementById('iconSoundOff').classList.remove('d-none');
+        document.getElementById('loadingScreen').classList.add('d-none');
+    }, 8000);
+}
+
+
+function showLoadingScreen() {
     document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('headline').classList.add('d-none');
     document.getElementById('loadingScreen').classList.remove('d-none');
-    // setTimeout(() => {
-    initLevel();
-    canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
-    playBackgroundMusic();
-    document.getElementById('enterFullScreenIcon').classList.remove('d-none');
-    document.getElementById('iconSoundOff').classList.remove('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('loadingScreen').classList.add('d-none');
-    // }, 8000);
+    document.getElementById('enterFullScreenIcon').classList.add('d-none');
+}
+
+
+function showMobileBtns() {
+    document.getElementById('btnMobileLeft').classList.remove('d-none');
+    document.getElementById('btnMobileRight').classList.remove('d-none');
+    document.getElementById('btnMobileDown').classList.remove('d-none');
+    document.getElementById('btnMobileUp').classList.remove('d-none');
+    document.getElementById('btnMobileFinSlapAttack').classList.remove('d-none');
+    document.getElementById('btnMobileShootStandardBubble').classList.remove('d-none');
+    document.getElementById('btnMobileShootPoisonBubble').classList.remove('d-none');
 }
 
 
@@ -29,36 +47,51 @@ function stopAllIntervals() {
 
 
 function tryAgain() {
-    document.getElementById('canvas').classList.remove('d-none');
+    closeFullScreen();
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('gameOverScreen').classList.add('d-none');
-    resetSounds();
+    document.getElementById('loadingScreen').classList.remove('d-none');
     startGame();
+    resetSounds();
+    document.getElementById('iconSoundOn').classList.add('d-none');
+    document.getElementById('iconSoundOff').classList.add('d-none');
 }
 
 
 function goToMainMenuFromWinScreen() {
-    gameIsStarted = false;
+    closeFullScreen();
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
     document.getElementById('headline').classList.remove('d-none');
     document.getElementById('iconSoundOff').classList.add('d-none');
+    document.getElementById('iconSoundOn').classList.add('d-none');
     document.getElementById('enterFullScreenIcon').classList.add('d-none');
 }
 
 
 function goToMainMenuFromGameOverScreen() {
-    gameIsStarted = false;
+    closeFullScreen();
     document.getElementById('gameOverScreen').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
     document.getElementById('headline').classList.remove('d-none');
     document.getElementById('iconSoundOff').classList.add('d-none');
+    document.getElementById('iconSoundOn').classList.add('d-none');
     document.getElementById('enterFullScreenIcon').classList.add('d-none');
 }
 
 
 function showWinScreen() {
+    resetSounds();
     setTimeout(() => {
+        document.getElementById('enterFullScreenIcon').classList.add('d-none');
+        document.getElementById('iconSoundOff').classList.add('d-none');
+        document.getElementById('btnMobileLeft').classList.add('d-none');
+        document.getElementById('btnMobileRight').classList.add('d-none');
+        document.getElementById('btnMobileDown').classList.add('d-none');
+        document.getElementById('btnMobileUp').classList.add('d-none');
+        document.getElementById('btnMobileFinSlapAttack').classList.add('d-none');
+        document.getElementById('btnMobileShootStandardBubble').classList.add('d-none');
+        document.getElementById('btnMobileShootPoisonBubble').classList.add('d-none');
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('winScreen').classList.remove('d-none');
         document.getElementById('winScreen').classList.add('scaleUpCenter');
@@ -67,7 +100,18 @@ function showWinScreen() {
 
 
 function showGameOverScreen() {
+    resetSounds();
     setTimeout(() => {
+        document.getElementById('enterFullScreenIcon').classList.add('d-none');
+        document.getElementById('iconSoundOff').classList.add('d-none');
+        document.getElementById('iconSoundOn').classList.add('d-none');
+        document.getElementById('btnMobileLeft').classList.add('d-none');
+        document.getElementById('btnMobileRight').classList.add('d-none');
+        document.getElementById('btnMobileDown').classList.add('d-none');
+        document.getElementById('btnMobileUp').classList.add('d-none');
+        document.getElementById('btnMobileFinSlapAttack').classList.add('d-none');
+        document.getElementById('btnMobileShootStandardBubble').classList.add('d-none');
+        document.getElementById('btnMobileShootPoisonBubble').classList.add('d-none');
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('gameOverScreen').classList.remove('d-none');
         document.getElementById('gameOverScreen').classList.add('scaleUpCenter');
@@ -104,7 +148,7 @@ function enterFullScreen() {
 
 
 function closeFullScreen() {
-    if (document.exitFullscreen) {
+    if (document.fullscreenElement) {
         document.exitFullscreen();
         document.getElementById('enterFullScreenIcon').classList.remove('d-none');
         document.getElementById('exitFullSCreenIcon').classList.add('d-none');
@@ -179,35 +223,4 @@ function closeGameDescription() {
     document.getElementById('gameDescription').classList.add('d-none');
     document.getElementById('menuHowToPlay').classList.remove('d-none');
     document.getElementById('headlineHowToPlayMenu').classList.remove('d-none');
-}
-
-
-function checkMobileBtns() {
-    if (!gameIsStarted && window.innerWidth <= 1000) {
-        showMediaBtns();
-    } else {
-        hideMediaBtns();
-    }
-}
-
-
-function showMediaBtns() {
-    document.getElementById('btnMobileLeft').classList.remove('d-none');
-    document.getElementById('btnMobileRight').classList.remove('d-none');
-    document.getElementById('btnMobileDown').classList.remove('d-none');
-    document.getElementById('btnMobileUp').classList.remove('d-none');
-    document.getElementById('btnMobileFinSlapAttack').classList.remove('d-none');
-    document.getElementById('btnMobileShootStandardBubble').classList.remove('d-none');
-    document.getElementById('btnMobileShootPoisonBubble').classList.remove('d-none');
-}
-
-
-function hideMediaBtns() {
-    document.getElementById('btnMobileLeft').classList.add('d-none');
-    document.getElementById('btnMobileRight').classList.add('d-none');
-    document.getElementById('btnMobileDown').classList.add('d-none');
-    document.getElementById('btnMobileUp').classList.add('d-none');
-    document.getElementById('btnMobileFinSlapAttack').classList.add('d-none');
-    document.getElementById('btnMobileShootStandardBubble').classList.add('d-none');
-    document.getElementById('btnMobileShootPoisonBubble').classList.add('d-none');
 }

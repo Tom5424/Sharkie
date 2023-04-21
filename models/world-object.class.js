@@ -24,7 +24,6 @@ class World {
 
 
     draw() {
-        checkMobileBtns();
         this.clearCanvas();
         this.ctx.translate(this.cameraX, 0);  // ==> Push Camera forward
         this.drawBackgrounds();

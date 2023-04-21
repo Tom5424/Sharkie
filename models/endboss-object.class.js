@@ -129,7 +129,7 @@ class Endboss extends MovableObjects {
 
     endbossHurtAndDashForward() {
         this.playAnimationMovableObject(this.imagesEndbossHurt);
-        this.x -= 12 - this.speed;
+        this.x -= 11 - this.speed;
     }
 
 
@@ -139,7 +139,7 @@ class Endboss extends MovableObjects {
 
 
     endbossRage() {
-        this.x -= 13 - this.speed;
+        this.x -= 12 - this.speed;
     }
 
 
