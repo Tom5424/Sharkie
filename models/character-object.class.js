@@ -164,17 +164,16 @@ class Character extends MovableObjects {
 
 
     animateCharacter() {
-        if (this.characterCanMoveRight()) {
+        if (this.characterCanMoveRight())
             this.moveRight();
-        } else if (this.characterCanMoveLeft()) {
+        if (this.characterCanMoveLeft())
             this.moveLeft();
-        } else if (this.characterCanMoveDown()) {
+        if (this.characterCanMoveDown())
             this.moveDown();
-        } else if (this.characterCanMoveUp()) {
+        if (this.characterCanMoveUp())
             this.moveUp();
-        } else if (this.characterCanIdle()) {
+        if (this.characterCanIdle())
             this.characterIdle();
-        }
     }
 
 
@@ -471,7 +470,7 @@ class Character extends MovableObjects {
     characterCanIdle() {
         let timeSpanIdle = new Date().getTime() - this.lastIdle;
         timeSpanIdle = timeSpanIdle / 1000;
-        return timeSpanIdle > 2;
+        return timeSpanIdle > 0.8;
     }
 
 

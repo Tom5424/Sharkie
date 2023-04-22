@@ -13,7 +13,7 @@ let audioHurtCharacter = new Audio('audio/hurt-character.mp3');
 let audioHurtEndboss = new Audio('audio/hurt-endboss.mp3');
 let audioShootBubble = new Audio('audio/shoot-bubble.mp3');
 let audioEndbossSpawn = new Audio('audio/endboss-spawn.mp3');
-
+let soundIsOn = false;
 
 
 function playBackgroundMusic() {
@@ -109,9 +109,24 @@ function resetSounds() {
 }
 
 
+function checkSounds() {
+    if (!soundIsOn) {
+        unmuteSounds();
+    } else {
+        muteSounds();
+    }
+}
+
+
 function unmuteSounds() {
-    document.getElementById('iconSoundOn').classList.add('d-none');
-    document.getElementById('iconSoundOff').classList.remove('d-none');
+    document.getElementById('iconSoundOn').classList.remove('d-none');
+    document.getElementById('iconSoundOff').classList.add('d-none');
+    unmuteAllSounds();
+}
+
+
+function unmuteAllSounds() {
+    soundIsOn = true;
     audioBackgroundMusic.muted = false;
     audioBackgroundMusicEndboss.muted = false;
     audioEndbossBites.muted = false;
@@ -131,8 +146,14 @@ function unmuteSounds() {
 
 
 function muteSounds() {
-    document.getElementById('iconSoundOn').classList.remove('d-none');
-    document.getElementById('iconSoundOff').classList.add('d-none');
+    document.getElementById('iconSoundOn').classList.add('d-none');
+    document.getElementById('iconSoundOff').classList.remove('d-none');
+    muteAllSounds();
+}
+
+
+function muteAllSounds() {
+    soundIsOn = false;
     audioBackgroundMusic.muted = true;
     audioBackgroundMusicEndboss.muted = true;
     audioEndbossBites.muted = true;

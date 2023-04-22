@@ -143,7 +143,7 @@ class MovableObjects extends DrawableObjects {
 
 
     characterDoNormalDamage() {
-        this.energyEndboss -= 13;
+        this.energyEndboss -= 100;
     }
 
 
