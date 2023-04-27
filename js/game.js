@@ -30,7 +30,7 @@ function startGame() {
  * 
  */
 function checkTouchBtnsForMobileDevices() {
-    let mediaQuerie = window.matchMedia('(max-width: 760px)');
+    let mediaQuerie = window.matchMedia('(max-width: 800px)');
     if (mediaQuerie.matches && gameIsStarted) {
         showTouchBtns();
     } else {
