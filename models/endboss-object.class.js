@@ -186,7 +186,7 @@ class Endboss extends MovableObjects {
      * 
      */
     endbossRage() {
-        this.x -= 12 - this.speed;
+        this.x -= 11 - this.speed;
     }
 
 

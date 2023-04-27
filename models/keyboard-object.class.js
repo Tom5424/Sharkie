@@ -99,7 +99,7 @@ class Keyboard {
                 event.preventDefault();
                 this.x = true;
             })
-        }, 800);
+        }, 1000);
 
     }
 
@@ -138,7 +138,7 @@ class Keyboard {
                 event.preventDefault();
                 this.x = false;
             })
-        }, 800);
+        }, 1000);
 
     }
 }

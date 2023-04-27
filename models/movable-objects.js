@@ -142,7 +142,7 @@ class MovableObjects extends DrawableObjects {
      * 
      */
     hitThroughEndboss() {
-        this.energy -= 15;
+        this.energy -= 14;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
@@ -199,7 +199,7 @@ class MovableObjects extends DrawableObjects {
      * 
      */
     characterDoExtraDamage() {
-        this.energyEndboss -= 12 + this.extraDamageAgainstEndboss;
+        this.energyEndboss -= 13 + this.extraDamageAgainstEndboss;
     }
 
 
@@ -208,7 +208,7 @@ class MovableObjects extends DrawableObjects {
      * 
      */
     characterDoNormalDamage() {
-        this.energyEndboss -= 12;
+        this.energyEndboss -= 13;
     }
 
 
