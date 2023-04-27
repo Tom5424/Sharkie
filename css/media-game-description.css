@@ -167,4 +167,23 @@
     }
 }
 
+
+@media screen and (max-height: 410px) {
+    .containerGameDescription {
+        height: 75vh;
+    }
+
+    .imageSharkieFinSlap {
+        width: 135px;
+    }
+
+    .imageEndboss {
+        width: 140px;
+    }
+
+    .containerHowDefeatEndboss img {
+        width: 60px;
+    }
+}
+
 /********************************************* height *********************************************/

@@ -37,22 +37,38 @@ class PufferFishGreen extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Puffer Fish generally.
+     * 
+     */
     animatePufferFishGenerally() {
         this.intervalSwimmingAnimationPufferFishGreen = setInterval(() => { this.pufferFishSwimmingAnimation(), this.pufferFishGreenMoveLeftAndRight() }, 120);
     }
 
 
+    /**
+     * This Function show the swimming Animation from the Puffer Fish.
+     * 
+     */
     pufferFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesSwimingPufferFishGreen);
     }
 
 
+    /**
+     * This Function show the dead Animation from Puffer Fish.
+     * 
+     */
     pufferFishIsDead() {
         clearInterval(this.intervalSwimmingAnimationPufferFishGreen);
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png');
     }
 
 
+    /**
+     * With this Function the Green Puffer Fish swimm back and forth (left and right).
+     * 
+     */
     pufferFishGreenMoveLeftAndRight() {
         if (this.x > 2500 && !this.otherDirection) {
             this.x -= 10 - this.speed;

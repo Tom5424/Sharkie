@@ -1,15 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharkie</title>
+    <title>Sharkie - The Game</title>
+    <link rel="shortcut icon" type="image/png" href="img/1.Sharkie/3.Swim/1.png">
+
+
+    <link rel="preload" href="js/game.js" as="script">
+    <link rel="preload" href="js/sounds.js" as="script">
+    <link rel="preload" href="models/background-object.class.js" as="script">
+    <link rel="preload" href="models/bubble-object.class.js" as="script">
+    <link rel="preload" href="models/character-object.class.js" as="script">
+    <link rel="preload" href="models/coins-object.class.js" as="script">
+    <link rel="preload" href="models/drawable-objects.js" as="script">
+    <link rel="preload" href="models/endboss-object.class.js" as="script">
+    <link rel="preload" href="models/jellyfishgreen-object.class.js" as="script">
+    <link rel="preload" href="models/jellyfishpink-object.class.js" as="script">
+    <link rel="preload" href="models/jellyfishpurple-object.class.js" as="script">
+    <link rel="preload" href="models/jellyfishyellow-object.class.js" as="script">
+    <link rel="preload" href="models/keyboard-object.class.js" as="script">
+    <link rel="preload" href="models/movable-objects.js" as="script">
+    <link rel="preload" href="models/poisonbubble-object.class.js" as="script">
+    <link rel="preload" href="models/poisonvessel-object.class.js" as="script">
+    <link rel="preload" href="models/progressbar-object.class.js" as="script">
+    <link rel="preload" href="models/progressbarcoin-object.class.js" as="script">
+    <link rel="preload" href="models/progressbarlife-object.class.js" as="script">
+    <link rel="preload" href="models/progressbarlifeendboss-object.class.js" as="script">
+    <link rel="preload" href="models/progressbarpoison-object.class.js" as="script">
+    <link rel="preload" href="models/pufferfishgreen-object.class.js" as="script">
+    <link rel="preload" href="models/pufferfishred-object.class.js" as="script">
+    <link rel="preload" href="models/pufferfishredglow-object.class.js" as="script">
+    <link rel="preload" href="models/world-object.class.js" as="script">
+    <link rel="preload" href="models/background-object.class.js" as="script">
+    <link rel="preload" href="levels/level.js" as="script">
+    <link rel="preload" href="levels/level1.js" as="script">
+
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/start-screen.css">
-    <link rel="stylesheet" href="css/loading-screen.css">
     <link rel="stylesheet" href="css/win-screen.css">
     <link rel="stylesheet" href="css/game-over-screen.css">
     <link rel="stylesheet" href="css/movement-and-attack-menu-description.css">
@@ -17,9 +48,9 @@
     <link rel="stylesheet" href="css/game-menu-description.css">
     <link rel="stylesheet" href="css/how-to-play-menu.css">
 
+
     <link rel="stylesheet" href="css/media-canvas.css">
     <link rel="stylesheet" href="css/media-start-screen.css">
-    <link rel="stylesheet" href="css/media-loading-screen.css">
     <link rel="stylesheet" href="css/media-game-over-screen.css">
     <link rel="stylesheet" href="css/media-win-screen.css">
     <link rel="stylesheet" href="css/media-how-to-play-menu.css">
@@ -29,7 +60,6 @@
     <link rel="stylesheet" href="css/media-tilt-your-screen-info.css">
     <link rel="stylesheet" href="css/fonts.css">
 
-    <link rel="shortcut icon" type="image/png" href="img/1.Sharkie/3.Swim/1.png">
 
     <script src="models/keyboard-object.class.js"></script>
     <script src="models/world-object.class.js"></script>
@@ -65,9 +95,9 @@
     <main id="main">
         <h1 id="headline">Sharkie - The Game</h1>
         <!-------------------------------- Icons in the upper right Corner -------------------------------->
-        <img id="enterFullScreenIcon" onclick="enterFullScreen()" class="iconFullScreen d-none"
+        <img id="enterFullScreenIcon" onclick="checkFullScreen()" class="iconFullScreen d-none"
             src="icons/fullscreen-enter.png">
-        <img id="exitFullSCreenIcon" onclick="closeFullScreen()" class="iconFullScreen d-none"
+        <img id="exitFullSCreenIcon" onclick="checkFullScreen()" class="iconFullScreen d-none"
             src="icons/fullscreen-exit.png">
 
 
@@ -110,13 +140,6 @@
             <p>Please tilt your device</p>
         </div>
         <!-------------------------------- Only for Mobile -------------------------------->
-
-
-        <!-------------------------------- Loading Screen -------------------------------->
-        <div id="loadingScreen" class="containerLoadingScreen d-none">
-            <h2>Game is Loading</h2>
-        </div>
-        <!-------------------------------- Loading Screen -------------------------------->
 
 
         <!-------------------------------- Win Screen  -------------------------------->

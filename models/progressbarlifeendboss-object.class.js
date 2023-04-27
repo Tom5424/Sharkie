@@ -17,7 +17,11 @@ class ProgressBarLifeEndboss extends ProgessBar {
     }
 
 
-
+    /**
+     * This Function update the Progessbar, to show the current Progress.
+     * 
+     * @param {number} percentage - The current percentage, to show the right Progress
+     */
     updateProgressbar(percentage) {
         this.percentage = percentage;
         let imagePath = this.imagesProgressbarLifeEndboss[this.showImageIndexProgessbarLife()]; // ==> Zeigt immer den aktuellen Index vom Bild an, damit immer der richtige Fortschritt von der Progressbar angezeigt wird.

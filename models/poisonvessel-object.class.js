@@ -26,6 +26,10 @@ class PoisonVessel extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Poison Vessel.
+     * 
+     */
     animatePoisonVessel() {
         setInterval(() => {
             this.playAnimationMovableObject(this.imagesPoisonVessel);

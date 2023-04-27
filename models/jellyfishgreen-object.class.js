@@ -29,16 +29,28 @@ class JellyFishGreen extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Jelly Fish generally.
+     * 
+     */
     animateJellyFishGenerally() {
         this.intervalJellyFishGreenMove = setInterval(() => { this.jellyFishSwimmingAnimation(), this.jeyllyFishSwimUpAndDown() }, 220);
     }
 
 
+    /**
+     * This Function show the swimming Animation from the Jelly Fish.
+     * 
+     */
     jellyFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesSwimingJellyFishGreen);
     }
 
 
+    /**
+     * This Function show the dead Animation from the Jelly Fish.
+     * 
+     */
     jellyFishIsDead() {
         clearInterval(this.intervalJellyFishGreenMove);
         setInterval(() => { this.playAnimationMovableObject(this.imagesDeadJellyFishGreen) }, 1000 / 10);

@@ -38,22 +38,38 @@ class PufferFishRedGlow extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Puffer Fish generally.
+     * 
+     */
     animatePufferFishGenerally() {
         this.intervalSwimmingAnimationPufferFishRedGlow = setInterval(() => { this.pufferFishSwimmingAnimation(), this.pufferFishRedGlowMoveLeftAndRight() }, 120);
     }
 
 
+    /**
+     * This Function show the swimming Animation from the Puffer Fish.
+     * 
+     */
     pufferFishSwimmingAnimation() {
         this.playAnimationMovableObject(this.imagesPufferFishRedGlowSwimming);
     }
 
 
+    /**
+     * This Function show the dead Animation from Puffer Fish.
+     * 
+     */
     pufferFishIsDead() {
         clearInterval(this.intervalSwimmingAnimationPufferFishRedGlow);
         this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.2.png');
     }
 
 
+    /**
+     * With this Function the Red Glow Puffer Fish swimm back and forth (left and right).
+     * 
+     */
     pufferFishRedGlowMoveLeftAndRight() {
         if (this.x > 2000 && !this.otherDirection) {
             this.x -= 10 - this.speed;

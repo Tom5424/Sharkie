@@ -20,6 +20,11 @@ class MovableObjects extends DrawableObjects {
     extraDamageAgainstEndboss = 6;
 
 
+    /**
+     * This Function play Animations from the corresponding Movable Object.
+     * 
+     * @param {array} imagesMovableObject - The current Array from the Movable Object
+     */
     playAnimationMovableObject(imagesMovableObject) {
         let index = this.currentImage % imagesMovableObject.length;
         let currentPath = imagesMovableObject[index];
@@ -28,6 +33,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Jelly Fish swim up and down.
+     * 
+     */
     jeyllyFishSwimUpAndDown() {
         if (this.y > 150 && !this.swimUp) {
             this.y -= 15 - Math.round(Math.random() * 10);
@@ -42,6 +51,12 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check Collisions between Character and Enemies. 
+     * 
+     * @param {string} collidingObject - The Colliding Object 
+     * @returns {boolean} true or false, if a collision occurs
+     */
     isColliding(collidingObject) {
         return this.x + this.offset.left < collidingObject.x + collidingObject.width - collidingObject.offset.right &&  // ==> hinten
             this.x + this.width - this.offset.right > collidingObject.x + collidingObject.offset.left && // ==> vorne 
@@ -50,6 +65,12 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check Collisions between Character and Collectables. 
+     * 
+     * @param {string} collectedObject - The Colliding Object 
+     * @returns {boolean} true or false, if a collision occurs
+     */
     isCollected(collectedObject) {
         return this.x + this.offset.left < collectedObject.x + collectedObject.width - collectedObject.offset.right &&  // ==> hinten
             this.x + this.width - this.offset.right > collectedObject.x + collectedObject.offset.left && // ==> vorne 
@@ -58,6 +79,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Character get a hit through Puffer Fish. 
+     * 
+     */
     hitThroughPufferFish() {
         this.energy -= 10;
         if (this.energy < 0) {
@@ -71,6 +96,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character is hurt through Puffer Fish.
+     * 
+     * @returns {boolean} - true or false, if the Character is hurt through Puffer Fish.
+     */
     isHurtThroughPufferFish() {
         let timeSpan = new Date().getTime() - this.lastHitThroughPoisoned;
         timeSpan = timeSpan / 1000;
@@ -78,6 +108,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Character get a hit through Jelly Fish. 
+     * 
+     */
     hitThroughJellyFish() {
         this.energy -= 10;
         if (this.energy < 0) {
@@ -91,6 +125,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character is hurt through Jelly Fish.
+     * 
+     * @returns {boolean} - true or false, if the Character is hurt through Jelly Fish.
+     */
     isHurtThroughJellyFish() {
         let timeSpan = new Date().getTime() - this.lastHitThroughEletroSchock;
         timeSpan = timeSpan / 1000;
@@ -98,6 +137,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Character get a hit through Endboss. 
+     * 
+     */
     hitThroughEndboss() {
         this.energy -= 15;
         if (this.energy < 0) {
@@ -111,6 +154,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character is hurt through Endboss.
+     * 
+     * @returns {boolean} - true or false, if the Character is hurt through Endboss.
+     */
     isHurtThroughEndboss() {
         let timeSpan = new Date().getTime() - this.lastHitThroughEndboss;
         timeSpan = timeSpan / 1000;
@@ -118,6 +166,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Character hit the Endboss.
+     * 
+     */
     characterHitEndboss() {
         if (this.characterCanDoExtraDamge()) {
             this.characterDoExtraDamage();
@@ -132,21 +184,39 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can do extra Damage.
+     * 
+     * @returns {boolean} - true or false, if the Character can do extra Damage
+     */
     characterCanDoExtraDamge() {
         return world.character.porgressCoin == 100;
     }
 
 
+    /**
+     * With this Function the Character can do extra Damage.
+     * 
+     */
     characterDoExtraDamage() {
         this.energyEndboss -= 12 + this.extraDamageAgainstEndboss;
     }
 
 
+    /**
+     * With this Function the Character do normal Damage.
+     * 
+     */
     characterDoNormalDamage() {
-        this.energyEndboss -= 100;
+        this.energyEndboss -= 12;
     }
 
 
+    /**
+     * This Function check, if the Endboss is hurt.
+     * 
+     * @returns {boolean} - true or false, if the Endboss is hurt.
+     */
     endbossIsHurt() {
         let timeSpan = new Date().getTime() - this.characterLastHitAgainstEndboss;
         timeSpan = timeSpan / 1000;
@@ -154,21 +224,37 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function raise the Progress from the Progressbar Coin.
+     * 
+     */
     raiseProgressFromProgressbarCoin() {
         this.porgressCoin += 10;
     }
 
 
+    /**
+     * This Function raise the Progress from the Progressbar Poison Vessel.
+     * 
+     */
     raiseProgressFromProgressbarPoisonVessel() {
         this.porgressPoisonVessel += 10;
     }
 
 
+    /**
+     * This Function reduce the Progress from the Progressbar Poison Vessel.
+     * 
+     */
     reduceProgressFromProgressbarPoisonVesselIfCharacterShoot() {
         this.porgressPoisonVessel -= 10;
     }
 
 
+    /**
+     * With this Function the Bubble is Flying.
+     * 
+     */
     bubbleFlying(otherDirection) {
         setInterval(() => {
             if (!otherDirection) {
@@ -182,6 +268,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Jelly Fish Flies and Disappear from the Map.
+     * 
+     */
     jellFishFliesUpAndDisappear(jellyFish) {
         let indexJellyFish = world.level.jellyFishes.indexOf(jellyFish);
         setInterval(() => {
@@ -193,6 +283,12 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can hit with the Fin Slap Attack.
+     * 
+     * @param {string} pufferFish - The current Puffer Fish 
+     * @returns {boolean} true or false, if the Character can hit the Puffer Fish the Fin Slap Attack
+     */
     hitThroughFinSlap(pufferFish) {
         return this.x + this.offset.left - 20 < pufferFish.x + pufferFish.width - pufferFish.offset.right &&  // ==> hinten
             this.x + this.width - this.offset.right + 35 > pufferFish.x + pufferFish.offset.left && // ==> vorne 
@@ -201,6 +297,10 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * With this Function the Puffer Fish Flies and Disappear from the Map.
+     * 
+     */
     pufferFliesUpAndDisappear(pufferFish) {
         let indexPufferFish = world.level.pufferFishes.indexOf(pufferFish);
         setInterval(() => {
@@ -216,6 +316,11 @@ class MovableObjects extends DrawableObjects {
     }
 
 
+    /**
+     * This Function remove the Puffer Fish from the Array, after hit.
+     * 
+     * @param {number} indexPufferFish - The current index from Puffer Fish 
+     */
     erasePufferFishFromArray(indexPufferFish) {
         setTimeout(() => {
             world.level.pufferFishes.splice(indexPufferFish, 1);

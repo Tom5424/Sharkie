@@ -66,6 +66,10 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Character generally.
+     * 
+     */
     animateEndbossGenerally() {
         this.intervalEndbossSpawn = setInterval(() => { this.endbossFightStart() }, 150);
         this.intervalEndbossSwiming = setInterval(() => { this.endbossFightIsInProgress() }, 160);
@@ -73,6 +77,10 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * With this Function the Endboss Figth Start.
+     * 
+     */
     endbossFightStart() {
         if (this.endbossCanSpawn()) {
             this.endbossSpawn();
@@ -80,11 +88,20 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Endboss can spawn.
+     * 
+     * @returns {boolean} - true or false, if Endboss can spawn
+     */
     endbossCanSpawn() {
         return world.character.x > 2600 && !this.hadFirstContactWithEndboss && audioEndbossSpawn.play();
     }
 
 
+    /**
+     * With this Function the Endboss spawn.
+     * 
+     */
     endbossSpawn() {
         this.playAnimationMovableObject(this.imagesEndbossSpawn);
         setTimeout(() => {
@@ -94,6 +111,10 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * With this Function Endboss Figth is in Progress.
+     * 
+     */
     endbossFightIsInProgress() {
         if (this.endbossIsSpawn()) {
             playBackgroundMusicEndboss();
@@ -108,17 +129,30 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Endboss can spawn.
+     * 
+     * @returns {boolean} - true or false, if the Endboss can spawn
+     */
     endbossIsSpawn() {
         return this.hadFirstContactWithEndboss;
     }
 
 
+    /**
+     * With this Function the Endboss start swimming.
+     * 
+     */
     endbossStartSwiming() {
         this.playAnimationMovableObject(this.imagesEndbossAttack);
         this.endbossMoveLeft();
     }
 
 
+    /**
+     * With this Function the Endboss move left.
+     * 
+     */
     endbossMoveLeft() {
         if (!this.endbossIsHurt()) {
             playSoundEndbossBites();
@@ -127,22 +161,39 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * With this Function the Endboss dash forward, if he get a hit.
+     * 
+     */
     endbossHurtAndDashForward() {
         this.playAnimationMovableObject(this.imagesEndbossHurt);
         this.x -= 11 - this.speed;
     }
 
 
+    /**
+     * This Function check, if the Endboss can rage, if his HP is equal or lower then 50.
+     * 
+     * @returns {boolean} - true or false, if the Endboss can start raging
+     */
     endbossCanStartRageMode() {
         return this.energyEndboss <= 50;
     }
 
 
+    /**
+     * With this Function the Endboss swimm faster.
+     * 
+     */
     endbossRage() {
         this.x -= 12 - this.speed;
     }
 
 
+    /**
+     * With this Function the Endboss figth is done.
+     * 
+     */
     endbossFightIsDone() {
         if (this.endbossIsDead()) {
             this.gameIsOver(this.intervalEndbossSwiming);
@@ -150,11 +201,20 @@ class Endboss extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Endboss is dead.
+     * 
+     * @returns {boolean} - true or false, if the Endboss is dead.
+     */
     endbossIsDead() {
         return this.energyEndboss == 0;
     }
 
 
+    /**
+     * With this Function the game is over.
+     * 
+     */
     gameIsOver() {
         clearInterval(this.intervalEndbossSwiming);
         this.playAnimationMovableObject(this.imagesEndbossDead);

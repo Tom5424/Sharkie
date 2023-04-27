@@ -7,6 +7,7 @@ class Keyboard {
     x = false;
     space = false;
 
+
     constructor() {
         this.addKeyboardEvents();
         this.removeKeyboardEvents();
@@ -15,6 +16,11 @@ class Keyboard {
     }
 
 
+
+    /**
+     * This Function add Keyboard Events.
+     * 
+     */
     addKeyboardEvents() {
         window.addEventListener('keydown', (event) => {
             if (event.key == 'ArrowUp')
@@ -35,6 +41,10 @@ class Keyboard {
     }
 
 
+    /**
+     * This Function remove Keyboard Events.
+     * 
+     */
     removeKeyboardEvents() {
         window.addEventListener('keyup', (event) => {
             if (event.key == 'ArrowUp')
@@ -55,6 +65,10 @@ class Keyboard {
     }
 
 
+    /**
+     * This Function add Touch Events.
+     * 
+     */
     addTouchEvents() {
         setTimeout(() => {
             document.getElementById('btnMobileRight').addEventListener('touchstart', (event) => {
@@ -90,6 +104,10 @@ class Keyboard {
     }
 
 
+    /**
+     * This Function remove Touch Events.
+     * 
+     */
     removeTouchEvents() {
         setTimeout(() => {
             document.getElementById('btnMobileRight').addEventListener('touchend', (event) => {

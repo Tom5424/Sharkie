@@ -16,6 +16,10 @@ let audioEndbossSpawn = new Audio('audio/endboss-spawn.mp3');
 let soundIsOn = false;
 
 
+/**
+ * This Function play the Background Music.
+ * 
+ */
 function playBackgroundMusic() {
     audioBackgroundMusic.play();
     audioBackgroundMusic.volume = 0.2;
@@ -23,6 +27,10 @@ function playBackgroundMusic() {
 }
 
 
+/**
+ * This Function play the Background Music from Endboss.
+ * 
+ */
 function playBackgroundMusicEndboss() {
     audioBackgroundMusicEndboss.play();
     audioBackgroundMusicEndboss.volume = 0.3;
@@ -30,85 +38,150 @@ function playBackgroundMusicEndboss() {
 }
 
 
+/**
+ * This Function play sound if a Bottle is collected.
+ * 
+ */
 function playSoundBottleCollected() {
     audioBottleCollected.play();
 }
 
 
+/**
+ * This Function play sound if a Coin is collected.
+ * 
+ */
 function playSoundCoinCollected() {
     audioCoinCollected.play();
 }
 
 
+/**
+ * This Function play sound if the Character is sleep.
+ * 
+ */
 function playSoundCharacterIdle() {
     audioCharacterIdle.play();
     audioCharacterIdle.volume = 0.10;
 }
 
 
+
+/**
+ * This Function play sound if the Character move.
+ * 
+ */
 function playSoundCharacterMove() {
     audioCharacterMove.play();
     audioCharacterMove.volume = 0.5;
 }
 
 
+
+/**
+ * This Function play sound if the Character do the Fins Slap Attack.
+ * 
+ */
 function playSoundCharacterDoFinSlap() {
     audioFinSlap.play();
 }
 
 
+
+/**
+ * This Function play sound if the Game is lost.
+ * 
+ */
 function playSoundGameIsLost() {
     audioGameIsLost.play();
 }
 
 
+
+/**
+ * This Function play sound if the Game is win.
+ * 
+ */
 function playSoundGameIsWin() {
     audioGameIsWin.play();
 }
 
 
+/**
+ * This Function play sound if the Character is hit through Jelly Fish.
+ * 
+ */
 function playSoundHurtThroughElectroShocked() {
     audioHurtElectroshocked.play();
 }
 
 
+/**
+ * This Function play sound if the Character is hit through Puffer Fish.
+ * 
+ */
 function playSoundHurtCharacter() {
     audioHurtCharacter.play();
     audioHurtCharacter.volume = 0.5;
 }
 
 
+/**
+ * This Function play sound if the Endboss is hit.
+ * 
+ */
 function playSoundHurtEndboss() {
     audioHurtEndboss.play();
     audioHurtEndboss.volume = 0.5;
 }
 
 
+/**
+ * This Function play sound if the Character shoot a Bubble.
+ * 
+ */
 function playSoundShootBubble() {
     audioShootBubble.play();
 }
 
 
+/**
+ * This Function play sound if the Endboss bite.
+ * 
+ */
 function playSoundEndbossBites() {
     audioEndbossBites.play();
     audioEndbossBites.playbackRate = 2.0;
 }
 
 
+/**
+ * This Function play sound if the Endboss spawn.
+ * 
+ */
 function playSoundEndbossSpawn() {
     audioEndbossSpawn.play();
 }
 
 
+/**
+ * This Function reset all Sounds.
+ * 
+ */
 function resetSounds() {
     audioBackgroundMusicEndboss.pause();
     audioBackgroundMusic.pause();
     audioHurtEndboss.pause();
     audioBackgroundMusicEndboss.currentTime = 0;
     audioBackgroundMusic.currentTime = 0;
+    audioCharacterIdle.pause();
 }
 
 
+/**
+ * This Function check the sounds.
+ * 
+ */
 function checkSounds() {
     if (!soundIsOn) {
         unmuteSounds();
@@ -118,6 +191,10 @@ function checkSounds() {
 }
 
 
+/**
+ * This Function unmute Sounds.
+ * 
+ */
 function unmuteSounds() {
     document.getElementById('iconSoundOn').classList.remove('d-none');
     document.getElementById('iconSoundOff').classList.add('d-none');
@@ -125,6 +202,10 @@ function unmuteSounds() {
 }
 
 
+/**
+ * This Function unmute all Sounds.
+ * 
+ */
 function unmuteAllSounds() {
     soundIsOn = true;
     audioBackgroundMusic.muted = false;
@@ -145,6 +226,10 @@ function unmuteAllSounds() {
 }
 
 
+/**
+ * This Function mute Sounds.
+ * 
+ */
 function muteSounds() {
     document.getElementById('iconSoundOn').classList.add('d-none');
     document.getElementById('iconSoundOff').classList.remove('d-none');
@@ -152,6 +237,11 @@ function muteSounds() {
 }
 
 
+
+/**
+ * This Function mute all Sounds.
+ * 
+ */
 function muteAllSounds() {
     soundIsOn = false;
     audioBackgroundMusic.muted = true;

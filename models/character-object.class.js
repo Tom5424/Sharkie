@@ -156,6 +156,11 @@ class Character extends MovableObjects {
         this.characterAnimationsGenerally();
     }
 
+
+    /**
+     * This Function Animate the Character generally.
+     * 
+     */
     characterAnimationsGenerally() {
         setInterval(() => { this.animateCharacter() }, 1000 / 10);
         setInterval(() => { this.characterHitAndDeathAnimations() }, 1000 / 10);
@@ -163,6 +168,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function Animate the Character.
+     * 
+     */
     animateCharacter() {
         if (this.characterCanMoveRight())
             this.moveRight();
@@ -177,11 +186,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can move right.
+     * 
+     * @returns {boolean} - true or false, if the Character can move right.
+     */
     characterCanMoveRight() {
         return this.world.keyboard.right && this.x < 2700 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 
+    /**
+     * This Function move the Character right.
+     * 
+     */
     moveRight() {
         playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
@@ -192,11 +210,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can move left.
+     * 
+     * @returns {boolean} - true or false, if the Character can move left.
+     */
     characterCanMoveLeft() {
         return this.world.keyboard.left && this.x > 0 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 
+    /**
+     * This Function move the Character left.
+     * 
+     */
     moveLeft() {
         playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
@@ -207,11 +234,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can move down.
+     * 
+     * @returns {boolean} - true or false, if the Character can move down.
+     */
     characterCanMoveDown() {
         return this.world.keyboard.down && this.y < 300 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 
+    /**
+     * This Function move the Character down.
+     * 
+     */
     moveDown() {
         playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
@@ -220,11 +256,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can move up.
+     * 
+     * @returns {boolean} - true or false, if the Character can move up.
+     */
     characterCanMoveUp() {
         return this.world.keyboard.up && this.y > 37 && !this.world.keyboard.y && !this.shootStandardBubble && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.space && !this.didFinSlap;
     }
 
 
+    /**
+     * This Function move the Character up.
+     * 
+     */
     moveUp() {
         playSoundCharacterMove();
         this.saveTimeStampAfterAnimation();
@@ -233,6 +278,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function  show the hit and death Animations from the Character.
+     * 
+     */
     characterHitAndDeathAnimations() {
         this.hitAndDeathAnimationsJellyFish();
         this.hitAndDeathAnimationsPufferFish();
@@ -240,6 +289,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function show the hit and death Animations through the Jelly Fish.
+     * 
+     */
     hitAndDeathAnimationsJellyFish() {
         if (this.isHurtThroughJellyFish()) {
             this.characterIsElektroSchoked();
@@ -253,21 +306,38 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play Animation if Character is Electro Shocked.
+     * 
+     */
     characterIsElektroSchoked() {
         this.playAnimationMovableObject(this.imagesHitThroughJellyFish);
     }
 
 
+    /**
+     * This Function check, if the Character die through Jelly Fish.
+     * 
+     * @returns {boolean} - true or false, if the Character die through Jelly Fish.
+     */
     isDeadThroughJellyFish() {
         return this.diedThrough == 'jellyFish';
     }
 
 
+    /**
+     * This Function play Animation if Character is dead through Electro Shocked.
+     * 
+     */
     characterIsDeadThroughElectroShocks() {
         this.playAnimationMovableObject(this.imagesDeadElectroShock);
     }
 
 
+    /**
+     * This Function show the hit and death Animations through the Puffer Fish.
+     * 
+     */
     hitAndDeathAnimationsPufferFish() {
         if (this.isHurtThroughPufferFish()) {
             this.characterIsPoisoned();
@@ -281,16 +351,29 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play Animation if Character is Poisoned.
+     * 
+     */
     characterIsPoisoned() {
         this.playAnimationMovableObject(this.imagesHitThroughPufferfish);
     }
 
 
+    /**
+     * This Function check, if the Character die through Puffer Fish.
+     * 
+     * @returns {boolean} - true or false, if the Character die through Puffer Fish.
+     */
     isDeadThroughPufferFish() {
         return this.diedThrough == 'pufferFish';
     }
 
 
+    /**
+     * This Function show the hit and death Animations through the Endboss.
+     * 
+     */
     hitAndDeathAnimationsEndboss() {
         if (this.isHurtThroughEndboss()) {
             this.characterIsPoisoned();
@@ -304,16 +387,29 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character die through Endboss.
+     * 
+     * @returns {boolean} - true or false, if the Character die through Endboss.
+     */
     isDeadThroughEndboss() {
         return this.diedThrough == 'endboss';
     }
 
 
+    /**
+     * This Function play Animation if Character is Poisoned.
+     * 
+     */
     characterIsDeadThroughPoisoned() {
         this.playAnimationMovableObject(this.imagesDeadPoisoned);
     }
 
 
+    /**
+     * This Function check the direction from the Character, to shoot Bubbles in other Direction.
+     * 
+     */
     flipSharkieToShootBubbleInOtherDirection() {
         if (!this.otherDirection) {
             this.bubble = new Bubble(this.world.character.x + 220, this.world.character.y + 165);
@@ -328,6 +424,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play Attack Animations from the Character.
+     * 
+     */
     characterAttackAnimations() {
         this.flipSharkieToShootBubbleInOtherDirection();
         if (this.characterCanShootStandardBubble()) {
@@ -340,11 +440,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can shoot normal Bubbles.
+     * 
+     * @returns {boolean} - true or false, if the Character can shoot normal Bubbles.
+     */
     characterCanShootStandardBubble() {
         return this.world.keyboard.y && !this.world.keyboard.x && !this.shootStandardBubble && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
+    /**
+     * With this Function shoot the Character normal Bubbles.
+     * 
+     */
     characterShootBubbleStandard() {
         playSoundShootBubble();
         this.saveTimeStampAfterAnimation();
@@ -354,6 +463,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play the Animation from Character, if shoot normal Bubbles.
+     * 
+     */
     playAnimationCharacterShootStandardBubble() {
         this.currentImage = 0;
         this.intervalSharkieShootStandardBubble = setInterval(() => {
@@ -363,6 +476,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function carry out to shoot normal Bubbles.
+     * 
+     */
     characterCarryOutShootBubbleStandard() {
         setTimeout(() => {
             this.world.bubbles.push(this.bubble);
@@ -372,6 +489,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function clear the interval after shoot normal Bubbles.
+     * 
+     */
     clearIntervalShootedBubbleStandard() {
         setTimeout(() => {
             clearInterval(this.intervalSharkieShootStandardBubble);
@@ -380,6 +501,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function remove the normal Bubble after shoot, after a few Seconds.
+     * 
+     */
     removeStandardBubbleAfterFewSeconds(bubble) {
         setTimeout(() => {
             this.world.bubbles.splice(bubble, 1);
@@ -387,11 +512,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can shoot poison Bubbles.
+     * 
+     * @returns {boolean} - true or false, if the Character can shoot poison Bubbles.
+     */
     characterCanShootPoisonBubble() {
         return this.world.keyboard.x && !this.world.keyboard.y && !this.shootPoisonBubble && this.world.poisonVesselCapacity > 0 && !this.world.keyboard.space && !this.didFinSlap && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
+    /**
+     * With this Function shoot the Character poison Bubbles.
+     * 
+     */
     characterShootPoisonBubble() {
         playSoundShootBubble();
         this.saveTimeStampAfterAnimation();
@@ -401,6 +535,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play the Animation from Character, if shoot poison Bubbles.
+     * 
+     */
     playAnimationCharacterShootPoisonBubble() {
         this.currentImage = 0;
         this.intervalSharkieShootPoisonBubble = setInterval(() => {
@@ -410,6 +548,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function carry out to shoot poison Bubbles.
+     * 
+     */
     characterCarryOutShootBubblePoison() {
         this.world.poisonVesselCapacity--;
         this.reduceProgressFromProgressbarPoisonVesselIfCharacterShoot();
@@ -422,6 +564,11 @@ class Character extends MovableObjects {
     }
 
 
+
+    /**
+     * This Function remove the poison Bubble after shoot, after a few Seconds.
+     * 
+     */
     removePoisonBubbleAfterFewSeconds(poisonBubble) {
         setTimeout(() => {
             this.world.poisonBubbles.splice(poisonBubble, 1);
@@ -429,6 +576,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function clear the interval after shoot poison Bubbles.
+     * 
+     */
     clearIntervalShootedBubblePoison() {
         setTimeout(() => {
             clearInterval(this.intervalSharkieShootPoisonBubble);
@@ -437,11 +588,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can do the Fin Slap Attack.
+     * 
+     * @returns {boolean} - true or false, if the Character can do the Fin Slap Attack
+     */
     characterCanDoFinSlap() {
         return this.world.keyboard.space && !this.didFinSlap && !this.world.keyboard.x && !this.shootPoisonBubble && !this.world.keyboard.y && !this.shootStandardBubble && !this.isHurtThroughJellyFish() && !this.isHurtThroughPufferFish() && !this.isHurtThroughEndboss();
     }
 
 
+    /**
+     * With this Function the Character do the Fin Slap Attack.
+     * 
+     */
     characterDoFinSlap() {
         playSoundCharacterDoFinSlap();
         this.saveTimeStampAfterAnimation();
@@ -450,6 +610,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function play Animation from the Fin Slap Attack.
+     * 
+     */
     playAnimationCharacterDoFinSlap() {
         this.currentImage = 0;
         this.didFinSlap = true;
@@ -459,6 +623,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function clear the interval after the Fin Slap Attack.
+     * 
+     */
     clearIntervalDidFinSlap() {
         setTimeout(() => {
             clearInterval(this.intervalSharkieDoFinSlap);
@@ -467,6 +635,11 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character can idle.
+     * 
+     * @returns {boolean} - true or false, if the Character can idle
+     */
     characterCanIdle() {
         let timeSpanIdle = new Date().getTime() - this.lastIdle;
         timeSpanIdle = timeSpanIdle / 1000;
@@ -474,6 +647,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * With this Function the Character idle.
+     * 
+     */
     characterIdle() {
         let lastFourLongIdleImages = this.imagesCharacterLongIdle.slice(-4);
         if (this.characterStillNotIdle()) {
@@ -488,11 +665,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character stil not idle.
+     * 
+     * @returns {boolean} - true or false, if the Character still not idle
+     */
     characterStillNotIdle() {
         return !this.longIdle && !this.characterSleep;
     }
 
 
+    /**
+     * With this Function the Character start idle.
+     * 
+     */
     characterStartIdle() {
         this.playAnimationMovableObject(this.imagesCharacterIdle);
         setTimeout(() => {
@@ -501,11 +687,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the Character is still not long idle.
+     * 
+     * @returns {boolean} - true or false, if the character still not long idle
+     */
     characterStillNotLongIdle() {
         return this.longIdle;
     }
 
 
+    /**
+     * With this Function Character start long idle.
+     * 
+     */
     characterStartLongIdle() {
         this.playAnimationMovableObject(this.imagesCharacterLongIdle);
         setTimeout(() => {
@@ -514,11 +709,20 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function check, if the character is sleep or not.
+     * 
+     * @returns {boolean} - true or false, if the Character still not sleep.
+     */
     characterStartSleeping() {
         return this.characterSleep;
     }
 
 
+    /**
+     * With this Function Character start sleep.
+     * 
+     */
     characterSleeping(lastFourLongIdleImages) {
         playSoundCharacterIdle();
         this.playAnimationMovableObject(lastFourLongIdleImages);
@@ -528,6 +732,10 @@ class Character extends MovableObjects {
     }
 
 
+    /**
+     * This Function save the time stamp after Animation.
+     * 
+     */
     saveTimeStampAfterAnimation() {
         this.longIdle = false;
         this.characterSleep = false;

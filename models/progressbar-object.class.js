@@ -4,6 +4,11 @@ class ProgessBar extends DrawableObjects {
     percentage = 100;
 
 
+    /**
+     * This Function show the index from the Progressbar Life.
+     * 
+     * @returns {boolean} - true or false to show the current Image index
+     */
     showImageIndexProgessbarLife() {
         if (this.percentage == 100) {
             return 5;
@@ -21,6 +26,11 @@ class ProgessBar extends DrawableObjects {
     }
 
 
+    /**
+     * This Function show the index from the Progressbar Coin.
+     * 
+     * @returns {boolean} - true or false to show the current Image index
+     */
     showImageIndexProgessbarCoin() {
         if (this.percentage == 90 || this.percentage == 100) {
             return 5;
@@ -38,6 +48,11 @@ class ProgessBar extends DrawableObjects {
     }
 
 
+    /**
+     * This Function show the index from the Progressbar Poison Vessel.
+     * 
+     * @returns {boolean} - true or false to show the current Image index
+     */
     showImageIndexProgessbarPoisonVessel() {
         if (this.percentage == 90 || this.percentage == 100) {
             return 5;
