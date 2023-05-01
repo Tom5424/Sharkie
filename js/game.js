@@ -10,7 +10,7 @@ let gameIsOver = false;
  * 
  */
 function startGame() {
-    soundIsOn = false;
+    soundIsOn = true;
     gameIsOver = false;
     gameIsStarted = true;
     document.getElementById('startScreen').classList.add('d-none');
@@ -103,13 +103,10 @@ function stopAllIntervals() {
  * 
  */
 function tryAgain() {
-    soundIsOn = false;
     closeFullScreen();
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('gameOverScreen').classList.add('d-none');
     startGame();
-    playBackgroundMusic();
-    checkSounds();
 }
 
 
@@ -120,7 +117,6 @@ function tryAgain() {
 function goToMainMenuFromWinScreen() {
     gameIsStarted = false;
     gameIsOver = true;
-    checkSounds();
     closeFullScreen();
     document.getElementById('winScreen').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
@@ -138,7 +134,6 @@ function goToMainMenuFromWinScreen() {
 function goToMainMenuFromGameOverScreen() {
     gameIsStarted = false;
     gameIsOver = true;
-    checkSounds();
     closeFullScreen();
     document.getElementById('gameOverScreen').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');

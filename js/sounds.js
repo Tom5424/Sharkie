@@ -13,7 +13,7 @@ let audioHurtCharacter = new Audio('audio/hurt-character.mp3');
 let audioHurtEndboss = new Audio('audio/hurt-endboss.mp3');
 let audioShootBubble = new Audio('audio/shoot-bubble.mp3');
 let audioEndbossSpawn = new Audio('audio/endboss-spawn.mp3');
-let soundIsOn = false;
+let soundIsOn = true;
 
 
 /**
@@ -21,6 +21,7 @@ let soundIsOn = false;
  * 
  */
 function playBackgroundMusic() {
+    audioBackgroundMusic.muted = false;
     audioBackgroundMusic.play();
     audioBackgroundMusic.volume = 0.2;
     audioBackgroundMusic.loop = true;
@@ -172,9 +173,9 @@ function resetSounds() {
     audioBackgroundMusicEndboss.pause();
     audioBackgroundMusic.pause();
     audioHurtEndboss.pause();
+    audioCharacterIdle.pause();
     audioBackgroundMusicEndboss.currentTime = 0;
     audioBackgroundMusic.currentTime = 0;
-    audioCharacterIdle.pause();
 }
 
 
@@ -183,10 +184,10 @@ function resetSounds() {
  * 
  */
 function checkSounds() {
-    if (!soundIsOn) {
-        unmuteSounds();
-    } else {
+    if (soundIsOn) {
         muteSounds();
+    } else {
+        unmuteSounds();
     }
 }
 
