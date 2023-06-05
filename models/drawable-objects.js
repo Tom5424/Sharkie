@@ -3,6 +3,7 @@ class DrawableObjects {
     imageCache = {};
     currentImage = 0;
     cameraX = 0;
+    allImages = [];
 
 
     /**
@@ -11,7 +12,12 @@ class DrawableObjects {
      * @param {string} path - The current Path from the Image 
      */
     loadImage(path) {
+        imagesToLoad++;
         this.img = new Image();
+        this.img.onload = () => {
+            imageLoaded++;
+            percent = (imageLoaded / imagesToLoad) * 100;
+        }
         this.img.src = path;
     }
 

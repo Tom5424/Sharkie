@@ -3,6 +3,9 @@ let world;
 let keyboard = new Keyboard();
 let gameIsStarted = false;
 let gameIsOver = false;
+let imagesToLoad = 0;
+let imageLoaded = 0;
+let percent = 0;
 
 
 /**
